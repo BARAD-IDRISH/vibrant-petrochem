@@ -11,9 +11,10 @@ const config: Config = {
       colors: {
         'brand-navy-deep': '#0F172A',
         'brand-navy-light': '#1E293B',
-        'brand-red-vibrant': '#BE1E2D',
-        'brand-red-hover': '#9E1825',
-        'brand-red-glow': 'rgba(190, 30, 45, 0.15)',
+        'brand-red-vibrant': '#C5221F',
+        'brand-red-hover': '#A31B19',
+        'steel-blue': '#2563EB',
+        'steel-blue-light': '#EFF6FF',
         'surface-light': '#FFFFFF',
         'surface-gray': '#F8FAFC',
         'surface-card': '#FFFFFF',
@@ -27,7 +28,6 @@ const config: Config = {
       },
       boxShadow: {
         'glass-light': '0 8px 30px 0 rgba(0, 0, 0, 0.06)',
-        'glow-red': '0 0 20px rgba(190, 30, 45, 0.25)',
         'card-light': '0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03)',
       },
       backdropBlur: {

@@ -10,17 +10,17 @@ export const metadata = {
 
 export default function ValuesPage() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
+    <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] pt-28 pb-20">
       {/* Header Banner */}
-      <div className="bg-[#F8FAFC] text-slate-900 py-16 mb-12 relative border-b border-slate-200">
+      <div className="bg-[#F8FAFC] text-[#0F172A] py-16 mb-12 relative border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-brand-red-vibrant">
+          <span className="text-xs uppercase font-bold tracking-widest text-[#2563EB]">
             Core Commitments
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-slate-900">
+          <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-[#0F172A]">
             Strengths, Ethics & Quality Commitments
           </h1>
-          <p className="text-slate-600 text-base max-w-2xl font-normal">
+          <p className="text-[#475569] text-base max-w-2xl font-normal">
             Building long-term equitable relationships across global energy markets through transparency, technical precision, and safety.
           </p>
         </div>
@@ -31,25 +31,25 @@ export default function ValuesPage() {
           {COMPANY_VALUES.map((val) => (
             <div
               key={val.id}
-              className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm space-y-4"
+              className="bg-white rounded-2xl p-8 border border-[#E2E8F0] shadow-sm space-y-4"
             >
-              <div className="p-3 rounded-xl bg-red-50 text-brand-red-vibrant w-fit">
+              <div className="p-3 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] w-fit">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h2 className="text-xl font-bold font-display text-slate-900">{val.title}</h2>
-              <p className="text-xs text-slate-600 leading-relaxed">{val.description}</p>
+              <h2 className="text-xl font-bold font-display text-[#0F172A]">{val.title}</h2>
+              <p className="text-xs text-[#475569] leading-relaxed">{val.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center space-y-4">
-          <h3 className="text-2xl font-bold font-display text-slate-900">Custom Formulations & Specification Blending</h3>
-          <p className="text-xs text-slate-600 max-w-2xl mx-auto">
+        <div className="bg-white p-8 rounded-2xl border border-[#E2E8F0] shadow-sm text-center space-y-4">
+          <h3 className="text-2xl font-bold font-display text-[#0F172A]">Custom Formulations & Specification Blending</h3>
+          <p className="text-xs text-[#475569] max-w-2xl mx-auto">
             Our technical team works directly with industrial clients to deliver customized viscosity index, pour points, and flash point parameters tailored for extreme climate operations.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center space-x-2 bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold px-8 py-4 rounded-xl shadow-md transition-colors"
+            className="inline-flex items-center space-x-2 bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold px-8 py-4 rounded-xl shadow-sm transition-colors"
           >
             <span>Inquire Custom Blends</span>
             <ArrowRight className="w-4 h-4" />
