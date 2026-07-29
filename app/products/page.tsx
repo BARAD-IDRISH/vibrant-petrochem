@@ -11,17 +11,24 @@ export const metadata = {
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] pt-28 pb-20">
-      {/* Compact Dark Header Banner */}
-      <div className="bg-[#0F172A] text-white py-12 mb-12 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-          <span className="text-xs uppercase font-bold tracking-widest text-red-400">
-            Global Supply Catalog
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+    <main className="min-h-screen bg-white text-[#0F172A] pt-28 pb-20">
+      {/* Soft Slate Header Block */}
+      <div className="bg-slate-50 border-b border-slate-200 py-12 sm:py-16 mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+          <div className="flex items-center space-x-2 text-xs font-semibold text-slate-400">
+            <Link href="/" className="hover:text-slate-600 transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-slate-700 font-bold">Products</span>
+          </div>
+          <div>
+            <span className="text-xs uppercase font-bold tracking-wider text-[#C5221F]">
+              Global Supply Catalog
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold font-display text-slate-900 tracking-tight">
             Refined Petrochemical & Hydrocarbon Portfolio
           </h1>
-          <p className="text-[#94A3B8] text-sm max-w-2xl font-normal leading-relaxed">
+          <p className="text-slate-600 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
             Browse our full catalog of ASTM-tested base oils, gas-to-liquid synthetic fuels, glycols, and industrial solvents ready for export from UAE ports.
           </p>
         </div>

@@ -3,10 +3,11 @@ import React from 'react';
 export default function AboutLoading() {
   return (
     <div className="min-h-screen bg-slate-50 pt-28 pb-20">
-      <div className="bg-[#0F172A] py-12 mb-12 border-b border-slate-800">
+      <div className="bg-slate-50 border-b border-slate-200 py-12 sm:py-16 mb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
-          <div className="h-4 w-32 bg-slate-800 rounded animate-pulse" />
-          <div className="h-8 w-2/3 max-w-lg bg-slate-800 rounded animate-pulse" />
+          <div className="h-3 w-28 bg-slate-200 rounded animate-pulse" />
+          <div className="h-4 w-32 bg-slate-200 rounded animate-pulse" />
+          <div className="h-8 w-2/3 max-w-lg bg-slate-200 rounded animate-pulse" />
         </div>
       </div>
 
