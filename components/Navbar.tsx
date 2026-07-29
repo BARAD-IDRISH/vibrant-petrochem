@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO } from '@/lib/data';
 import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, RotateCw } from 'lucide-react';
@@ -161,11 +162,10 @@ export const Navbar: React.FC<NavbarProps> = () => {
               Stats
             </Link>
 
-            {/* Products Mega Dropdown Container */}
+            {/* Products Mega Dropdown Container Trigger */}
             <div
-              className="relative"
+              className="static"
               onMouseEnter={() => setIsProductsDropdownOpen(true)}
-              onMouseLeave={() => setIsProductsDropdownOpen(false)}
             >
               <Link
                 href="/products"
@@ -180,120 +180,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 <span>Products Catalog</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180 text-white' : 'text-slate-500'}`} />
               </Link>
-
-              {/* Classic Corporate Light Mega Dropdown Panel */}
-              {isProductsDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[920px] bg-white text-[#0F172A] border border-slate-200 rounded-2xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="grid grid-cols-12 gap-5">
-                    {/* Featured Left Corporate Panel */}
-                    <div className="col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between space-y-4">
-                      <div className="space-y-2.5">
-                        <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-red-50 text-red-600 border border-red-200 text-[9px] font-bold uppercase rounded-full tracking-wider">
-                          <ShieldCheck className="w-2.5 h-2.5" />
-                          <span>17 Product Lines</span>
-                        </span>
-                        <h4 className="text-sm font-bold font-display text-[#0F172A] leading-tight">
-                          Global Petrochemical Catalog
-                        </h4>
-                        <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-                          Primary distillates, base oils, polymers, GTL synthetic fuels & solvents.
-                        </p>
-                      </div>
-
-                      <div className="pt-2">
-                        <Link
-                          href="/products"
-                          onClick={() => setIsProductsDropdownOpen(false)}
-                          className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-[11px] font-bold py-2.5 px-3 rounded-lg transition-colors flex items-center justify-center space-x-1.5 shadow-sm"
-                        >
-                          <span>View All 17 Products</span>
-                          <ArrowRight className="w-3 h-3" />
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Right Categorized Products Grid */}
-                    <div className="col-span-9 grid grid-cols-3 gap-5">
-                      {categories.map((category) => {
-                        const categoryProducts = PRODUCTS.filter((p) => p.category === category);
-                        const categorySubtitle = CATEGORY_INFO[category] || '';
-                        return (
-                          <div
-                            key={category}
-                            className="bg-white border border-slate-200 rounded-xl p-4 space-y-3 shadow-sm hover:border-[#1E40AF]/30 transition-colors"
-                          >
-                            <div className="border-b border-slate-200 pb-2.5">
-                              <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#1E40AF] font-display">
-                                {category}
-                              </h3>
-                              {categorySubtitle && (
-                                <p className="text-[11px] text-slate-500 font-normal leading-tight mt-1">
-                                  {categorySubtitle}
-                                </p>
-                              )}
-                            </div>
-
-                            <div className="space-y-1.5">
-                              {categoryProducts.map((prod) => (
-                                <div key={prod.id} className="space-y-0.5">
-                                  <Link
-                                    href={`/products/${prod.id}`}
-                                    onClick={() => setIsProductsDropdownOpen(false)}
-                                    className="group/item flex items-center justify-between p-1 rounded-md hover:bg-slate-50 transition-all duration-150"
-                                  >
-                                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 group-hover/item:text-[#C5221F] group-hover/item:translate-x-0.5 transition-all duration-150 truncate max-w-[155px]">
-                                      {prod.name}
-                                    </span>
-                                    <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover/item:text-[#C5221F] opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />
-                                  </Link>
-
-                                  {/* Sub-hierarchy bullet items (e.g. for Liquid & Solid Polymers) */}
-                                  {prod.subItems && prod.subItems.length > 0 && (
-                                    <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1 my-1">
-                                      {prod.subItems.map((sub, sIdx) => (
-                                        <Link
-                                          key={sIdx}
-                                          href={`/products/${sub.id}`}
-                                          onClick={() => setIsProductsDropdownOpen(false)}
-                                          className="flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-[#C5221F] font-medium py-0.5 transition-colors group/sub"
-                                        >
-                                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 group-hover/sub:bg-[#C5221F] shrink-0 transition-colors"></span>
-                                          <span className="group-hover/sub:translate-x-0.5 transition-transform">{sub.name}</span>
-                                        </Link>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Mega Menu Bottom Corporate Footer */}
-                  <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-600">
-                    <div className="flex items-center space-x-3 text-[11px]">
-                      <span className="flex items-center space-x-1 text-[#0F172A] font-medium">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                        <span>55,000 MT Monthly Capacity</span>
-                      </span>
-                      <span>•</span>
-                      <span>FOB / CIF Global Terms</span>
-                    </div>
-
-                    <Link
-                      href="/contact"
-                      onClick={() => setIsProductsDropdownOpen(false)}
-                      className="text-[#C5221F] hover:text-[#A31B19] font-bold text-[11px] flex items-center space-x-1 transition-colors"
-                    >
-                      <span>Request Custom Freight Quote</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
-                  </div>
-                </div>
-              )}
             </div>
 
             <Link
@@ -342,6 +228,140 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </div>
         </div>
       </div>
+
+      {/* Berghaus-Style Full-Width Edge-to-Edge Desktop Mega Menu Panel */}
+      {isProductsDropdownOpen && (
+        <div
+          className="hidden md:block absolute top-full left-0 right-0 w-full bg-white text-[#0F172A] border-t border-slate-100 border-b border-slate-200 shadow-2xl z-50 animate-in fade-in slide-in-from-top-1 duration-200"
+          onMouseEnter={() => setIsProductsDropdownOpen(true)}
+          onMouseLeave={() => setIsProductsDropdownOpen(false)}
+        >
+          {/* Main Mega Content Container */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="grid grid-cols-12 gap-8 items-stretch">
+              
+              {/* Left Section (~25-30% Width - Featured Visual Banner) */}
+              <div className="col-span-12 md:col-span-4 lg:col-span-3 relative rounded-2xl overflow-hidden shadow-md border border-slate-200 flex flex-col justify-between p-6 min-h-[380px] group/banner">
+                <Image
+                  src="/products/jet_a1.png"
+                  alt="Global Petrochemical Catalog"
+                  fill
+                  className="object-cover group-hover/banner:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/75 to-[#0F172A]/20" />
+
+                {/* Top Badge */}
+                <div className="relative z-10">
+                  <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#C5221F] text-white text-[10px] font-bold uppercase rounded-full tracking-wider shadow-sm">
+                    <ShieldCheck className="w-3 h-3 text-white" />
+                    <span>17 Product Lines</span>
+                  </span>
+                </div>
+
+                {/* Bottom Promo Content & CTA */}
+                <div className="relative z-10 space-y-3 pt-12">
+                  <h3 className="text-xl font-bold font-display text-white tracking-tight leading-snug">
+                    Global Petrochemical Catalog
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    Primary distillates, base oils, industrial polymers, GTL synthetic fuels & specialty solvents.
+                  </p>
+                  <Link
+                    href="/products"
+                    onClick={() => setIsProductsDropdownOpen(false)}
+                    className="inline-flex items-center justify-center space-x-2 w-full bg-white hover:bg-slate-100 text-[#0F172A] text-xs font-bold py-3 px-4 rounded-xl transition-all duration-300 shadow-md group/btn mt-2"
+                  >
+                    <span>View All 17 Products</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#C5221F] group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Section (~70-75% Width - Structured Categories Grid) */}
+              <div className="col-span-12 md:col-span-8 lg:col-span-9 grid grid-cols-1 md:grid-cols-3 gap-8">
+                {categories.map((category) => {
+                  const categoryProducts = PRODUCTS.filter((p) => p.category === category);
+                  const categorySubtitle = CATEGORY_INFO[category] || '';
+                  return (
+                    <div key={category} className="space-y-4">
+                      {/* Category Header with Divider */}
+                      <div className="border-b border-slate-200 pb-3">
+                        <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#1E40AF] font-display">
+                          {category}
+                        </h3>
+                        {categorySubtitle && (
+                          <p className="text-[11px] text-slate-500 font-normal leading-relaxed mt-1">
+                            {categorySubtitle}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Products List */}
+                      <div className="space-y-2">
+                        {categoryProducts.map((prod) => (
+                          <div key={prod.id} className="space-y-1">
+                            <Link
+                              href={`/products/${prod.id}`}
+                              onClick={() => setIsProductsDropdownOpen(false)}
+                              className="group/item flex items-center justify-between py-1 text-xs font-bold text-slate-800 hover:text-[#C5221F] transition-colors"
+                            >
+                              <span className="group-hover/item:translate-x-0.5 transition-transform truncate max-w-[180px]">
+                                {prod.name}
+                              </span>
+                              <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover/item:text-[#C5221F] opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />
+                            </Link>
+
+                            {/* Sub-hierarchy bullet items */}
+                            {prod.subItems && prod.subItems.length > 0 && (
+                              <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1.5 my-1.5">
+                                {prod.subItems.map((sub, sIdx) => (
+                                  <Link
+                                    key={sIdx}
+                                    href={`/products/${sub.id}`}
+                                    onClick={() => setIsProductsDropdownOpen(false)}
+                                    className="flex items-center space-x-2 text-[11px] text-slate-500 hover:text-[#C5221F] font-medium py-0.5 transition-colors group/sub"
+                                  >
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 group-hover/sub:bg-[#C5221F] shrink-0 transition-colors"></span>
+                                    <span className="group-hover/sub:translate-x-0.5 transition-transform">{sub.name}</span>
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+          </div>
+
+          {/* Bottom Bar - Full Width Footer Strip */}
+          <div className="border-t border-slate-200 bg-slate-50 py-3.5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 space-y-2 sm:space-y-0">
+              <div className="flex items-center space-x-3 text-xs font-medium text-slate-700">
+                <span className="flex items-center space-x-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="font-bold text-[#0F172A]">55,000 MT Monthly Capacity</span>
+                </span>
+                <span>•</span>
+                <span className="text-slate-500">FOB / CIF Global Terms</span>
+              </div>
+
+              <Link
+                href="/contact"
+                onClick={() => setIsProductsDropdownOpen(false)}
+                className="text-[#C5221F] hover:text-[#A31B19] font-bold text-xs flex items-center space-x-1.5 group/quote transition-colors"
+              >
+                <span>Request Custom Freight Quote</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover/quote:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
