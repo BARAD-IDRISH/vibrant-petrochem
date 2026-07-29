@@ -137,6 +137,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
             >
               <Link
                 href="/products"
+                onClick={() => setIsProductsDropdownOpen(false)}
                 className={`text-xs font-semibold transition-colors flex items-center space-x-1.5 py-1 px-3.5 rounded-full border ${
                   isProductsDropdownOpen || isActive('/products')
                     ? 'bg-[#C5221F] text-white border-[#C5221F] shadow-sm font-bold'

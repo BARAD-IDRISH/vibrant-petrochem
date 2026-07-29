@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Hanken_Grotesk, Inter } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 import { ClientLayoutWrapper } from '@/components/ClientLayoutWrapper';
 
@@ -73,6 +74,17 @@ export default function RootLayout({
         <link rel="canonical" href="https://vibrantpetro.com/" />
       </head>
       <body className="bg-slate-50 text-slate-900 antialiased font-sans selection:bg-brand-red-vibrant selection:text-white min-h-screen flex flex-col justify-between">
+        <NextTopLoader
+          color="#C5221F"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #C5221F,0 0 5px #C5221F"
+        />
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
