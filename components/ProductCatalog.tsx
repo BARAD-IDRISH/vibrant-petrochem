@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCTS, ProductItem } from '@/lib/data';
-import { ArrowRight, CheckCircle, Info, Sparkles, ExternalLink } from 'lucide-react';
+import { ArrowRight, CheckCircle, Info, Sparkles, ExternalLink, ChevronDown } from 'lucide-react';
 
 interface ProductCatalogProps {
   onOpenQuoteModal: (productName?: string) => void;
@@ -13,6 +13,7 @@ interface ProductCatalogProps {
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedProductDetails, setSelectedProductDetails] = useState<ProductItem | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const categories = [
     'All',
@@ -26,6 +27,9 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
     selectedCategory === 'All'
       ? PRODUCTS
       : PRODUCTS.filter((p) => p.category === selectedCategory);
+
+  // Show 2 rows maximum by default (8 items in 4-column grid)
+  const displayedProducts = showAll ? filteredProducts : filteredProducts.slice(0, 8);
 
   return (
     <section id="products" className="py-24 bg-[#F8FAFC] text-[#0F172A] relative z-20 border-t border-[#E2E8F0]">
@@ -49,7 +53,10 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setShowAll(false);
+                }}
                 className={`text-xs font-bold px-4 py-2 rounded-full border transition-colors duration-200 ${
                   selectedCategory === cat
                     ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-sm'
@@ -62,9 +69,9 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
           </div>
         </div>
 
-        {/* 4-Column Product Cards Grid */}
+        {/* 4-Column Product Cards Grid (2 rows = 8 cards max initially) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+          {displayedProducts.map((product) => (
             <div
               key={product.id}
               className="bg-white rounded-xl overflow-hidden border border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between group"
@@ -148,6 +155,19 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
             </div>
           ))}
         </div>
+
+        {/* View All / Show Fewer Toggle Button */}
+        {filteredProducts.length > 8 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center space-x-2 bg-white hover:bg-[#F8FAFC] text-[#0F172A] text-xs font-bold px-8 py-3.5 rounded-full border border-[#E2E8F0] shadow-sm transition-all hover:border-[#C5221F]"
+            >
+              <span>{showAll ? 'Show Fewer Products (2 Rows)' : `View All ${filteredProducts.length} Products`}</span>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showAll ? 'rotate-180 text-[#C5221F]' : ''}`} />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Product Detail Spec Modal */}
