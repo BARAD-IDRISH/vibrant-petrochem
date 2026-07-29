@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PRODUCTS } from '@/lib/data';
+import { PRODUCTS, CATEGORY_INFO } from '@/lib/data';
 import { Fuel, ArrowRight, ShieldCheck, Filter, Search } from 'lucide-react';
 
 export const metadata = {
@@ -10,6 +10,12 @@ export const metadata = {
 };
 
 export default function ProductsPage() {
+  const categories: Array<'Energy & Petroleum' | 'Base Oils & Lubricant Stocks' | 'Chemicals & Solvents'> = [
+    'Energy & Petroleum',
+    'Base Oils & Lubricant Stocks',
+    'Chemicals & Solvents',
+  ];
+
   return (
     <main className="min-h-screen bg-white text-[#0F172A] pt-28 pb-20">
       {/* Soft Slate Header Block */}
@@ -35,6 +41,62 @@ export default function ProductsPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Category Hierarchy Overview (Matching User Reference Image) */}
+        <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm mb-16 space-y-6">
+          <div className="border-b border-slate-200 pb-4">
+            <h2 className="text-xl font-bold font-display text-[#0F172A]">
+              Catalog Category Index
+            </h2>
+            <p className="text-xs text-slate-500">
+              Structured product hierarchy across Energy, Base Stocks, and Specialty Solvents
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {categories.map((category) => {
+              const categoryProducts = PRODUCTS.filter((p) => p.category === category);
+              const subtitle = CATEGORY_INFO[category] || '';
+              return (
+                <div key={category} className="space-y-4">
+                  <div className="border-b border-slate-200 pb-3">
+                    <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#1E40AF] font-display">
+                      {category}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-normal mt-1">
+                      {subtitle}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    {categoryProducts.map((prod) => (
+                      <div key={prod.id} className="space-y-1">
+                        <Link
+                          href={`/products/${prod.id}`}
+                          className="text-xs sm:text-sm font-bold text-slate-800 hover:text-[#C5221F] transition-colors block"
+                        >
+                          {prod.name}
+                        </Link>
+
+                        {/* Sub-items (Liquid & Solid Polymers hierarchy) */}
+                        {prod.subItems && prod.subItems.length > 0 && (
+                          <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1 my-1.5">
+                            {prod.subItems.map((sub, sIdx) => (
+                              <div key={sIdx} className="flex items-center space-x-2 text-[11px] text-slate-500 font-medium">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 shrink-0"></span>
+                                <span>{sub.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {PRODUCTS.map((prod) => (

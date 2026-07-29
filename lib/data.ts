@@ -5,6 +5,10 @@ export interface TechSpecRow {
   typical: string;
 }
 
+export interface ProductSubItem {
+  name: string;
+}
+
 export interface ProductItem {
   id: string;
   name: string;
@@ -13,10 +17,17 @@ export interface ProductItem {
   fullDesc: string;
   specs: string[];
   techSpecs?: TechSpecRow[];
+  subItems?: ProductSubItem[];
   applications: string[];
   imageUrl: string;
   badge?: string;
 }
+
+export const CATEGORY_INFO: Record<string, string> = {
+  'Energy & Petroleum': 'Primary distillates, fuel oils, naphtha, and synthetic fuels.',
+  'Base Oils & Lubricant Stocks': 'Raw mineral and synthetic base stocks and additive packages.',
+  'Chemicals & Solvents': 'Specialty chemicals, industrial polymers, and solvents.',
+};
 
 export interface MetricItem {
   id: string;
@@ -321,6 +332,10 @@ export const PRODUCTS: ProductItem[] = [
     fullDesc:
       'High-performance liquid polymer Viscosity Index Improvers (VII) paired with prime grade solid polyolefins (Polypropylene, Polyethylene, and PVC resins) for industrial and automotive applications.',
     specs: ['Viscosity Index Improver (VII)', 'Polypropylene (PP Film & Injection)', 'Polyethylene (HDPE / LDPE)', 'PVC Resins (K-67)'],
+    subItems: [
+      { name: 'Viscosity Index Improver (VII)' },
+      { name: 'Others (PP, PE, PVC)' },
+    ],
     techSpecs: [
       { property: 'Melt Flow Index (MFI)', method: 'ASTM D1238', unit: 'g/10min', typical: '3.0 - 25.0 (PP Resins)' },
       { property: 'Density @ 23°C', method: 'ASTM D1505', unit: 'g/cm³', typical: '0.900 - 0.955 (Polyolefin Grade)' },

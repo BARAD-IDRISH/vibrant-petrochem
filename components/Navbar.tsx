@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { COMPANY_INFO, PRODUCTS } from '@/lib/data';
+import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO } from '@/lib/data';
 import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, RotateCw } from 'lucide-react';
 
 interface NavbarProps {
@@ -213,36 +213,52 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     </div>
 
                     {/* Right Categorized Products Grid */}
-                    <div className="col-span-9 grid grid-cols-3 gap-3">
+                    <div className="col-span-9 grid grid-cols-3 gap-5">
                       {categories.map((category) => {
                         const categoryProducts = PRODUCTS.filter((p) => p.category === category);
+                        const categorySubtitle = CATEGORY_INFO[category] || '';
                         return (
                           <div
                             key={category}
-                            className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2 hover:border-[#C5221F]/40 transition-colors"
+                            className="bg-white border border-slate-200 rounded-xl p-4 space-y-3 shadow-sm hover:border-[#1E40AF]/30 transition-colors"
                           >
-                            <div className="flex items-center justify-between border-b border-slate-200 pb-1.5">
-                              <div className="flex items-center space-x-1.5">
-                                {getCategoryIcon(category)}
-                                <span className="text-[10px] font-bold font-display uppercase tracking-wider text-[#0F172A] truncate max-w-[130px]">
-                                  {category}
-                                </span>
-                              </div>
+                            <div className="border-b border-slate-200 pb-2.5">
+                              <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#1E40AF] font-display">
+                                {category}
+                              </h3>
+                              {categorySubtitle && (
+                                <p className="text-[11px] text-slate-500 font-normal leading-tight mt-1">
+                                  {categorySubtitle}
+                                </p>
+                              )}
                             </div>
 
-                            <div className="space-y-1">
+                            <div className="space-y-1.5">
                               {categoryProducts.map((prod) => (
-                                <Link
-                                  key={prod.id}
-                                  href={`/products/${prod.id}`}
-                                  onClick={() => setIsProductsDropdownOpen(false)}
-                                  className="group/item flex items-center justify-between p-1 rounded-md hover:bg-white transition-all duration-150"
-                                >
-                                  <div className="text-[11px] font-semibold text-slate-700 group-hover/item:text-[#C5221F] group-hover/item:translate-x-0.5 transition-all duration-150 truncate max-w-[145px]">
-                                    {prod.name}
-                                  </div>
-                                  <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover/item:text-[#C5221F] opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />
-                                </Link>
+                                <div key={prod.id} className="space-y-0.5">
+                                  <Link
+                                    href={`/products/${prod.id}`}
+                                    onClick={() => setIsProductsDropdownOpen(false)}
+                                    className="group/item flex items-center justify-between p-1 rounded-md hover:bg-slate-50 transition-all duration-150"
+                                  >
+                                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 group-hover/item:text-[#C5221F] group-hover/item:translate-x-0.5 transition-all duration-150 truncate max-w-[155px]">
+                                      {prod.name}
+                                    </span>
+                                    <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover/item:text-[#C5221F] opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />
+                                  </Link>
+
+                                  {/* Sub-hierarchy bullet items (e.g. for Liquid & Solid Polymers) */}
+                                  {prod.subItems && prod.subItems.length > 0 && (
+                                    <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1 my-1">
+                                      {prod.subItems.map((sub, sIdx) => (
+                                        <div key={sIdx} className="flex items-center space-x-1.5 text-[10px] text-slate-500 font-medium">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 shrink-0"></span>
+                                          <span>{sub.name}</span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
                               ))}
                             </div>
                           </div>
