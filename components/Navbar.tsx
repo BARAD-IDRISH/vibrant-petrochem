@@ -181,21 +181,21 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180 text-white' : 'text-slate-500'}`} />
               </Link>
 
-              {/* Expensify-Style Dark Floating Mega Menu Dropdown Panel */}
+              {/* Classic Corporate Light Mega Dropdown Panel */}
               {isProductsDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[940px] bg-[#0F172A] text-white border border-slate-800 rounded-2xl shadow-2xl p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="grid grid-cols-12 gap-6">
-                    {/* Featured Left Dark Card */}
-                    <div className="col-span-3 bg-slate-800/60 border border-slate-700/60 rounded-xl p-5 flex flex-col justify-between space-y-4">
-                      <div className="space-y-3">
-                        <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-red-500/20 text-red-400 border border-red-500/30 text-[9px] font-bold uppercase rounded-full tracking-wider">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[920px] bg-white text-[#0F172A] border border-slate-200 rounded-2xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="grid grid-cols-12 gap-5">
+                    {/* Featured Left Corporate Panel */}
+                    <div className="col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between space-y-4">
+                      <div className="space-y-2.5">
+                        <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-red-50 text-red-600 border border-red-200 text-[9px] font-bold uppercase rounded-full tracking-wider">
                           <ShieldCheck className="w-2.5 h-2.5" />
                           <span>17 Product Lines</span>
                         </span>
-                        <h4 className="text-sm font-bold font-display text-white leading-tight">
+                        <h4 className="text-sm font-bold font-display text-[#0F172A] leading-tight">
                           Global Petrochemical Catalog
                         </h4>
-                        <p className="text-[11px] text-slate-300 leading-relaxed font-normal">
+                        <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
                           Primary distillates, base oils, polymers, GTL synthetic fuels & solvents.
                         </p>
                       </div>
@@ -204,7 +204,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                         <Link
                           href="/products"
                           onClick={() => setIsProductsDropdownOpen(false)}
-                          className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-[11px] font-bold py-2.5 px-3 rounded-lg transition-colors flex items-center justify-center space-x-1.5 shadow-md"
+                          className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-[11px] font-bold py-2.5 px-3 rounded-lg transition-colors flex items-center justify-center space-x-1.5 shadow-sm"
                         >
                           <span>View All 17 Products</span>
                           <ArrowRight className="w-3 h-3" />
@@ -213,18 +213,21 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     </div>
 
                     {/* Right Categorized Products Grid */}
-                    <div className="col-span-9 grid grid-cols-3 gap-6">
+                    <div className="col-span-9 grid grid-cols-3 gap-5">
                       {categories.map((category) => {
                         const categoryProducts = PRODUCTS.filter((p) => p.category === category);
                         const categorySubtitle = CATEGORY_INFO[category] || '';
                         return (
-                          <div key={category} className="space-y-3">
-                            <div className="border-b border-slate-800 pb-2.5">
-                              <h3 className="text-xs font-extrabold uppercase tracking-wider text-red-400 font-display">
+                          <div
+                            key={category}
+                            className="bg-white border border-slate-200 rounded-xl p-4 space-y-3 shadow-sm hover:border-[#1E40AF]/30 transition-colors"
+                          >
+                            <div className="border-b border-slate-200 pb-2.5">
+                              <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#1E40AF] font-display">
                                 {category}
                               </h3>
                               {categorySubtitle && (
-                                <p className="text-[11px] text-slate-400 font-normal leading-tight mt-1">
+                                <p className="text-[11px] text-slate-500 font-normal leading-tight mt-1">
                                   {categorySubtitle}
                                 </p>
                               )}
@@ -236,25 +239,25 @@ export const Navbar: React.FC<NavbarProps> = () => {
                                   <Link
                                     href={`/products/${prod.id}`}
                                     onClick={() => setIsProductsDropdownOpen(false)}
-                                    className="group/item flex items-center justify-between py-1 px-1.5 rounded-md hover:bg-slate-800/80 transition-all duration-150"
+                                    className="group/item flex items-center justify-between p-1 rounded-md hover:bg-slate-50 transition-all duration-150"
                                   >
-                                    <span className="text-xs font-semibold text-slate-200 group-hover/item:text-white group-hover/item:translate-x-1 transition-all duration-150 truncate max-w-[155px]">
+                                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 group-hover/item:text-[#C5221F] group-hover/item:translate-x-0.5 transition-all duration-150 truncate max-w-[155px]">
                                       {prod.name}
                                     </span>
-                                    <ArrowUpRight className="w-3 h-3 text-slate-500 group-hover/item:text-red-400 opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />
+                                    <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover/item:text-[#C5221F] opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />
                                   </Link>
 
                                   {/* Sub-hierarchy bullet items (e.g. for Liquid & Solid Polymers) */}
                                   {prod.subItems && prod.subItems.length > 0 && (
-                                    <div className="ml-3 pl-3 border-l border-slate-700/60 space-y-1 my-1">
+                                    <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1 my-1">
                                       {prod.subItems.map((sub, sIdx) => (
                                         <Link
                                           key={sIdx}
                                           href={`/products/${sub.id}`}
                                           onClick={() => setIsProductsDropdownOpen(false)}
-                                          className="flex items-center space-x-1.5 text-[10px] text-slate-400 hover:text-red-400 font-medium py-0.5 transition-colors group/sub"
+                                          className="flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-[#C5221F] font-medium py-0.5 transition-colors group/sub"
                                         >
-                                          <span className="w-1.5 h-1.5 rounded-full bg-blue-400/80 group-hover/sub:bg-red-400 shrink-0 transition-colors"></span>
+                                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 group-hover/sub:bg-[#C5221F] shrink-0 transition-colors"></span>
                                           <span className="group-hover/sub:translate-x-0.5 transition-transform">{sub.name}</span>
                                         </Link>
                                       ))}
@@ -270,10 +273,10 @@ export const Navbar: React.FC<NavbarProps> = () => {
                   </div>
 
                   {/* Mega Menu Bottom Corporate Footer */}
-                  <div className="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+                  <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-600">
                     <div className="flex items-center space-x-3 text-[11px]">
-                      <span className="flex items-center space-x-1.5 text-slate-300 font-medium">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      <span className="flex items-center space-x-1 text-[#0F172A] font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                         <span>55,000 MT Monthly Capacity</span>
                       </span>
                       <span>•</span>
@@ -283,7 +286,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     <Link
                       href="/contact"
                       onClick={() => setIsProductsDropdownOpen(false)}
-                      className="text-red-400 hover:text-red-300 font-bold text-[11px] flex items-center space-x-1 transition-colors"
+                      className="text-[#C5221F] hover:text-[#A31B19] font-bold text-[11px] flex items-center space-x-1 transition-colors"
                     >
                       <span>Request Custom Freight Quote</span>
                       <ArrowRight className="w-3 h-3" />
