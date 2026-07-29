@@ -41,6 +41,13 @@ export const COMPANY_INFO = {
     saturday: 'Sat & Sun: Closed',
     sunday: 'Sunday: Closed',
   },
+  valuesStatement: {
+    heading: 'We offer Industrial Solutions that are reliable, efficient, safe and sustainable.',
+    paragraph1:
+      'We strongly believe in business transparency and ethical behavior practices, building long term trust-based relationship with our clients, suppliers, and associates. We focus on the needs of our counterparties and provide tailor-made solutions. Our fairness and dedication to develop long-term and equitable relationships have earned us trust and respect within the industry.',
+    paragraph2:
+      'We will continue to remain focused on ramping up and maintaining our position as a contributing player that will transcend Vibrant Petrochem\'s presences globally along with the company\'s principles to run its operations with a high degree of "Self-confidence" to its responsibilities towards the clients, principles, suppliers, and employees in achieving a rewarding long-term relationship.',
+  },
 };
 
 export const KEY_METRICS: MetricItem[] = [
