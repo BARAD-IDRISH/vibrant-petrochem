@@ -22,20 +22,20 @@ export const Metrics: React.FC = () => {
   };
 
   return (
-    <section id="metrics" className="py-20 bg-gradient-to-b from-[#1b263b] via-[#152238] to-[#0f172a] text-white relative z-20 border-y border-slate-700/60">
-      {/* Subtle Light Navy Ambient Glows */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section id="metrics" className="py-20 bg-[#1E3A8A] text-white relative z-20 border-y border-blue-900/60">
+      {/* Ambient Red & Soft Sunlight Glows */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-brand-red-vibrant/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-[11px] uppercase font-bold tracking-widest text-brand-red-vibrant shadow-sm mb-3">
+          <span className="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-[#172e6e] border border-blue-700/60 text-[11px] uppercase font-bold tracking-widest text-brand-red-vibrant shadow-sm mb-3">
             Proven Track Record
           </span>
           <h3 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
             Operational Scale & Market Power
           </h3>
-          <p className="text-slate-300 text-sm mt-3 font-medium">
+          <p className="text-blue-100 text-sm mt-3 font-medium">
             Delivering consistency, safety, and operational excellence across global energy markets.
           </p>
         </div>
@@ -45,16 +45,16 @@ export const Metrics: React.FC = () => {
           {KEY_METRICS.map((metric, idx) => (
             <div
               key={metric.id}
-              className={`bg-[#1e293b]/90 rounded-2xl p-6 relative overflow-hidden group border border-slate-700/80 shadow-2xl hover:border-brand-red-vibrant/60 backdrop-blur-md transition-all duration-300 ${
+              className={`bg-[#172e6e]/90 rounded-2xl p-6 relative overflow-hidden group border border-blue-700/60 shadow-2xl hover:border-brand-red-vibrant/60 backdrop-blur-md transition-all duration-300 ${
                 idx === 0 || idx === 3 ? 'lg:scale-[1.02]' : ''
               }`}
             >
               {/* Top Row: Icon & Indicator */}
               <div className="flex items-center justify-between mb-4">
-                <div className="p-3 rounded-xl bg-slate-800 border border-slate-700 group-hover:bg-brand-red-vibrant transition-colors duration-300 shadow-sm">
+                <div className="p-3 rounded-xl bg-[#1e3880] border border-blue-600/50 group-hover:bg-brand-red-vibrant transition-colors duration-300 shadow-sm">
                   {getIcon(metric.iconName)}
                 </div>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-blue-200">
                   Verified Metric
                 </span>
               </div>
@@ -64,11 +64,11 @@ export const Metrics: React.FC = () => {
                 <div className="text-4xl sm:text-5xl font-extrabold font-display text-white group-hover:text-brand-red-vibrant transition-colors">
                   {metric.value}
                 </div>
-                <div className="text-sm font-bold text-slate-200">{metric.label}</div>
+                <div className="text-sm font-bold text-blue-100">{metric.label}</div>
               </div>
 
               {/* Subtext */}
-              <p className="text-xs text-slate-400 mt-3 pt-3 border-t border-slate-700/70 leading-relaxed font-normal">
+              <p className="text-xs text-blue-200/80 mt-3 pt-3 border-t border-blue-700/50 leading-relaxed font-normal">
                 {metric.subtext}
               </p>
 
