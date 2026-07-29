@@ -12,15 +12,15 @@ export default function ValuesPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
       {/* Header Banner */}
-      <div className="bg-slate-900 text-white py-16 mb-12 relative">
+      <div className="bg-[#1E3A8A] text-white py-16 mb-12 relative border-b border-blue-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-brand-red-vibrant">
+          <span className="text-xs uppercase font-bold tracking-widest text-red-300">
             Core Commitments
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold font-display">
             Strengths, Ethics & Quality Commitments
           </h1>
-          <p className="text-slate-300 text-base max-w-2xl font-normal">
+          <p className="text-blue-100 text-base max-w-2xl font-normal">
             Building long-term equitable relationships across global energy markets through transparency, technical precision, and safety.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function ValuesPage() {
           {COMPANY_VALUES.map((val) => (
             <div
               key={val.id}
-              className="bg-white rounded-2xl p-8 border border-slate-200 shadow-md space-y-4"
+              className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm space-y-4"
             >
               <div className="p-3 rounded-xl bg-red-50 text-brand-red-vibrant w-fit">
                 <ShieldCheck className="w-6 h-6" />
@@ -49,7 +49,7 @@ export default function ValuesPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center space-x-2 bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold px-8 py-4 rounded-xl shadow-lg transition-all"
+            className="inline-flex items-center space-x-2 bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold px-8 py-4 rounded-xl shadow-md transition-colors"
           >
             <span>Inquire Custom Blends</span>
             <ArrowRight className="w-4 h-4" />

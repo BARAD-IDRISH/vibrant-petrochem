@@ -97,12 +97,12 @@ function ContactFormContent() {
           </div>
         </div>
 
-        <div className="bg-slate-900 text-white p-6 rounded-2xl shadow-md space-y-3">
-          <div className="flex items-center space-x-2 text-xs font-bold text-brand-red-vibrant uppercase">
+        <div className="bg-[#1E3A8A] text-white p-6 rounded-2xl shadow-sm space-y-3 border border-blue-900/60">
+          <div className="flex items-center space-x-2 text-xs font-bold text-red-300 uppercase">
             <ShieldCheck className="w-4 h-4" />
             <span>Security Assurance</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-xs text-blue-100/90 leading-relaxed">
             All commercial transactions and trade documents are protected by strict corporate data security and ISO 9001 compliance standards.
           </p>
         </div>
@@ -264,15 +264,15 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
       {/* Header Banner */}
-      <div className="bg-slate-900 text-white py-16 mb-12 relative">
+      <div className="bg-[#1E3A8A] text-white py-16 mb-12 relative border-b border-blue-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-brand-red-vibrant">
+          <span className="text-xs uppercase font-bold tracking-widest text-red-300">
             Commercial Trading Desk
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold font-display">
             Contact Vibrant Petrochem FZE
           </h1>
-          <p className="text-slate-300 text-base max-w-2xl font-normal">
+          <p className="text-blue-100 text-base max-w-2xl font-normal">
             Inquire product specifications, request official Certificates of Analysis (COA), or receive a custom freight rate quote for international delivery.
           </p>
         </div>

@@ -11,31 +11,27 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
   return (
-    <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-slate-100 text-slate-900">
+    <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-slate-100 text-slate-900 border-b border-slate-200">
       {/* High-Visibility AI Oil Refinery Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero_light_oil_refinery.png"
-          alt="Vibrant Petrochem AI Generated Oil Refinery Background"
+          alt="Vibrant Petrochem Oil Refinery Background"
           fill
           priority
-          className="object-cover object-center opacity-85 scale-105"
+          className="object-cover object-center opacity-85"
         />
-        {/* Crisp Gradient Overlay for Maximum Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent" />
+        {/* Crisp Gradient Overlay for Maximum Corporate Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-slate-100" />
       </div>
 
-      {/* Decorative Red & Soft Sunlight Ambient Glowing Orbs */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-brand-red-vibrant/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Clean Hero Content Directly over Background */}
+        {/* Clean Corporate Hero Content */}
         <div className="max-w-3xl space-y-8">
-          {/* Pill Badge */}
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-sm border border-slate-300 shadow-sm">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-brand-red-vibrant animate-pulse" />
+          {/* Corporate Badge */}
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-slate-300 shadow-sm">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-brand-red-vibrant" />
             <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
               Leading Commodity Trader • UAE Est. {COMPANY_INFO.established}
             </span>
@@ -56,24 +52,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={() => onOpenQuoteModal()}
-              className="bg-brand-red-vibrant hover:bg-brand-red-hover text-white font-bold text-sm px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-3 group scale-105"
+              className="bg-brand-red-vibrant hover:bg-brand-red-hover text-white font-bold text-sm px-8 py-4 rounded-xl shadow-md transition-all duration-200 flex items-center space-x-3 group"
             >
               <span>Request Custom Quote</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <a
               href="#products"
-              className="bg-white/90 backdrop-blur-sm hover:bg-white text-slate-900 font-bold text-sm px-8 py-4 rounded-xl border border-slate-300 shadow-sm hover:shadow-md transition-all duration-300 flex items-center space-x-2"
+              className="bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm px-8 py-4 rounded-xl border border-slate-300 shadow-sm transition-all duration-200 flex items-center space-x-2"
             >
               <Fuel className="w-4 h-4 text-brand-red-vibrant" />
               <span>Explore 12+ Product Lines</span>
             </a>
           </div>
 
-          {/* Trust Badges */}
+          {/* Corporate Trust Badges */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-slate-300/70 max-w-3xl">
-            <div className="flex items-center space-x-3 bg-white/70 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60 shadow-sm">
-              <div className="p-2.5 rounded-lg bg-red-50 text-brand-red-vibrant border border-red-100 shadow-sm shrink-0">
+            <div className="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+              <div className="p-2.5 rounded-lg bg-red-50 text-brand-red-vibrant border border-red-100 shrink-0">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
@@ -82,8 +78,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 bg-white/70 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60 shadow-sm">
-              <div className="p-2.5 rounded-lg bg-red-50 text-brand-red-vibrant border border-red-100 shadow-sm shrink-0">
+            <div className="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+              <div className="p-2.5 rounded-lg bg-red-50 text-brand-red-vibrant border border-red-100 shrink-0">
                 <Globe className="w-5 h-5" />
               </div>
               <div>
@@ -92,8 +88,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 bg-white/70 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/60 shadow-sm">
-              <div className="p-2.5 rounded-lg bg-red-50 text-brand-red-vibrant border border-red-100 shadow-sm shrink-0">
+            <div className="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+              <div className="p-2.5 rounded-lg bg-red-50 text-brand-red-vibrant border border-red-100 shrink-0">
                 <Layers className="w-5 h-5" />
               </div>
               <div>

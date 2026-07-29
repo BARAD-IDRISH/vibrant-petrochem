@@ -28,7 +28,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
       : PRODUCTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="products" className="py-24 bg-[#F0F4F8] text-slate-900 relative z-20 border-t border-slate-200">
+    <section id="products" className="py-24 bg-slate-50 text-slate-900 relative z-20 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -50,10 +50,10 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`text-xs font-bold px-4 py-2 rounded-full border transition-all duration-300 ${
+                className={`text-xs font-bold px-4 py-2 rounded-full border transition-colors duration-200 ${
                   selectedCategory === cat
-                    ? 'bg-brand-red-vibrant text-white border-brand-red-vibrant shadow-md scale-105'
-                    : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
+                    ? 'bg-brand-red-vibrant text-white border-brand-red-vibrant shadow-sm'
+                    : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
                 }`}
               >
                 {cat}
@@ -67,7 +67,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-lg hover:shadow-2xl hover:border-brand-red-vibrant/40 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+              className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between group"
             >
               {/* Product Image */}
               <div>
@@ -77,19 +77,19 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
                     alt={product.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 
                   {/* Badge */}
                   {product.badge && (
-                    <div className="absolute top-3 left-3 bg-brand-red-vibrant text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1">
+                    <div className="absolute top-3 left-3 bg-brand-red-vibrant text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm flex items-center space-x-1">
                       <Sparkles className="w-3 h-3" />
                       <span>{product.badge}</span>
                     </div>
                   )}
 
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">
+                  <div className="absolute top-3 right-3 bg-white text-slate-900 text-[10px] font-bold px-2.5 py-1 rounded-md border border-slate-200 shadow-sm">
                     {product.category}
                   </div>
                 </Link>
@@ -124,14 +124,14 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={() => setSelectedProductDetails(product)}
-                    className="w-full bg-slate-50 hover:bg-slate-100 text-slate-800 text-[11px] font-semibold py-2.5 rounded-xl border border-slate-200 transition-colors flex items-center justify-center space-x-1"
+                    className="w-full bg-slate-50 hover:bg-slate-100 text-slate-800 text-[11px] font-semibold py-2.5 rounded-lg border border-slate-200 transition-colors flex items-center justify-center space-x-1"
                   >
                     <Info className="w-3 h-3 text-brand-red-vibrant" />
                     <span>Quick Spec</span>
                   </button>
                   <Link
                     href={`/products/${product.id}`}
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-semibold py-2.5 rounded-xl transition-colors flex items-center justify-center space-x-1"
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center space-x-1"
                   >
                     <span>Full Page</span>
                     <ExternalLink className="w-3 h-3" />
@@ -139,7 +139,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
                 </div>
                 <button
                   onClick={() => onOpenQuoteModal(product.name)}
-                  className="w-full bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold py-2.5 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center space-x-1.5 group-hover:shadow-lg"
+                  className="w-full bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold py-2.5 rounded-lg transition-colors shadow-sm flex items-center justify-center space-x-1.5"
                 >
                   <span>Request RFQ</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -162,7 +162,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
             </button>
 
             <div className="flex items-center space-x-3">
-              <span className="text-xs uppercase font-bold text-brand-red-vibrant tracking-wider bg-red-50 px-3 py-1 rounded-full border border-red-100">
+              <span className="text-xs uppercase font-bold text-brand-red-vibrant tracking-wider bg-red-50 px-3 py-1 rounded-md border border-red-100">
                 {selectedProductDetails.category}
               </span>
               <span className="text-xs text-slate-500">Refined Quality Standard</span>

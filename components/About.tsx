@@ -7,21 +7,21 @@ import { ShieldCheck, Award, Truck, CheckCircle2 } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-white text-slate-900 relative overflow-hidden">
+    <section id="about" className="py-24 bg-white text-slate-900 relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: AI-Generated Image Collage & Floating Badge */}
+          {/* Left Column: Image Collage & Corporate Badge */}
           <div className="lg:col-span-6 relative">
-            <div className="relative h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <div className="relative h-[480px] w-full rounded-xl overflow-hidden shadow-xl border border-slate-200">
               <Image
                 src="/about_oil_storage.png"
-                alt="AI Generated Vibrant Petrochem Storage Terminal in UAE"
+                alt="Vibrant Petrochem Storage Terminal in UAE"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
 
-              <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/95 backdrop-blur-md rounded-xl text-slate-900 border border-slate-200 shadow-xl">
+              <div className="absolute bottom-6 left-6 right-6 p-5 bg-white rounded-xl text-slate-900 border border-slate-200 shadow-lg">
                 <div className="text-xs uppercase font-bold text-brand-red-vibrant tracking-wider mb-1">
                   Strategic Hub
                 </div>
@@ -34,11 +34,11 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            {/* Floating Badge "Since 2018 | UAE" */}
-            <div className="absolute -top-6 -right-4 sm:right-6 bg-brand-red-vibrant text-white p-5 rounded-2xl shadow-xl border-4 border-white transform hover:rotate-2 transition-transform">
-              <div className="text-xs font-semibold uppercase tracking-wider">Established</div>
+            {/* Corporate Badge "Since 2018 | UAE" */}
+            <div className="absolute -top-6 -right-4 sm:right-6 bg-[#1E3A8A] text-white p-5 rounded-xl shadow-lg border-2 border-white">
+              <div className="text-xs font-semibold uppercase tracking-wider text-blue-200">Established</div>
               <div className="text-3xl font-extrabold font-display leading-none mt-1">2018</div>
-              <div className="text-[11px] font-medium text-red-100 mt-1">Gulf Region • UAE</div>
+              <div className="text-[11px] font-medium text-blue-100 mt-1">Gulf Region • UAE</div>
             </div>
           </div>
 

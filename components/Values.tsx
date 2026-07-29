@@ -6,7 +6,7 @@ import { ShieldCheck, Cpu, Users, Sliders, Globe2 } from 'lucide-react';
 
 export const Values: React.FC = () => {
   const getIcon = (iconName: string) => {
-    const iconClasses = "w-8 h-8 text-brand-red-vibrant group-hover:text-white transition-colors duration-300";
+    const iconClasses = "w-6 h-6 text-white";
     switch (iconName) {
       case 'ShieldCheck':
         return <ShieldCheck className={iconClasses} />;
@@ -24,20 +24,16 @@ export const Values: React.FC = () => {
   };
 
   return (
-    <section id="values" className="py-24 bg-gradient-to-b from-[#0A1224] to-[#060C18] text-white relative overflow-hidden border-t border-white/10">
-      {/* Background Accent Gradient */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="values" className="py-24 bg-[#1E3A8A] text-white border-t border-blue-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-red-vibrant">
+          <span className="text-xs font-bold uppercase tracking-widest text-red-300">
             Core Strengths & Commitments
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white">
             Built on Trust, Precision, and Ethical Execution
           </h2>
-          <p className="text-slate-300 text-sm leading-relaxed">
+          <p className="text-blue-100/90 text-sm leading-relaxed max-w-2xl mx-auto font-normal">
             We focus on the needs of our counterparties to provide tailor-made solutions. Our fairness and dedication to
             developing long-term equitable relationships have earned us trust across global energy markets.
           </p>
@@ -48,15 +44,15 @@ export const Values: React.FC = () => {
           {COMPANY_VALUES.slice(0, 3).map((val) => (
             <div
               key={val.id}
-              className="bg-slate-900/80 rounded-2xl p-8 border border-white/10 shadow-2xl backdrop-blur-md transition-all duration-300 space-y-4 relative group hover:-translate-y-1 hover:border-white/20"
+              className="bg-white/10 rounded-xl p-8 border border-white/15 hover:border-white/30 transition-colors duration-200 space-y-4"
             >
-              <div className="p-4 rounded-xl bg-white/10 border border-white/10 w-fit group-hover:bg-brand-red-vibrant transition-colors duration-300">
+              <div className="w-12 h-12 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center">
                 {getIcon(val.iconName)}
               </div>
-              <h3 className="text-xl font-bold font-display text-white group-hover:text-brand-red-vibrant transition-colors">
+              <h3 className="text-xl font-bold font-display text-white">
                 {val.title}
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">{val.description}</p>
+              <p className="text-xs text-blue-100/80 leading-relaxed font-normal">{val.description}</p>
             </div>
           ))}
         </div>
@@ -65,15 +61,15 @@ export const Values: React.FC = () => {
           {COMPANY_VALUES.slice(3, 5).map((val) => (
             <div
               key={val.id}
-              className="bg-slate-900/80 rounded-2xl p-8 border border-white/10 shadow-2xl backdrop-blur-md transition-all duration-300 space-y-4 relative group hover:-translate-y-1 hover:border-white/20"
+              className="bg-white/10 rounded-xl p-8 border border-white/15 hover:border-white/30 transition-colors duration-200 space-y-4"
             >
-              <div className="p-4 rounded-xl bg-white/10 border border-white/10 w-fit group-hover:bg-brand-red-vibrant transition-colors duration-300">
+              <div className="w-12 h-12 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center">
                 {getIcon(val.iconName)}
               </div>
-              <h3 className="text-xl font-bold font-display text-white group-hover:text-brand-red-vibrant transition-colors">
+              <h3 className="text-xl font-bold font-display text-white">
                 {val.title}
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">{val.description}</p>
+              <p className="text-xs text-blue-100/80 leading-relaxed font-normal">{val.description}</p>
             </div>
           ))}
         </div>
