@@ -6,7 +6,7 @@ import { Fuel, ArrowRight, ShieldCheck, Filter, Search } from 'lucide-react';
 
 export const metadata = {
   title: 'All Petrochemical Products | Vibrant Petrochem FZE',
-  description: 'Explore our complete portfolio of 13+ refined petrochemical products, base oils, gas-to-liquid fuels, glycols, and industrial solvents.',
+  description: 'Explore our complete portfolio of 17+ refined petrochemical products, base oils, synthetic GTL fuels, polymers, glycols, and industrial solvents.',
 };
 
 export default function ProductsPage() {

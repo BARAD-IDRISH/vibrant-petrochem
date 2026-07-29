@@ -55,14 +55,12 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'Base Oils':
-        return <Droplets className="w-3.5 h-3.5 text-[#C5221F]" />;
-      case 'Fuels & Solvents':
-        return <Flame className="w-3.5 h-3.5 text-amber-600" />;
-      case 'Specialty Hydrocarbons':
-        return <FlaskConical className="w-3.5 h-3.5 text-emerald-600" />;
-      case 'Industrial Solvents':
-        return <Boxes className="w-3.5 h-3.5 text-[#2563EB]" />;
+      case 'Energy & Petroleum':
+        return <Flame className="w-3.5 h-3.5 text-[#C5221F]" />;
+      case 'Base Oils & Lubricant Stocks':
+        return <Droplets className="w-3.5 h-3.5 text-blue-600" />;
+      case 'Chemicals & Solvents':
+        return <Boxes className="w-3.5 h-3.5 text-emerald-600" />;
       default:
         return <Droplets className="w-3.5 h-3.5 text-[#C5221F]" />;
     }
@@ -78,25 +76,25 @@ export const Navbar: React.FC<NavbarProps> = () => {
           <div className="flex items-center justify-between text-[11px] text-slate-500">
             <div className="flex items-center space-x-6">
               <span className="flex items-center space-x-1.5 text-emerald-700 font-semibold">
-                <Shield className="w-3.5 h-3.5 text-emerald-600" />
+                <Shield className="w-3.5 h-3.5" />
                 <span>ISO & Security Compliant Commodity Trading</span>
               </span>
               <span className="text-slate-300">|</span>
-              <span>HQ: {COMPANY_INFO.headquarters}</span>
+              <span className="text-slate-600">HQ: {COMPANY_INFO.headquarters}</span>
             </div>
-            <div className="flex items-center space-x-6">
+
+            <div className="flex items-center space-x-5 text-slate-600 font-medium">
               <a
                 href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`}
-                className="flex items-center space-x-1.5 text-slate-600 hover:text-[#C5221F] transition-colors font-medium"
-                rel="noopener noreferrer"
+                className="hover:text-[#C5221F] transition-colors flex items-center space-x-1"
               >
-                <PhoneCall className="w-3.5 h-3.5 text-[#C5221F]" />
+                <PhoneCall className="w-3 h-3 text-[#C5221F]" />
                 <span>{COMPANY_INFO.phone}</span>
               </a>
+              <span className="text-slate-300">|</span>
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="hover:text-[#C5221F] transition-colors text-slate-600 font-medium"
-                rel="noopener noreferrer"
+                className="hover:text-[#C5221F] transition-colors"
               >
                 {COMPANY_INFO.email}
               </a>
@@ -109,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-3 group" onClick={() => setIsNavigating(true)}>
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C5221F] to-red-700 p-0.5 shadow-md group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
               <div className="w-full h-full bg-white rounded-[9px] flex items-center justify-center">
                 <span className="text-lg font-bold font-display text-[#C5221F]">V</span>
@@ -163,19 +161,19 @@ export const Navbar: React.FC<NavbarProps> = () => {
               Stats
             </Link>
 
-            {/* Mega Dropdown Container */}
+            {/* Products Mega Dropdown Container */}
             <div
-              className="relative py-1"
+              className="relative"
               onMouseEnter={() => setIsProductsDropdownOpen(true)}
               onMouseLeave={() => setIsProductsDropdownOpen(false)}
             >
               <Link
                 href="/products"
                 onClick={() => setIsProductsDropdownOpen(false)}
-                className={`text-xs font-semibold transition-colors flex items-center space-x-1.5 py-1 px-3.5 rounded-full border ${
-                  isProductsDropdownOpen || isActive('/products')
-                    ? 'bg-[#C5221F] text-white border-[#C5221F] shadow-sm font-bold'
-                    : 'text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-50'
+                className={`text-xs flex items-center space-x-1.5 py-1 px-3 rounded-full transition-all duration-200 ${
+                  isActive('/products') || isProductsDropdownOpen
+                    ? 'bg-[#C5221F] text-white font-bold shadow-sm'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold'
                 }`}
               >
                 <Sparkles className={`w-3.5 h-3.5 ${isProductsDropdownOpen || isActive('/products') ? 'text-white' : 'text-[#C5221F]'}`} />
@@ -185,20 +183,20 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
               {/* Classic Corporate Light Mega Dropdown Panel */}
               {isProductsDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[740px] bg-white text-[#0F172A] border border-slate-200 rounded-2xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[920px] bg-white text-[#0F172A] border border-slate-200 rounded-2xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="grid grid-cols-12 gap-5">
                     {/* Featured Left Corporate Panel */}
-                    <div className="col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between space-y-4">
+                    <div className="col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between space-y-4">
                       <div className="space-y-2.5">
                         <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-red-50 text-red-600 border border-red-200 text-[9px] font-bold uppercase rounded-full tracking-wider">
                           <ShieldCheck className="w-2.5 h-2.5" />
-                          <span>13 ASTM Lines</span>
+                          <span>17 Product Lines</span>
                         </span>
                         <h4 className="text-sm font-bold font-display text-[#0F172A] leading-tight">
                           Global Petrochemical Catalog
                         </h4>
                         <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-                          Refined base oils, synthetic GTL fuels, glycols, and solvents ready for export.
+                          Primary distillates, base oils, polymers, GTL synthetic fuels & solvents.
                         </p>
                       </div>
 
@@ -208,14 +206,14 @@ export const Navbar: React.FC<NavbarProps> = () => {
                           onClick={() => setIsProductsDropdownOpen(false)}
                           className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-[11px] font-bold py-2.5 px-3 rounded-lg transition-colors flex items-center justify-center space-x-1.5 shadow-sm"
                         >
-                          <span>View All 13 Products</span>
+                          <span>View All 17 Products</span>
                           <ArrowRight className="w-3 h-3" />
                         </Link>
                       </div>
                     </div>
 
                     {/* Right Categorized Products Grid */}
-                    <div className="col-span-8 grid grid-cols-2 gap-3.5">
+                    <div className="col-span-9 grid grid-cols-3 gap-3">
                       {categories.map((category) => {
                         const categoryProducts = PRODUCTS.filter((p) => p.category === category);
                         return (
@@ -226,7 +224,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                             <div className="flex items-center justify-between border-b border-slate-200 pb-1.5">
                               <div className="flex items-center space-x-1.5">
                                 {getCategoryIcon(category)}
-                                <span className="text-[10px] font-bold font-display uppercase tracking-wider text-[#0F172A]">
+                                <span className="text-[10px] font-bold font-display uppercase tracking-wider text-[#0F172A] truncate max-w-[130px]">
                                   {category}
                                 </span>
                               </div>
@@ -240,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                                   onClick={() => setIsProductsDropdownOpen(false)}
                                   className="group/item flex items-center justify-between p-1 rounded-md hover:bg-white transition-all duration-150"
                                 >
-                                  <div className="text-[11px] font-semibold text-slate-700 group-hover/item:text-[#C5221F] group-hover/item:translate-x-0.5 transition-all duration-150 truncate max-w-[160px]">
+                                  <div className="text-[11px] font-semibold text-slate-700 group-hover/item:text-[#C5221F] group-hover/item:translate-x-0.5 transition-all duration-150 truncate max-w-[145px]">
                                     {prod.name}
                                   </div>
                                   <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover/item:text-[#C5221F] opacity-0 group-hover/item:opacity-100 transition-all shrink-0" />

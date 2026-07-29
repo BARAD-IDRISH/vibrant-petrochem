@@ -1,7 +1,7 @@
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'Base Oils' | 'Fuels & Solvents' | 'Specialty Hydrocarbons' | 'Industrial Solvents';
+  category: 'Energy & Petroleum' | 'Base Oils & Lubricant Stocks' | 'Chemicals & Solvents';
   shortDesc: string;
   fullDesc: string;
   specs: string[];
@@ -60,9 +60,9 @@ export const KEY_METRICS: MetricItem[] = [
   },
   {
     id: 'product-lines',
-    value: '12+',
+    value: '17+',
     label: 'Global Product Lines',
-    subtext: 'Refined oils, gas-to-liquid fuels, & solvents',
+    subtext: 'Refined oils, synthetic fuels, polymers & solvents',
     iconName: 'Globe',
   },
   {
@@ -82,76 +82,11 @@ export const KEY_METRICS: MetricItem[] = [
 ];
 
 export const PRODUCTS: ProductItem[] = [
-  {
-    id: 'base-oil',
-    name: 'Base Oil (Group I, II, III & Recycled)',
-    category: 'Base Oils',
-    shortDesc: 'Pristine refined base stocks suitable for automotive, industrial lubricants, and grease manufacturing.',
-    fullDesc:
-      'We supply high-grade Group I (SN150, SN500), Group II (N70, N150, N500), Group III, and eco-sustainable recycled base oils. Produced through advanced hydrocracking and refining techniques to ensure superior viscosity index, oxidative stability, and low volatility.',
-    specs: ['Group I (SN150, SN500)', 'Group II (N70, N150, N500)', 'Group III High VI', 'Recycled Eco Grade'],
-    applications: ['Automotive Engine Oils', 'Hydraulic & Industrial Fluids', 'Gear Oils & Greases', 'Rubber Processing'],
-    imageUrl: '/products/base_oil.png',
-  },
-  {
-    id: 'gtl-fuel',
-    name: 'GTL Fuel & Specialty Solvents',
-    category: 'Fuels & Solvents',
-    shortDesc: 'Clean-burning Gas-to-Liquid synthetic fuels and high-purity industrial solvents.',
-    fullDesc:
-      'Synthetic Gas-To-Liquid (GTL) fuel converted from natural gas, offering zero sulfur content, virtually no aromatics, low emissions, and high cetane number. Paired with ultra-pure paraffinic solvents for specialized manufacturing.',
-    specs: ['Zero Sulfur Content', 'Cetane Rating > 70', 'Low Odor & Low Toxicity', 'Flash Point Compliant'],
-    applications: ['Heavy Machinery Fuel', 'Off-shore & Marine Gensets', 'Specialty Chemical Processing', 'Precision Cleaning'],
-    imageUrl: '/products/gtl_fuel.png',
-  },
-  {
-    id: 'n-paraffin',
-    name: 'N-Paraffin (Pristine Grade)',
-    category: 'Specialty Hydrocarbons',
-    shortDesc: 'Ultra-pure normal paraffins tailored for Linear Alkyl Benzene (LAB) and chlorinated paraffin synthesis.',
-    fullDesc:
-      'Pristine quality normal paraffin liquid extracted via molecular sieve adsorption. Characterized by high purity, consistent carbon chain distribution (C10-C13 & C14-C17), and exceptionally low aromatic content.',
-    specs: ['Carbon Chain C10-C17', 'Purity > 99%', 'Aromatics < 0.5%', 'Low Color Saybolt +30'],
-    applications: ['Detergent Feedstock (LAB)', 'Chlorinated Paraffins', 'Specialty Solvents', 'Rolling Oils'],
-    imageUrl: '/products/n_paraffin.png',
-  },
-  {
-    id: 'fuel-oil',
-    name: 'Fuel Oil (180 CST, 360 CST)',
-    category: 'Fuels & Solvents',
-    shortDesc: 'Industrial grade residual fuel oil engineered for power generation plants and marine bunkering.',
-    fullDesc:
-      'Heavy residual fuel oil optimized for high-capacity boilers, thermal power stations, and ocean vessels. Formulated with controlled kinematic viscosity (180 CST & 360 CST) and standardized calorific values.',
-    specs: ['Viscosity 180 CST & 360 CST', 'Density @15°C: 0.985 max', 'Flash Point > 66°C', 'Low Sediment Content'],
-    applications: ['Industrial Steam Boilers', 'Thermal Power Generation', 'Bunkering Operations', 'Furnace Operations'],
-    imageUrl: '/products/fuel_oil.png',
-  },
-  {
-    id: 'glycols',
-    name: 'Glycols (MEG, DEG, TEG)',
-    category: 'Industrial Solvents',
-    shortDesc: 'Essential chemical intermediates for polyester resin production, anti-freeze, and gas dehydration.',
-    fullDesc:
-      'High-purity Monoethylene Glycol (MEG), Diethylene Glycol (DEG), and Triethylene Glycol (TEG). Vital chemical building blocks for textile fibers, PET bottles, industrial coolants, and natural gas drying systems.',
-    specs: ['Purity > 99.8%', 'Water Content < 0.1%', 'Color (Pt-Co) < 10', 'Acidity < 0.002%'],
-    applications: ['PET Resin & Synthetic Fibers', 'Automotive Coolants & Antifreeze', 'Natural Gas Dehydration', 'Polyurethanes'],
-    imageUrl: '/products/glycols.png',
-  },
-  {
-    id: 'mineral-oil',
-    name: 'Mineral Oil (Technical & Industrial)',
-    category: 'Specialty Hydrocarbons',
-    shortDesc: 'Severely hydrotreated transparent mineral oils for technical applications, plastics, and lubricants.',
-    fullDesc:
-      'Clear, odorless, highly refined mineral oils. Exceptional thermal stability, non-staining properties, and complete compliance with technical safety standards for rubber, plastics, and industrial machinery.',
-    specs: ['Saybolt Color +30', 'Odorless & Colorless', 'Low Volatility', 'High Hydrotreatment Level'],
-    applications: ['Plastic Extrusion & Polymers', 'Textile Lubricants', 'Agricultural Sprays', 'Electrical Insulation'],
-    imageUrl: '/products/mineral_oil.png',
-  },
+  // ENERGY & PETROLEUM
   {
     id: 'jet-a1',
-    name: 'Jet A-1 Aviation Fuel',
-    category: 'Fuels & Solvents',
+    name: 'Jet A-1 Fuel',
+    category: 'Energy & Petroleum',
     shortDesc: 'Kerosene-type aviation fuel strictly compliant with international DEF STAN 91-091 & ASTM D1655 standards.',
     fullDesc:
       'Premium aviation turbine fuel refined for commercial and defense jet aircraft engines. Engineered for ultra-low freeze points (-47°C) and rigorous thermal oxidation stability required for extreme altitudes.',
@@ -160,21 +95,21 @@ export const PRODUCTS: ProductItem[] = [
     imageUrl: '/products/jet_a1.png',
   },
   {
-    id: 'spindle-oil',
-    name: 'General Purpose Spindle Oil',
-    category: 'Base Oils',
-    shortDesc: 'Low-viscosity precision lubricant for high-speed machinery spindles and textile looms.',
+    id: 'fuel-oil',
+    name: 'Fuel Oils',
+    category: 'Energy & Petroleum',
+    shortDesc: 'Industrial grade residual fuel oils (180 CST & 360 CST) engineered for thermal power plants and marine bunkering.',
     fullDesc:
-      'Refined light mineral lubricant enriched with anti-wear, anti-rust, and anti-foam additives. Designed specifically for high-RPM textile spindles, precision machine tool bearings, and automated mechanisms.',
-    specs: ['Low Viscosity ISO VG 5, 10, 15, 22', 'Anti-Oxidant Additives', 'Rapid Air Release', 'Corrosion Inhibited'],
-    applications: ['Textile Spinning Spindles', 'High-Speed Bearing Systems', 'Automated Machine Tools', 'Instrument Lubrication'],
-    imageUrl: '/products/spindle_oil.png',
+      'Heavy residual fuel oil optimized for high-capacity boilers, thermal power stations, and ocean vessels. Formulated with controlled kinematic viscosity and standardized calorific values.',
+    specs: ['Viscosity 180 CST & 360 CST', 'Density @15°C: 0.985 max', 'Flash Point > 66°C', 'Low Sediment Content'],
+    applications: ['Industrial Steam Boilers', 'Thermal Power Generation', 'Bunkering Operations', 'Furnace Operations'],
+    imageUrl: '/products/fuel_oil.png',
   },
   {
     id: 'distillate-oil',
     name: 'Distillate Oil',
-    category: 'Fuels & Solvents',
-    shortDesc: 'Intermediate petroleum distillate fraction ideal for custom fuel blending and industrial heat generation.',
+    category: 'Energy & Petroleum',
+    shortDesc: 'Primary hydrocarbon distillate fraction ideal for custom fuel blending and industrial heat generation.',
     fullDesc:
       'Light to medium hydrocarbon distillates processed for optimal volatility, controlled flash points, and minimal sulfur residues in industrial heating burners.',
     specs: ['Density 0.820 - 0.860 g/cm³', 'Controlled Boiling Range', 'Low Carbon Residue', 'Clean Combustion'],
@@ -182,32 +117,139 @@ export const PRODUCTS: ProductItem[] = [
     imageUrl: '/products/distillate_oil.png',
   },
   {
-    id: 'residual-oil',
-    name: 'Residual Oil',
-    category: 'Fuels & Solvents',
-    shortDesc: 'Heavy refinery bottoms refined for asphalt, bitumen modification, and heavy fuel applications.',
+    id: 'naphtha-oil',
+    name: 'Naphtha',
+    category: 'Energy & Petroleum',
+    shortDesc: 'Straight-run light and heavy naphtha feedstocks for steam crackers, olefin production, and high-octane gasoline blending.',
     fullDesc:
-      'Heavy viscous petroleum fraction remaining after light oil distillation. Widely utilized in paving bitumen, heavy industrial firing, and maritime power stations.',
-    specs: ['High Density & Calorific Value', 'Viscosity Grade 400+', 'Stable Emulsification', 'Bitumen Grade Blendable'],
-    applications: ['Bitumen & Road Paving', 'Heavy Thermal Power', 'Asphalt Plants', 'Marine Engine Heavy Fuel'],
-    imageUrl: '/products/residual_oil.png',
+      'Straight-run light and heavy naphtha fractions extracted from crude oil distillation. Critical raw material for steam cracking units producing ethylene, propylene, and BTX aromatics.',
+    specs: ['Light Naphtha (C5-C6)', 'Heavy Naphtha (C7-C9)', 'Purity Certified', 'Low Sulfur Content'],
+    applications: ['Steam Cracker Feedstock', 'Reformer Feedstock', 'High-Octane Gas Blend stock', 'Chemical Synthesis'],
+    imageUrl: '/products/naphtha_oil.png',
   },
   {
-    id: 'thinner',
-    name: 'Industrial Thinner (NC & Epoxy Grade)',
-    category: 'Industrial Solvents',
-    shortDesc: 'Precision-formulated paint thinners for industrial coatings, auto refinishing, and lacquers.',
+    id: 'gtl-fuel',
+    name: 'GTL Fuels',
+    category: 'Energy & Petroleum',
+    shortDesc: 'Clean-burning Gas-to-Liquid synthetic fuels converted from natural gas with zero sulfur and high cetane number.',
     fullDesc:
-      'Balanced aromatic and aliphatic solvent blends designed for optimal flow, fast drying rates, high solubility, and streak-free finishes on metal and wooden surfaces.',
-    specs: ['Nitrocellulose (NC) & Epoxy Grades', 'Zero Moisture Content', 'Consistent Boiling Range', 'Fast & Medium Evaporation'],
-    applications: ['Automotive Refinishing Paints', 'Industrial Metal Coatings', 'Wood Lacquers & Varnish', 'Equipment Flush'],
-    imageUrl: '/products/thinner.png',
+      'Synthetic Gas-To-Liquid (GTL) fuel converted from natural gas, offering zero sulfur content, virtually no aromatics, low emissions, and high cetane number for specialized combustion.',
+    specs: ['Zero Sulfur Content', 'Cetane Rating > 70', 'Low Odor & Low Toxicity', 'Flash Point Compliant'],
+    applications: ['Heavy Machinery Fuel', 'Off-shore & Marine Gensets', 'Specialty Chemical Processing', 'Precision Cleaning'],
+    imageUrl: '/products/gtl_fuel.png',
+  },
+
+  // BASE OILS & LUBRICANT STOCKS
+  {
+    id: 'base-oil',
+    name: 'Base Oils (Group I, II & III)',
+    category: 'Base Oils & Lubricant Stocks',
+    shortDesc: 'Pristine raw mineral and synthetic base stocks for automotive, industrial lubricants, and grease manufacturing.',
+    fullDesc:
+      'High-grade Group I (SN150, SN500, Brightstock), Group II (N70, N150, N500), Group III, and eco-sustainable recycled base oils. Produced through hydrocracking for high VI and low volatility.',
+    specs: ['Group I (SN150, SN500, Brightstock)', 'Group II (N70, N150, N500)', 'Group III High VI', 'Recycled Eco Grade'],
+    applications: ['Automotive Engine Oils', 'Hydraulic & Industrial Fluids', 'Gear Oils & Greases', 'Rubber Processing'],
+    imageUrl: '/products/base_oil.png',
+  },
+  {
+    id: 'mineral-oil',
+    name: 'Mineral Oils (White Oils)',
+    category: 'Base Oils & Lubricant Stocks',
+    shortDesc: 'Severely hydrotreated transparent white mineral oils for technical applications, plastics, and industrial machinery.',
+    fullDesc:
+      'Clear, odorless, highly refined white mineral oils. Exceptional thermal stability, non-staining properties, and complete compliance with technical safety standards.',
+    specs: ['Saybolt Color +30', 'Odorless & Colorless', 'Low Volatility', 'High Hydrotreatment Level'],
+    applications: ['Plastic Extrusion & Polymers', 'Textile Lubricants', 'Agricultural Sprays', 'Electrical Insulation'],
+    imageUrl: '/products/mineral_oil.png',
+  },
+  {
+    id: 'process-oil',
+    name: 'Process Oils',
+    category: 'Base Oils & Lubricant Stocks',
+    shortDesc: 'Specialized rubber process oils and extender oils engineered for tire manufacturing, elastomers, and polymer compounding.',
+    fullDesc:
+      'Refined aromatic, paraffinic, and naphthenic process oils designed to enhance elasticity, workability, and tensile strength in rubber compounding, tires, and industrial polymer processing.',
+    specs: ['Low Aromatic Content (TDAE / RAE / MES)', 'High Thermal Stability', 'Controlled Viscosity Range', 'Excellent Polymer Compatibility'],
+    applications: ['Tire & Rubber Manufacturing', 'Thermoplastic Elastomers (TPE/TPR)', 'Printing Inks & Adhesives', 'Industrial Rubber Goods'],
+    imageUrl: '/products/process_oil.png',
+    badge: 'Newly Added',
+  },
+  {
+    id: 'spindle-oil',
+    name: 'Spindle Oils',
+    category: 'Base Oils & Lubricant Stocks',
+    shortDesc: 'Low-viscosity precision lubricant for high-speed machinery spindles, bearings, and textile looms.',
+    fullDesc:
+      'Refined light mineral lubricant enriched with anti-wear, anti-rust, and anti-foam additives. Designed specifically for high-RPM textile spindles and precision machine tool bearings.',
+    specs: ['Low Viscosity ISO VG 5, 10, 15, 22', 'Anti-Oxidant Additives', 'Rapid Air Release', 'Corrosion Inhibited'],
+    applications: ['Textile Spinning Spindles', 'High-Speed Bearing Systems', 'Automated Machine Tools', 'Instrument Lubrication'],
+    imageUrl: '/products/spindle_oil.png',
+  },
+  {
+    id: 'lubricant-raw-materials',
+    name: 'Lubricant Raw Materials',
+    category: 'Base Oils & Lubricant Stocks',
+    shortDesc: 'Essential chemical building blocks, viscosity modifiers, pour point depressants, and DI additive packages.',
+    fullDesc:
+      'Comprehensive portfolio of lubricant formulation components including Detergent-Dispersant packages, ZDDP anti-wear agents, Pour Point Depressants (PPD), and friction modifiers for finished lubricant blending.',
+    specs: ['Detergent & Dispersant Packages', 'Anti-Wear (ZDDP) Compounds', 'Pour Point Depressants (PPD)', 'Antioxidants & Anti-Corrosion'],
+    applications: ['Custom Lubricant Blending', 'Engine Oil Formulations', 'Industrial Gear & Hydraulic Oils', 'Grease Manufacturing'],
+    imageUrl: '/products/lubricant_raw_materials.png',
+    badge: 'Newly Added',
+  },
+
+  // CHEMICALS & SOLVENTS
+  {
+    id: 'glycols',
+    name: 'Glycols',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'High-purity Monoethylene Glycol (MEG), Diethylene Glycol (DEG), and Triethylene Glycol (TEG).',
+    fullDesc:
+      'High-purity MEG, DEG, and TEG. Vital chemical building blocks for textile polyester fibers, PET bottles, industrial coolants, and natural gas drying systems.',
+    specs: ['Purity > 99.8%', 'Water Content < 0.1%', 'Color (Pt-Co) < 10', 'Acidity < 0.002%'],
+    applications: ['PET Resin & Synthetic Fibers', 'Automotive Coolants & Antifreeze', 'Natural Gas Dehydration', 'Polyurethanes'],
+    imageUrl: '/products/glycols.png',
+  },
+  {
+    id: 'n-paraffin',
+    name: 'N-Paraffins',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Ultra-pure normal paraffins tailored for Linear Alkyl Benzene (LAB) and chlorinated paraffin synthesis.',
+    fullDesc:
+      'Pristine quality normal paraffin liquid extracted via molecular sieve adsorption. Characterized by high purity, consistent carbon chain distribution (C10-C13 & C14-C17), and low aromatics.',
+    specs: ['Carbon Chain C10-C17', 'Purity > 99%', 'Aromatics < 0.5%', 'Low Color Saybolt +30'],
+    applications: ['Detergent Feedstock (LAB)', 'Chlorinated Paraffins', 'Specialty Solvents', 'Rolling Oils'],
+    imageUrl: '/products/n_paraffin.png',
+  },
+  {
+    id: 'liquid-solid-polymers',
+    name: 'Liquid & Solid Polymers',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Specialty industrial polymers including Viscosity Index Improvers (VII) and polyolefin resins (PP, PE, PVC).',
+    fullDesc:
+      'High-performance liquid polymer Viscosity Index Improvers (VII) paired with prime grade solid polyolefins (Polypropylene, Polyethylene, and PVC resins) for industrial and automotive applications.',
+    specs: ['Viscosity Index Improver (VII)', 'Polypropylene (PP Film & Injection)', 'Polyethylene (HDPE / LDPE)', 'PVC Resins (K-67)'],
+    applications: ['Multigrade Engine Oil Formulation', 'Plastic Packaging & Extrusion', 'Industrial Pipes & Fittings', 'Automotive Components'],
+    imageUrl: '/products/liquid_solid_polymers.png',
+    badge: 'Newly Added',
+  },
+  {
+    id: 'gtl-solvents',
+    name: 'GTL Solvents',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Ultra-pure paraffinic synthetic solvents with low odor, low aromatic content, and high flash points.',
+    fullDesc:
+      'Synthetic Gas-To-Liquid paraffinic solvents offering virtually zero sulfur, low toxicity, high flash point, and superior solvency for precision industrial and consumer applications.',
+    specs: ['Aromatic Content < 100 ppm', 'Narrow Boiling Cut', 'High Flash Point (>60°C)', 'Biodegradable & Non-Toxic'],
+    applications: ['Consumer Product Formulations', 'Decorative Coatings & Paints', 'Metal Processing & Cleaning', 'Crop Protection Solvents'],
+    imageUrl: '/products/gtl_solvents.png',
+    badge: 'Newly Added',
   },
   {
     id: 'degreasing-solvent',
-    name: 'Degreasing Solvent',
-    category: 'Industrial Solvents',
-    shortDesc: 'Heavy-duty solvent degreaser engineered for rapid oil, grease, and tar removal from machinery.',
+    name: 'Degreasing Solvents',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Heavy-duty solvent degreasers engineered for rapid oil, grease, and tar removal from machinery.',
     fullDesc:
       'Fast-acting, non-corrosive petroleum solvent formulation that quickly dissolves stubborn grease, heavy oils, flux residues, and carbon deposits on mechanical components.',
     specs: ['High Solvency (KB Value > 90)', 'Non-Corrosive to Metals', 'Controlled Evaporation', 'Low Residue After Drying'],
@@ -215,15 +257,27 @@ export const PRODUCTS: ProductItem[] = [
     imageUrl: '/products/degreasing_solvent.png',
   },
   {
-    id: 'naphtha-oil',
-    name: 'Naphtha Oil (Light & Heavy)',
-    category: 'Specialty Hydrocarbons',
-    shortDesc: 'Key petrochemical feedstocks for steam crackers, olefin production, and high-octane gasoline blending.',
+    id: 'thinner',
+    name: 'Thinners & Diluents',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Precision-formulated solvent thinners and diluents for industrial coatings, epoxy systems, and lacquers.',
     fullDesc:
-      'Straight-run light and heavy naphtha fractions extracted from crude oil distillation. Critical raw material for steam cracking units producing ethylene, propylene, and BTX aromatics.',
-    specs: ['Light Naphtha (C5-C6)', 'Heavy Naphtha (C7-C9)', 'Purity Certified', 'Low Sulfur Content'],
-    applications: ['Steam Cracker Feedstock', 'Reformer Feedstock', 'High-Octane Gas Blend stock', 'Chemical Synthesis'],
-    imageUrl: '/products/naphtha_oil.png',
+      'Balanced aromatic and aliphatic solvent blends designed for optimal flow, fast drying rates, high solubility, and streak-free finishes on metal and wooden surfaces.',
+    specs: ['Nitrocellulose (NC) & Epoxy Grades', 'Zero Moisture Content', 'Consistent Boiling Range', 'Fast & Medium Evaporation'],
+    applications: ['Automotive Refinishing Paints', 'Industrial Metal Coatings', 'Wood Lacquers & Varnish', 'Equipment Flush'],
+    imageUrl: '/products/thinner.png',
+  },
+  {
+    id: 'specialty-chemical-solutions',
+    name: 'Specialty Chemical Solutions',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Tailor-made chemical blends, demulsifiers, corrosion inhibitors, and process additives for energy industries.',
+    fullDesc:
+      'Bespoke specialty chemical formulations engineered for oilfield production, refinery process optimization, water treatment, and custom industrial manufacturing.',
+    specs: ['Custom Formulation Blends', 'High Thermal & Chemical Stability', 'Emulsion Breakers & Clarifiers', 'Scalable Batch Blending'],
+    applications: ['Oilfield Processing & Production', 'Refinery Process Optimization', 'Water Treatment Systems', 'Industrial Chemical Manufacturing'],
+    imageUrl: '/products/specialty_chemical_solutions.png',
+    badge: 'Newly Added',
   },
 ];
 
@@ -248,19 +302,5 @@ export const COMPANY_VALUES: ValueItem[] = [
     description:
       'Our team brings collective market mastery, regulatory know-how, and strategic trade execution that ensures continuous supply security.',
     iconName: 'Users',
-  },
-  {
-    id: 'tailor-made',
-    title: 'Tailor-Made Solutions',
-    description:
-      'We focus on the unique operational needs of our counterparties to provide precision product specifications, flexible volume terms, and customized shipping.',
-    iconName: 'Sliders',
-  },
-  {
-    id: 'global-presence',
-    title: 'Global Presence & Responsibility',
-    description:
-      'Ramping up and maintaining our position as a globally contributing player, operating with high self-confidence and strict environmental and safety standards.',
-    iconName: 'Globe2',
   },
 ];
