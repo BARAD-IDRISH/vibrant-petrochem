@@ -44,14 +44,9 @@ export default function ProductsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/70 via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-md text-[#0F172A] font-bold text-[10px] uppercase rounded-full shadow-sm border border-[#E2E8F0]">
+                  <span className="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-md text-[#0F172A] font-bold text-[10px] uppercase rounded-full shadow-sm border border-[#E2E8F0]">
                     {prod.category}
                   </span>
-                  {prod.badge && (
-                    <span className="absolute top-3 right-3 px-2.5 py-1 bg-[#C5221F] text-white font-bold text-[10px] uppercase rounded-full shadow-sm">
-                      {prod.badge}
-                    </span>
-                  )}
                 </div>
 
                 <div className="p-6 space-y-4">

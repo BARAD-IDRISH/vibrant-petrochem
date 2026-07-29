@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { KEY_METRICS } from '@/lib/data';
-import { Users, Clock, Globe, TrendingUp } from 'lucide-react';
+import { Users, Clock, Globe, TrendingUp, ShieldCheck, Cpu } from 'lucide-react';
 
 export const Metrics: React.FC = () => {
   const getIcon = (iconName: string) => {
@@ -16,8 +16,12 @@ export const Metrics: React.FC = () => {
         return <Globe className={iconClasses} />;
       case 'TrendingUp':
         return <TrendingUp className={iconClasses} />;
+      case 'ShieldCheck':
+        return <ShieldCheck className={iconClasses} />;
+      case 'Cpu':
+        return <Cpu className={iconClasses} />;
       default:
-        return <TrendingUp className={iconClasses} />;
+        return <ShieldCheck className={iconClasses} />;
     }
   };
 
@@ -37,8 +41,8 @@ export const Metrics: React.FC = () => {
           </p>
         </div>
 
-        {/* Corporate Grid (2 Centered Metric Cards) */}
-        <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Corporate Grid (4 Metric Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {KEY_METRICS.map((metric) => (
             <div
               key={metric.id}
@@ -51,7 +55,7 @@ export const Metrics: React.FC = () => {
 
               {/* Number Stat & Label */}
               <div className="space-y-1">
-                <div className="text-4xl font-bold font-display text-blue-600 tracking-tight">
+                <div className="text-3xl sm:text-4xl font-bold font-display text-blue-600 tracking-tight">
                   {metric.value}
                 </div>
                 <div className="text-sm font-semibold text-slate-900">{metric.label}</div>

@@ -77,12 +77,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              
-              {product.badge && (
-                <div className="absolute top-4 left-4 bg-brand-red-vibrant text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                  {product.badge}
-                </div>
-              )}
+
 
               <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 backdrop-blur-md rounded-xl text-slate-900 border border-slate-200 shadow-xl flex justify-between items-center">
                 <div>

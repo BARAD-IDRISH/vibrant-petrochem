@@ -88,14 +88,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent" />
 
-                  {/* Badge */}
-                  {product.badge && (
-                    <div className="absolute top-3 left-3 bg-[#C5221F] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm flex items-center space-x-1">
-                      <Sparkles className="w-3 h-3" />
-                      <span>{product.badge}</span>
-                    </div>
-                  )}
-
                   <div className="absolute top-3 right-3 bg-white text-[#0F172A] text-[10px] font-bold px-2.5 py-1 rounded-md border border-[#E2E8F0] shadow-sm">
                     {product.category}
                   </div>

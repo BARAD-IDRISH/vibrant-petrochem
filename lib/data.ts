@@ -15,7 +15,7 @@ export interface MetricItem {
   value: string;
   label: string;
   subtext: string;
-  iconName: 'Users' | 'Clock' | 'Globe' | 'TrendingUp';
+  iconName: 'Users' | 'Clock' | 'Globe' | 'TrendingUp' | 'ShieldCheck' | 'Cpu';
 }
 
 export interface ValueItem {
@@ -58,6 +58,20 @@ export const KEY_METRICS: MetricItem[] = [
     subtext: 'Refined oils, gas-to-liquid fuels, & solvents',
     iconName: 'Globe',
   },
+  {
+    id: 'compliance',
+    value: '100%',
+    label: 'Trade Compliance & Governance',
+    subtext: 'Strict adherence to international trade & ISO standards',
+    iconName: 'ShieldCheck',
+  },
+  {
+    id: 'innovation',
+    value: 'Tech-Driven',
+    label: 'Innovation Strength',
+    subtext: 'Advanced market analytics & streamlined logistics execution',
+    iconName: 'Cpu',
+  },
 ];
 
 export const PRODUCTS: ProductItem[] = [
@@ -71,7 +85,6 @@ export const PRODUCTS: ProductItem[] = [
     specs: ['Group I (SN150, SN500)', 'Group II (N70, N150, N500)', 'Group III High VI', 'Recycled Eco Grade'],
     applications: ['Automotive Engine Oils', 'Hydraulic & Industrial Fluids', 'Gear Oils & Greases', 'Rubber Processing'],
     imageUrl: '/products/base_oil.png',
-    badge: 'High Demand',
   },
   {
     id: 'gtl-fuel',
@@ -83,7 +96,6 @@ export const PRODUCTS: ProductItem[] = [
     specs: ['Zero Sulfur Content', 'Cetane Rating > 70', 'Low Odor & Low Toxicity', 'Flash Point Compliant'],
     applications: ['Heavy Machinery Fuel', 'Off-shore & Marine Gensets', 'Specialty Chemical Processing', 'Precision Cleaning'],
     imageUrl: '/products/gtl_fuel.png',
-    badge: 'Eco Friendly',
   },
   {
     id: 'n-paraffin',
@@ -139,7 +151,6 @@ export const PRODUCTS: ProductItem[] = [
     specs: ['Freeze Point Max -47°C', 'Flash Point Min 38°C', 'ASTM D1655 / DEF STAN 91-091', 'Strict Quality QC Assurance'],
     applications: ['Commercial Aviation', 'Cargo Aircraft Fleets', 'Defense & Military Jets', 'Turbine Engine Operations'],
     imageUrl: '/products/jet_a1.png',
-    badge: 'Aviation Standard',
   },
   {
     id: 'spindle-oil',
