@@ -139,21 +139,55 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </p>
             </div>
 
-            {/* Quick Specs Table */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="bg-[#F8FAFC] text-slate-900 px-6 py-4 flex items-center justify-between border-b border-slate-200">
-                <span className="text-xs font-bold uppercase tracking-wider">Technical Specifications</span>
-                <span className="text-[10px] text-brand-red-vibrant font-semibold">Certified ASTM Standard</span>
-              </div>
-              <div className="divide-y divide-slate-100 p-6 space-y-3">
-                {product.specs.map((spec, index) => (
-                  <div key={index} className="flex justify-between items-center text-xs py-1.5">
-                    <span className="text-slate-500 font-medium">Specification Grade #{index + 1}</span>
-                    <span className="font-bold text-slate-900 bg-slate-100 px-3 py-1 rounded-md">{spec}</span>
+            {/* Technical Specifications Table Component (In-Place Replacement) */}
+            {product.techSpecs && product.techSpecs.length > 0 && (
+              <div className="space-y-3">
+                <div className="flex items-center justify-between pb-1">
+                  <h2 className="text-xl sm:text-2xl font-bold font-display text-[#0F172A]">
+                    Technical Specifications
+                  </h2>
+                  <div className="flex items-center space-x-1 text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
+                    <FileText className="w-3.5 h-3.5 text-slate-400" />
+                    <span>TYPICAL VALUES</span>
                   </div>
-                ))}
+                </div>
+
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                  <div className="bg-[#0F172A] text-white px-5 py-3.5 grid grid-cols-12 gap-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                    <div className="col-span-4">PROPERTY</div>
+                    <div className="col-span-3">METHOD</div>
+                    <div className="col-span-2">UNIT</div>
+                    <div className="col-span-3">TYPICAL</div>
+                  </div>
+
+                  <div className="divide-y divide-slate-100">
+                    {product.techSpecs.map((row, idx) => (
+                      <div
+                        key={idx}
+                        className="px-5 py-3.5 grid grid-cols-12 gap-3 items-center hover:bg-slate-50/80 transition-colors"
+                      >
+                        <div className="col-span-4 text-xs sm:text-sm font-bold text-[#0F172A]">
+                          {row.property}
+                        </div>
+                        <div className="col-span-3 text-[11px] sm:text-xs font-medium text-slate-500">
+                          {row.method}
+                        </div>
+                        <div className="col-span-2 text-[11px] sm:text-xs font-medium text-slate-500">
+                          {row.unit}
+                        </div>
+                        <div className="col-span-3 text-xs sm:text-sm font-bold text-[#0F172A]">
+                          {row.typical}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-[11px] text-slate-400 italic">
+                  * Note: The properties listed above are typical representation values. Batch-specific Certificates of Analysis (COA) are issued by SGS/Saybolt upon tanker loading.
+                </p>
               </div>
-            </div>
+            )}
 
             {/* Action Bar */}
             <div className="bg-[#F8FAFC] text-slate-900 p-6 rounded-2xl shadow-sm space-y-4 border border-slate-200">
@@ -183,56 +217,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </div>
           </div>
         </div>
-
-        {/* Technical Specifications Table Section (Matching Reference UI) */}
-        {product.techSpecs && product.techSpecs.length > 0 && (
-          <div className="mb-16 space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-200">
-              <h2 className="text-2xl sm:text-3xl font-bold font-display text-[#0F172A]">
-                Technical Specifications
-              </h2>
-              <div className="flex items-center space-x-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
-                <FileText className="w-4 h-4 text-slate-400" />
-                <span>TYPICAL VALUES</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="bg-[#0F172A] text-white px-6 py-4 grid grid-cols-12 gap-4 text-xs font-bold uppercase tracking-wider">
-                <div className="col-span-4">PROPERTY</div>
-                <div className="col-span-3">METHOD</div>
-                <div className="col-span-2">UNIT</div>
-                <div className="col-span-3">TYPICAL</div>
-              </div>
-
-              <div className="divide-y divide-slate-100">
-                {product.techSpecs.map((row, idx) => (
-                  <div
-                    key={idx}
-                    className="px-6 py-4 grid grid-cols-12 gap-4 items-center hover:bg-slate-50/80 transition-colors"
-                  >
-                    <div className="col-span-4 text-sm font-bold text-[#0F172A]">
-                      {row.property}
-                    </div>
-                    <div className="col-span-3 text-xs sm:text-sm font-medium text-slate-500">
-                      {row.method}
-                    </div>
-                    <div className="col-span-2 text-xs sm:text-sm font-medium text-slate-500">
-                      {row.unit}
-                    </div>
-                    <div className="col-span-3 text-xs sm:text-sm font-bold text-[#0F172A]">
-                      {row.typical}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <p className="text-xs text-slate-400 italic">
-              * Note: The properties listed above are typical representation values. Batch-specific Certificates of Analysis (COA) are issued by SGS/Saybolt upon tanker loading.
-            </p>
-          </div>
-        )}
 
         {/* Industrial Applications & Quality Control Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
