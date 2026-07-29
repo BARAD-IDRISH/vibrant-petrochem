@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { COMPANY_INFO, PRODUCTS } from '@/lib/data';
-import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, RotateCw } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuoteModal?: (productName?: string) => void;
@@ -15,6 +15,26 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
+
+  useEffect(() => {
+    setIsNavigating(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (anchor && anchor.href && anchor.href.startsWith(window.location.origin)) {
+        const targetUrl = new URL(anchor.href);
+        if (targetUrl.pathname !== window.location.pathname) {
+          setIsNavigating(true);
+        }
+      }
+    };
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,9 +116,23 @@ export const Navbar: React.FC<NavbarProps> = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-bold font-display tracking-tight text-[#0F172A] group-hover:text-[#C5221F] transition-colors">
-                VIBRANT <span className="text-[#C5221F]">PETROCHEM</span>
-              </span>
+              <div className="flex items-center space-x-2">
+                <span className="text-base font-bold font-display tracking-tight text-[#0F172A] group-hover:text-[#C5221F] transition-colors">
+                  VIBRANT <span className="text-[#C5221F]">PETROCHEM</span>
+                </span>
+                
+                {/* Browser-style spinning refresh loading icon */}
+                <div
+                  title={isNavigating ? 'Navigating...' : 'System Ready'}
+                  className={`p-1 rounded-full transition-all duration-300 ${
+                    isNavigating
+                      ? 'bg-red-500/10 opacity-100 scale-100'
+                      : 'opacity-0 scale-90 pointer-events-none'
+                  }`}
+                >
+                  <RotateCw className={`w-3.5 h-3.5 text-[#C5221F] ${isNavigating ? 'animate-spin' : ''}`} />
+                </div>
+              </div>
               <span className="text-[9px] uppercase tracking-widest text-[#475569] font-semibold">
                 FZE • UAE EST. 2018
               </span>
