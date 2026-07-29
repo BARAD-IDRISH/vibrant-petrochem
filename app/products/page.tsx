@@ -12,16 +12,16 @@ export const metadata = {
 export default function ProductsPage() {
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] pt-28 pb-20">
-      {/* Header Banner */}
-      <div className="bg-[#F8FAFC] text-[#0F172A] py-16 mb-12 relative overflow-hidden border-b border-[#E2E8F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-[#2563EB]">
+      {/* Compact Dark Header Banner */}
+      <div className="bg-[#0F172A] text-white py-12 mb-12 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+          <span className="text-xs uppercase font-bold tracking-widest text-red-400">
             Global Supply Catalog
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-[#0F172A]">
+          <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
             Refined Petrochemical & Hydrocarbon Portfolio
           </h1>
-          <p className="text-[#475569] text-base max-w-2xl font-normal">
+          <p className="text-[#94A3B8] text-sm max-w-2xl font-normal leading-relaxed">
             Browse our full catalog of ASTM-tested base oils, gas-to-liquid synthetic fuels, glycols, and industrial solvents ready for export from UAE ports.
           </p>
         </div>
