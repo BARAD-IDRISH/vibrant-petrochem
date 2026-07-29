@@ -35,10 +35,10 @@ export const About: React.FC = () => {
             </div>
 
             {/* Corporate Badge "Since 2018 | UAE" */}
-            <div className="absolute -top-6 -right-4 sm:right-6 bg-[#1E3A8A] text-white p-5 rounded-xl shadow-lg border-2 border-white">
-              <div className="text-xs font-semibold uppercase tracking-wider text-blue-200">Established</div>
+            <div className="absolute -top-6 -right-4 sm:right-6 bg-[#1E56A0] text-white p-5 rounded-xl shadow-lg border-2 border-white">
+              <div className="text-xs font-semibold uppercase tracking-wider text-blue-100">Established</div>
               <div className="text-3xl font-extrabold font-display leading-none mt-1">2018</div>
-              <div className="text-[11px] font-medium text-blue-100 mt-1">Gulf Region • UAE</div>
+              <div className="text-[11px] font-medium text-blue-100/90 mt-1">Gulf Region • UAE</div>
             </div>
           </div>
 

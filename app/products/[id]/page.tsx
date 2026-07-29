@@ -146,9 +146,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             {/* Quick Specs Table */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="bg-[#1E3A8A] text-white px-6 py-4 flex items-center justify-between border-b border-blue-900/60">
+              <div className="bg-[#1E56A0] text-white px-6 py-4 flex items-center justify-between border-b border-blue-700/50">
                 <span className="text-xs font-bold uppercase tracking-wider">Technical Specifications</span>
-                <span className="text-[10px] text-red-300 font-semibold">Certified ASTM Standard</span>
+                <span className="text-[10px] text-blue-100 font-semibold">Certified ASTM Standard</span>
               </div>
               <div className="divide-y divide-slate-100 p-6 space-y-3">
                 {product.specs.map((spec, index) => (
@@ -161,13 +161,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </div>
 
             {/* Action Bar */}
-            <div className="bg-[#1E3A8A] text-white p-6 rounded-2xl shadow-xl space-y-4 border border-blue-900/60">
+            <div className="bg-[#1E56A0] text-white p-6 rounded-2xl shadow-xl space-y-4 border border-blue-700/50">
               <div className="flex justify-between items-center">
                 <div>
                   <div className="text-sm font-bold">Request Technical Specification Sheet</div>
-                  <div className="text-xs text-blue-200">Direct loading from UAE ports (FOB / CIF)</div>
+                  <div className="text-xs text-blue-100">Direct loading from UAE ports (FOB / CIF)</div>
                 </div>
-                <Award className="w-6 h-6 text-red-300" />
+                <Award className="w-6 h-6 text-blue-100" />
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">

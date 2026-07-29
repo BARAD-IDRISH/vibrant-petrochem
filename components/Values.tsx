@@ -24,10 +24,10 @@ export const Values: React.FC = () => {
   };
 
   return (
-    <section id="values" className="py-24 bg-[#1E3A8A] text-white border-t border-blue-900">
+    <section id="values" className="py-24 bg-[#1E56A0] text-white border-t border-blue-700/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-red-300">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-100">
             Core Strengths & Commitments
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white">
@@ -44,15 +44,15 @@ export const Values: React.FC = () => {
           {COMPANY_VALUES.slice(0, 3).map((val) => (
             <div
               key={val.id}
-              className="bg-white/10 rounded-xl p-8 border border-white/15 hover:border-white/30 transition-colors duration-200 space-y-4"
+              className="bg-white/10 rounded-xl p-8 border border-white/20 hover:border-white/40 transition-colors duration-200 space-y-4"
             >
-              <div className="w-12 h-12 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center">
                 {getIcon(val.iconName)}
               </div>
               <h3 className="text-xl font-bold font-display text-white">
                 {val.title}
               </h3>
-              <p className="text-xs text-blue-100/80 leading-relaxed font-normal">{val.description}</p>
+              <p className="text-xs text-blue-100/85 leading-relaxed font-normal">{val.description}</p>
             </div>
           ))}
         </div>
@@ -61,15 +61,15 @@ export const Values: React.FC = () => {
           {COMPANY_VALUES.slice(3, 5).map((val) => (
             <div
               key={val.id}
-              className="bg-white/10 rounded-xl p-8 border border-white/15 hover:border-white/30 transition-colors duration-200 space-y-4"
+              className="bg-white/10 rounded-xl p-8 border border-white/20 hover:border-white/40 transition-colors duration-200 space-y-4"
             >
-              <div className="w-12 h-12 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center">
                 {getIcon(val.iconName)}
               </div>
               <h3 className="text-xl font-bold font-display text-white">
                 {val.title}
               </h3>
-              <p className="text-xs text-blue-100/80 leading-relaxed font-normal">{val.description}</p>
+              <p className="text-xs text-blue-100/85 leading-relaxed font-normal">{val.description}</p>
             </div>
           ))}
         </div>

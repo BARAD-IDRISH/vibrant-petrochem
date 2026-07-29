@@ -13,9 +13,9 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 pt-28 pb-20">
       {/* Hero Banner */}
-      <div className="bg-[#1E3A8A] text-white py-16 mb-16 relative overflow-hidden border-b border-blue-900/60">
+      <div className="bg-[#1E56A0] text-white py-16 mb-16 relative overflow-hidden border-b border-blue-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-red-300">
+          <span className="text-xs uppercase font-bold tracking-widest text-blue-100">
             Corporate Profile
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold font-display">
@@ -39,9 +39,9 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-[#1E3A8A] text-white p-6 rounded-2xl shadow-xl hidden sm:block border border-blue-900">
+            <div className="absolute -bottom-6 -right-6 bg-[#1E56A0] text-white p-6 rounded-2xl shadow-xl hidden sm:block border border-blue-700/50">
               <div className="text-3xl font-extrabold font-display">55,000 MT</div>
-              <div className="text-xs font-semibold text-blue-200">Monthly Supply Capacity</div>
+              <div className="text-xs font-semibold text-blue-100">Monthly Supply Capacity</div>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-[#1E3A8A] text-white p-10 rounded-2xl text-center space-y-6 border border-blue-900/60 shadow-lg">
+        <div className="bg-[#1E56A0] text-white p-10 rounded-2xl text-center space-y-6 border border-blue-700/50 shadow-lg">
           <h3 className="text-2xl font-bold font-display">Ready to Partner with Vibrant Petrochem?</h3>
           <p className="text-xs text-blue-100/90 max-w-xl mx-auto font-normal">
             Contact our commercial trading desk today for custom product formulations, vessel chartering, or specification quotes.

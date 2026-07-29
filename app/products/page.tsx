@@ -13,7 +13,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
       {/* Header Banner */}
-      <div className="bg-[#1E3A8A] text-white py-16 mb-12 relative overflow-hidden border-b border-blue-900/60">
+      <div className="bg-[#1E56A0] text-white py-16 mb-12 relative overflow-hidden border-b border-blue-700/50">
         <div className="absolute inset-0 opacity-20">
           <Image
             src="/hero_light_oil_refinery.png"
@@ -23,7 +23,7 @@ export default function ProductsPage() {
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-red-300">
+          <span className="text-xs uppercase font-bold tracking-widest text-blue-100">
             Global Supply Catalog
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold font-display">

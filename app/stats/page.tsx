@@ -12,9 +12,9 @@ export default function StatsPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
       {/* Header Banner */}
-      <div className="bg-[#1E3A8A] text-white border-b border-blue-900/60 py-16 mb-12 relative">
+      <div className="bg-[#1E56A0] text-white border-b border-blue-700/50 py-16 mb-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-brand-red-vibrant">
+          <span className="text-xs uppercase font-bold tracking-widest text-blue-100">
             Verified Performance
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-white">
