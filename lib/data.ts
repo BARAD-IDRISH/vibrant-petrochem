@@ -45,15 +45,8 @@ export const COMPANY_INFO = {
 
 export const KEY_METRICS: MetricItem[] = [
   {
-    id: 'team',
-    value: '43+',
-    label: 'Team Members',
-    subtext: 'Dedicated petroleum trading & logistics specialists',
-    iconName: 'Users',
-  },
-  {
     id: 'experience',
-    value: '5+ Years',
+    value: '10+ Years',
     label: 'Industry Experience',
     subtext: 'Proven excellence across Gulf and global markets',
     iconName: 'Clock',
@@ -64,13 +57,6 @@ export const KEY_METRICS: MetricItem[] = [
     label: 'Global Product Lines',
     subtext: 'Refined oils, gas-to-liquid fuels, & solvents',
     iconName: 'Globe',
-  },
-  {
-    id: 'export-volume',
-    value: '55K MT',
-    label: 'Monthly Export Volume',
-    subtext: 'Consistent bulk supply chain execution',
-    iconName: 'TrendingUp',
   },
 ];
 

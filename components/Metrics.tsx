@@ -37,8 +37,8 @@ export const Metrics: React.FC = () => {
           </p>
         </div>
 
-        {/* Corporate Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Corporate Grid (2 Centered Metric Cards) */}
+        <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
           {KEY_METRICS.map((metric) => (
             <div
               key={metric.id}
