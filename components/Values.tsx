@@ -6,7 +6,7 @@ import { ShieldCheck, Cpu, Users, Sliders, Globe2 } from 'lucide-react';
 
 export const Values: React.FC = () => {
   const getIcon = (iconName: string) => {
-    const iconClasses = "w-6 h-6 text-white";
+    const iconClasses = "w-6 h-6 text-brand-red-vibrant";
     switch (iconName) {
       case 'ShieldCheck':
         return <ShieldCheck className={iconClasses} />;
@@ -24,16 +24,16 @@ export const Values: React.FC = () => {
   };
 
   return (
-    <section id="values" className="py-24 bg-[#1E56A0] text-white border-t border-blue-700/50">
+    <section id="values" className="py-24 bg-[#F8FAFC] text-slate-900 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-100">
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-red-vibrant">
             Core Strengths & Commitments
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-slate-900">
             Built on Trust, Precision, and Ethical Execution
           </h2>
-          <p className="text-blue-100/90 text-sm leading-relaxed max-w-2xl mx-auto font-normal">
+          <p className="text-slate-600 text-sm leading-relaxed max-w-2xl mx-auto font-normal">
             We focus on the needs of our counterparties to provide tailor-made solutions. Our fairness and dedication to
             developing long-term equitable relationships have earned us trust across global energy markets.
           </p>
@@ -44,15 +44,15 @@ export const Values: React.FC = () => {
           {COMPANY_VALUES.slice(0, 3).map((val) => (
             <div
               key={val.id}
-              className="bg-white/10 rounded-xl p-8 border border-white/20 hover:border-white/40 transition-colors duration-200 space-y-4"
+              className="bg-white rounded-xl p-8 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow duration-200 space-y-4"
             >
-              <div className="w-12 h-12 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center">
                 {getIcon(val.iconName)}
               </div>
-              <h3 className="text-xl font-bold font-display text-white">
+              <h3 className="text-xl font-bold font-display text-slate-900">
                 {val.title}
               </h3>
-              <p className="text-xs text-blue-100/85 leading-relaxed font-normal">{val.description}</p>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">{val.description}</p>
             </div>
           ))}
         </div>
@@ -61,15 +61,15 @@ export const Values: React.FC = () => {
           {COMPANY_VALUES.slice(3, 5).map((val) => (
             <div
               key={val.id}
-              className="bg-white/10 rounded-xl p-8 border border-white/20 hover:border-white/40 transition-colors duration-200 space-y-4"
+              className="bg-white rounded-xl p-8 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow duration-200 space-y-4"
             >
-              <div className="w-12 h-12 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center">
                 {getIcon(val.iconName)}
               </div>
-              <h3 className="text-xl font-bold font-display text-white">
+              <h3 className="text-xl font-bold font-display text-slate-900">
                 {val.title}
               </h3>
-              <p className="text-xs text-blue-100/85 leading-relaxed font-normal">{val.description}</p>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">{val.description}</p>
             </div>
           ))}
         </div>

@@ -13,15 +13,15 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 pt-28 pb-20">
       {/* Hero Banner */}
-      <div className="bg-[#1E56A0] text-white py-16 mb-16 relative overflow-hidden border-b border-blue-700/50">
+      <div className="bg-[#F8FAFC] text-slate-900 py-16 mb-16 relative overflow-hidden border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <span className="text-xs uppercase font-bold tracking-widest text-blue-100">
+          <span className="text-xs uppercase font-bold tracking-widest text-brand-red-vibrant">
             Corporate Profile
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-display">
+          <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-slate-900">
             About Vibrant Petrochem FZE
           </h1>
-          <p className="text-blue-100 text-base max-w-2xl font-normal">
+          <p className="text-slate-600 text-base max-w-2xl font-normal">
             Bridging international energy supply chains from our strategic headquarters in the United Arab Emirates since {COMPANY_INFO.established}.
           </p>
         </div>
@@ -39,9 +39,9 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-[#1E56A0] text-white p-6 rounded-2xl shadow-xl hidden sm:block border border-blue-700/50">
-              <div className="text-3xl font-extrabold font-display">55,000 MT</div>
-              <div className="text-xs font-semibold text-blue-100">Monthly Supply Capacity</div>
+            <div className="absolute -bottom-6 -right-6 bg-white text-slate-900 p-6 rounded-2xl shadow-xl hidden sm:block border border-slate-200">
+              <div className="text-3xl font-extrabold font-display text-brand-red-vibrant">55,000 MT</div>
+              <div className="text-xs font-semibold text-slate-600 mt-1">Monthly Supply Capacity</div>
             </div>
           </div>
 
@@ -76,9 +76,9 @@ export default function AboutPage() {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-[#1E56A0] text-white p-10 rounded-2xl text-center space-y-6 border border-blue-700/50 shadow-lg">
-          <h3 className="text-2xl font-bold font-display">Ready to Partner with Vibrant Petrochem?</h3>
-          <p className="text-xs text-blue-100/90 max-w-xl mx-auto font-normal">
+        <div className="bg-[#F8FAFC] text-slate-900 p-10 rounded-2xl text-center space-y-6 border border-slate-200 shadow-sm">
+          <h3 className="text-2xl font-bold font-display text-slate-900">Ready to Partner with Vibrant Petrochem?</h3>
+          <p className="text-xs text-slate-600 max-w-xl mx-auto font-normal">
             Contact our commercial trading desk today for custom product formulations, vessel chartering, or specification quotes.
           </p>
           <Link
