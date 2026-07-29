@@ -12,15 +12,15 @@ export default function StatsPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-sky-50 via-blue-50 to-slate-100 text-slate-900 border-b border-sky-100 py-16 mb-12 relative">
+      <div className="bg-gradient-to-r from-[#1b263b] via-[#152238] to-[#0f172a] text-white border-b border-slate-700/60 py-16 mb-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <span className="text-xs uppercase font-bold tracking-widest text-brand-red-vibrant">
             Verified Performance
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-slate-900">
+          <h1 className="text-4xl sm:text-5xl font-extrabold font-display text-white">
             Operational Scale & Market Footprint
           </h1>
-          <p className="text-slate-600 text-base max-w-2xl font-normal">
+          <p className="text-slate-300 text-base max-w-2xl font-normal">
             Key operational metrics highlighting our 55,000 MT monthly distribution volume, 12+ refined product lines, and global logistics network.
           </p>
         </div>
