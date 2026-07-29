@@ -7,6 +7,7 @@ export interface TechSpecRow {
 
 export interface ProductSubItem {
   name: string;
+  id: string;
 }
 
 export interface ProductItem {
@@ -333,8 +334,8 @@ export const PRODUCTS: ProductItem[] = [
       'High-performance liquid polymer Viscosity Index Improvers (VII) paired with prime grade solid polyolefins (Polypropylene, Polyethylene, and PVC resins) for industrial and automotive applications.',
     specs: ['Viscosity Index Improver (VII)', 'Polypropylene (PP Film & Injection)', 'Polyethylene (HDPE / LDPE)', 'PVC Resins (K-67)'],
     subItems: [
-      { name: 'Viscosity Index Improver (VII)' },
-      { name: 'Others (PP, PE, PVC)' },
+      { name: 'Viscosity Index Improver (VII)', id: 'viscosity-index-improver' },
+      { name: 'Others (PP, PE, PVC)', id: 'polyolefin-resins' },
     ],
     techSpecs: [
       { property: 'Melt Flow Index (MFI)', method: 'ASTM D1238', unit: 'g/10min', typical: '3.0 - 25.0 (PP Resins)' },
@@ -346,6 +347,44 @@ export const PRODUCTS: ProductItem[] = [
     applications: ['Multigrade Engine Oil Formulation', 'Plastic Packaging & Extrusion', 'Industrial Pipes & Fittings', 'Automotive Components'],
     imageUrl: '/products/liquid_solid_polymers.png',
     badge: 'Newly Added',
+  },
+  {
+    id: 'viscosity-index-improver',
+    name: 'Viscosity Index Improver (VII)',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'High-shear stability liquid polymer additives (OCP & PMA) designed for multigrade engine oils and gear lubricants.',
+    fullDesc:
+      'High-performance liquid polymer Viscosity Index Improver (VII) formulated from Olefin Copolymers (OCP) and Polymethacrylates (PMA). Engineered to provide outstanding shear stability, thermal resilience, and low-temperature viscometric control in multigrade automotive engine oils, hydraulic fluids, and industrial gear oils.',
+    specs: ['SSI 22 - 35 (Shear Stability)', 'Kinematic Viscosity @ 100°C: 1150-1450 cSt', 'OCP & PMA Polymer Bases', 'High Thickening Efficiency'],
+    techSpecs: [
+      { property: 'Kinematic Viscosity @ 100°C', method: 'ASTM D445', unit: 'cSt', typical: '1150 - 1450' },
+      { property: 'Shear Stability Index (SSI)', method: 'ASTM D6278', unit: '%', typical: '22 - 35' },
+      { property: 'Flash Point (COC)', method: 'ASTM D92', unit: '°C', typical: 'Min 200' },
+      { property: 'Thickening Efficiency (100°C)', method: 'ASTM D445', unit: 'cSt/%', typical: '1.8 - 2.4' },
+      { property: 'Nitrogen Content', method: 'ASTM D5291', unit: '% mass', typical: 'Max 0.05' },
+    ],
+    applications: ['Multigrade Engine Oils (5W-30, 10W-40, 15W-40)', 'Automatic Transmission Fluids (ATF)', 'Industrial Hydraulic Oils', 'Gear & Axle Lubricants'],
+    imageUrl: '/products/liquid_solid_polymers.png',
+    badge: 'Dedicated Product',
+  },
+  {
+    id: 'polyolefin-resins',
+    name: 'Polyolefin & PVC Resins (PP, PE, PVC)',
+    category: 'Chemicals & Solvents',
+    shortDesc: 'Prime grade solid polymers including Polypropylene (PP), Polyethylene (HDPE/LDPE), and PVC Resins for extrusion and molding.',
+    fullDesc:
+      'Comprehensive selection of prime solid thermoplastic polymers including Polypropylene (PP Homopolymer & Copolymer), High & Low Density Polyethylene (HDPE / LDPE / LLDPE), and Suspension PVC Resins (K-67). Ideal for film extrusion, blow molding, injection molding, and industrial piping manufacture.',
+    specs: ['Polypropylene (PP Film & Injection)', 'Polyethylene (HDPE / LDPE / LLDPE)', 'PVC Resin K-67 Grade', 'High Melt Flow Index Range'],
+    techSpecs: [
+      { property: 'Melt Flow Index (MFI) @ 230°C/2.16kg', method: 'ASTM D1238', unit: 'g/10min', typical: '3.0 - 25.0 (PP Resins)' },
+      { property: 'Density @ 23°C', method: 'ASTM D1505', unit: 'g/cm³', typical: '0.900 - 0.955' },
+      { property: 'Tensile Strength at Yield', method: 'ASTM D638', unit: 'MPa', typical: '26 - 38' },
+      { property: 'Vicat Softening Point', method: 'ASTM D1525', unit: '°C', typical: '130 - 155' },
+      { property: 'Ash Content', method: 'ASTM D482', unit: '% mass', typical: 'Max 0.03' },
+    ],
+    applications: ['Plastic Packaging & Film Extrusion', 'Blow Molded Containers & Drums', 'Industrial Pipes & Fittings', 'Automotive Plastic Trim'],
+    imageUrl: '/products/liquid_solid_polymers.png',
+    badge: 'Dedicated Product',
   },
   {
     id: 'gtl-solvents',

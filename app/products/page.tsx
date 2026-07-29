@@ -81,10 +81,14 @@ export default function ProductsPage() {
                         {prod.subItems && prod.subItems.length > 0 && (
                           <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1 my-1.5">
                             {prod.subItems.map((sub, sIdx) => (
-                              <div key={sIdx} className="flex items-center space-x-2 text-[11px] text-slate-500 font-medium">
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 shrink-0"></span>
-                                <span>{sub.name}</span>
-                              </div>
+                              <Link
+                                key={sIdx}
+                                href={`/products/${sub.id}`}
+                                className="flex items-center space-x-2 text-[11px] text-slate-500 hover:text-[#C5221F] font-medium transition-colors group/sub"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 group-hover/sub:bg-[#C5221F] shrink-0 transition-colors"></span>
+                                <span className="group-hover/sub:translate-x-0.5 transition-transform">{sub.name}</span>
+                              </Link>
                             ))}
                           </div>
                         )}
