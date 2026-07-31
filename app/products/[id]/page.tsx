@@ -188,7 +188,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         <div className="col-span-2 text-[11px] sm:text-xs font-semibold text-slate-500">
                           {row.unit}
                         </div>
-                        <div className="col-span-3 text-xs sm:text-sm font-extrabold text-emerald-700 text-right sm:text-left">
+                        <div className="col-span-3 text-xs sm:text-sm font-extrabold text-emerald-500 text-right sm:text-left">
                           {row.typical}
                         </div>
                       </div>
