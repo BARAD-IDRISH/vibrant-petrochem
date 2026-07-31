@@ -4,15 +4,16 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { COMPANY_INFO, PRODUCTS, COMPANY_SERVICES, COMPANY_INDUSTRIES } from '@/lib/data';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
     <footer id="contact" className="bg-slate-50 text-slate-900 border-t border-slate-200 relative z-20">
       {/* Multi-Column Links Section & Copyright Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Col 1: Brand Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:col-span-1">
             <Link href="/" className="flex items-center">
               <div className="relative h-10 w-44">
                 <Image
@@ -82,6 +83,31 @@ export const Footer: React.FC = () => {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Col 5: Contact Info */}
+          <div className="space-y-3">
+            <div className="text-xs font-bold uppercase tracking-wider text-slate-900">
+              Contact Desk
+            </div>
+            <ul className="space-y-2.5 text-xs text-slate-600">
+              <li className="flex items-start space-x-2">
+                <MapPin className="w-3.5 h-3.5 text-[#C5221F] shrink-0 mt-0.5" />
+                <span className="leading-snug">{COMPANY_INFO.address}</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone className="w-3.5 h-3.5 text-[#C5221F] shrink-0" />
+                <a href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`} className="hover:text-[#C5221F] transition-colors font-medium">
+                  {COMPANY_INFO.phone}
+                </a>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Mail className="w-3.5 h-3.5 text-[#C5221F] shrink-0" />
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-[#C5221F] transition-colors font-medium">
+                  {COMPANY_INFO.email}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
