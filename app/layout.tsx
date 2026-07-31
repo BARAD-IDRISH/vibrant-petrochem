@@ -63,11 +63,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.jpg', type: 'image/jpeg' },
-      { url: '/icon.jpg', type: 'image/jpeg' },
+      { url: '/url_logo-removebg.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
     ],
-    shortcut: '/logo.jpg',
-    apple: '/logo.jpg',
+    shortcut: '/url_logo-removebg.png',
+    apple: '/url_logo-removebg.png',
   },
 };
 
