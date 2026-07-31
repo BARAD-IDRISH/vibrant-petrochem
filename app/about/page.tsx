@@ -2,11 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { COMPANY_INFO, COMPANY_VALUES } from '@/lib/data';
-import { ShieldCheck, Award, Truck, CheckCircle2, Globe, Building2, Star, Cpu, Users, Sliders, Globe2 } from 'lucide-react';
+import { ShieldCheck, Award, Truck, CheckCircle2, Globe, Building2, Star, Cpu, Users, Sliders, Globe2, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'About Us & Corporate Values | Vibrant Petrochem FZE',
-  description: 'Learn about Vibrant Petrochem FZE, our core values, ethical trading practices, and premier commodity & petrochemical solutions based in UAE.',
+  title: 'About Us, Core Strengths & Values | Vibrant Petrochem FZE',
+  description: 'Learn about Vibrant Petrochem FZE, our core strengths, corporate values, ethical trading practices, and custom formulation capabilities in UAE.',
 };
 
 export default function AboutPage() {
@@ -176,6 +176,23 @@ export default function AboutPage() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Custom Formulations & Specification Blending Callout Box */}
+            <div className="mt-8 p-8 bg-white rounded-2xl border border-[#E2E8F0] shadow-sm text-center space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold font-display text-[#0F172A]">
+                Custom Formulations & Specification Blending
+              </h3>
+              <p className="text-xs text-[#475569] max-w-2xl mx-auto leading-relaxed">
+                Our technical team works directly with industrial clients to deliver customized viscosity index, pour points, and flash point parameters tailored for extreme climate operations.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center space-x-2 bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold px-8 py-4 rounded-xl shadow-sm transition-colors"
+              >
+                <span>Inquire Custom Blends</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>

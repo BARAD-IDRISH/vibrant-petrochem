@@ -172,17 +172,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
             </div>
 
             <Link
-              href="/values"
-              className={`text-xs transition-colors py-1 ${
-                isActive('/values')
-                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                  : 'text-slate-600 hover:text-slate-900 font-semibold'
-              }`}
-            >
-              Strengths
-            </Link>
-
-            <Link
               href="/contact"
               className={`text-xs transition-colors py-1 ${
                 isActive('/contact')
@@ -381,16 +370,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 ))}
               </div>
             </div>
-
-            <Link
-              href="/values"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`py-1 border-b border-slate-100 ${
-                isActive('/values') ? 'text-[#C5221F] font-bold' : 'hover:text-[#C5221F] text-slate-600'
-              }`}
-            >
-              Values & Strengths
-            </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}

@@ -5,7 +5,6 @@ import { Hero } from '@/components/Hero';
 import { Metrics } from '@/components/Metrics';
 import { About } from '@/components/About';
 import { ProductCatalog } from '@/components/ProductCatalog';
-import { Values } from '@/components/Values';
 
 export default function HomePage() {
   return (
@@ -21,9 +20,6 @@ export default function HomePage() {
 
       {/* Interactive 4-Column Product Catalog */}
       <ProductCatalog onOpenQuoteModal={() => {}} />
-
-      {/* Values & Core Strengths */}
-      <Values />
     </main>
   );
 }
