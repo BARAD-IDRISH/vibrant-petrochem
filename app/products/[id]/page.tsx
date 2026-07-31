@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PRODUCTS, COMPANY_INFO } from '@/lib/data';
-import { ShieldCheck, ArrowLeft, Fuel, CheckCircle2, PackageCheck, Truck, ShieldAlert, Award, FileText } from 'lucide-react';
+import { ShieldCheck, ArrowLeft, Fuel, CheckCircle2, PackageCheck, Truck, ShieldAlert, Award, FileText, Phone } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -189,28 +189,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Action Bar */}
-            <div className="bg-[#F8FAFC] text-slate-900 p-6 rounded-2xl shadow-sm space-y-4 border border-slate-200">
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="text-sm font-bold text-slate-900">Request Technical Specification Sheet</div>
-                  <div className="text-xs text-slate-500">Direct loading from UAE ports (FOB / CIF)</div>
-                </div>
-                <Award className="w-6 h-6 text-brand-red-vibrant" />
+            {/* Big Commercial Inquiry Callout Section */}
+            <div className="bg-[#F8FAFC] text-[#0F172A] p-8 sm:p-10 rounded-3xl text-center space-y-5 border border-[#E2E8F0] shadow-sm">
+              <div className="inline-flex items-center space-x-2 bg-[#EFF6FF] px-3.5 py-1.5 rounded-full border border-[#BFDBFE]">
+                <Award className="w-4 h-4 text-[#1E40AF]" />
+                <span className="text-xs font-bold text-[#1E40AF]">Product Specification & Commercial Quote</span>
               </div>
+              <h3 className="text-xl sm:text-2xl font-bold font-display text-[#0F172A]">
+                Require Technical Specification Sheet or Quote for {product.name}?
+              </h3>
+              <p className="text-xs text-[#475569] max-w-lg mx-auto font-normal leading-relaxed">
+                Direct loading from UAE ports (FOB / CIF). Contact our commercial desk for batch-specific Certificates of Analysis (COA) and volume pricing.
+              </p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                 <Link
                   href={`/contact?product=${encodeURIComponent(product.name)}`}
-                  className="flex-1 bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 text-center shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full sm:w-auto bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 text-center shadow-md flex items-center justify-center space-x-2"
                 >
                   <FileText className="w-4 h-4" />
                   <span>Request Custom Quote & COA</span>
                 </Link>
                 <a
                   href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`}
-                  className="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 shadow-sm"
+                  className="w-full sm:w-auto bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 shadow-sm"
                 >
+                  <Phone className="w-4 h-4" />
                   <span>Call Trading Desk</span>
                 </a>
               </div>
