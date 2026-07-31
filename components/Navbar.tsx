@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO } from '@/lib/data';
-import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, RotateCw } from 'lucide-react';
+import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuoteModal?: (productName?: string) => void;
@@ -16,26 +16,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
-
-  useEffect(() => {
-    setIsNavigating(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      if (anchor && anchor.href && anchor.href.startsWith(window.location.origin)) {
-        const targetUrl = new URL(anchor.href);
-        if (targetUrl.pathname !== window.location.pathname) {
-          setIsNavigating(true);
-        }
-      }
-    };
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group" onClick={() => setIsNavigating(true)}>
+          <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative h-12 w-48 group-hover:scale-105 transition-transform duration-300">
               <Image
                 src="/logo.jpg"
@@ -117,17 +97,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 className="object-contain object-left"
                 priority
               />
-            </div>
-            {/* Browser-style spinning refresh loading icon */}
-            <div
-              title={isNavigating ? 'Navigating...' : 'System Ready'}
-              className={`p-1 rounded-full transition-all duration-300 ${
-                isNavigating
-                  ? 'bg-red-500/10 opacity-100 scale-100'
-                  : 'opacity-0 scale-90 pointer-events-none'
-              }`}
-            >
-              <RotateCw className={`w-3.5 h-3.5 text-[#C5221F] ${isNavigating ? 'animate-spin' : ''}`} />
             </div>
           </Link>
 
