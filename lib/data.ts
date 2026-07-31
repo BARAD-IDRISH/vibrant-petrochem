@@ -524,3 +524,49 @@ export const COMPANY_SERVICES: ServiceItem[] = [
     iconName: 'Wrench',
   },
 ];
+
+export interface IndustryItem {
+  id: string;
+  title: string;
+  subtext: string;
+  description: string;
+  iconName: 'Ship' | 'Plane' | 'FlaskConical' | 'Car' | 'Zap';
+}
+
+export const COMPANY_INDUSTRIES: IndustryItem[] = [
+  {
+    id: 'marine',
+    title: 'Marine & Bunker',
+    subtext: 'High-grade marine fuels & lubricants',
+    description: 'Supplying compliant Low Sulfur Fuel Oils (LSFO), High Sulfur Fuel Oils (HSFO), Marine Gas Oil (MGO), and high-performance marine lubricants for global shipping fleets.',
+    iconName: 'Ship',
+  },
+  {
+    id: 'aviation',
+    title: 'Aviation Logistics',
+    subtext: 'Certified Jet A-1 & aviation fuels',
+    description: 'Providing DEF STAN 91-091 & ASTM D1655 compliant Jet A-1 fuel, aviation solvents, and specialized hydraulic fluids for airport operations and airline fleets.',
+    iconName: 'Plane',
+  },
+  {
+    id: 'chemical',
+    title: 'Chemical Processing',
+    subtext: 'Solvents, polymers & petrochemical feedstock',
+    description: 'Delivering virgin solvents, aromatic hydrocarbons, polymer resins, and chemical intermediate feedstocks for industrial manufacturing plants.',
+    iconName: 'FlaskConical',
+  },
+  {
+    id: 'automotive',
+    title: 'Automotive & Industrial',
+    subtext: 'Virgin base oils, greases & additives',
+    description: 'Supplying Group I, II, III base oils, synthetic lubricants, industrial hydraulic oils, and high-performance automotive formulation additives.',
+    iconName: 'Car',
+  },
+  {
+    id: 'power',
+    title: 'Power Generation',
+    subtext: 'Heavy fuel oil & gas turbine diesel',
+    description: 'Fuels supply for thermal power stations, municipal diesel generators, and heavy utility infrastructure across emerging international markets.',
+    iconName: 'Zap',
+  },
+];

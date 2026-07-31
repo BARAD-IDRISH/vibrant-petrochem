@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO, COMPANY_SERVICES } from '@/lib/data';
-import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, Database, Truck, Wrench } from 'lucide-react';
+import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO, COMPANY_SERVICES, COMPANY_INDUSTRIES } from '@/lib/data';
+import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, Database, Truck, Wrench, Ship, Plane, Car, Zap, Building2 } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuoteModal?: (productName?: string) => void;
@@ -17,6 +17,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isIndustriesDropdownOpen, setIsIndustriesDropdownOpen] = useState(false);
 
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -30,6 +31,23 @@ export const Navbar: React.FC<NavbarProps> = () => {
         return <Wrench className="w-4 h-4" />;
       default:
         return <Database className="w-4 h-4" />;
+    }
+  };
+
+  const getIndustryIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Ship':
+        return <Ship className="w-4 h-4" />;
+      case 'Plane':
+        return <Plane className="w-4 h-4" />;
+      case 'FlaskConical':
+        return <FlaskConical className="w-4 h-4" />;
+      case 'Car':
+        return <Car className="w-4 h-4" />;
+      case 'Zap':
+        return <Zap className="w-4 h-4" />;
+      default:
+        return <Building2 className="w-4 h-4" />;
     }
   };
 
@@ -184,6 +202,69 @@ export const Navbar: React.FC<NavbarProps> = () => {
                       className="flex items-center justify-between text-xs font-bold text-[#C5221F] hover:text-[#A31B19] px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
                     >
                       <span>Explore All Services</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Industries Dropdown Container Trigger */}
+            <div
+              className="relative"
+              onMouseEnter={() => {
+                setIsIndustriesDropdownOpen(true);
+                setIsServicesDropdownOpen(false);
+                setIsProductsDropdownOpen(false);
+              }}
+              onMouseLeave={() => setIsIndustriesDropdownOpen(false)}
+            >
+              <Link
+                href="/industries"
+                onClick={() => setIsIndustriesDropdownOpen(false)}
+                className={`text-xs flex items-center space-x-1 py-1 transition-colors ${
+                  isActive('/industries') || isIndustriesDropdownOpen
+                    ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                    : 'text-slate-600 hover:text-slate-900 font-semibold'
+                }`}
+              >
+                <span>Industries</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isIndustriesDropdownOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-500'}`} />
+              </Link>
+
+              {/* Industries Dropdown Panel */}
+              {isIndustriesDropdownOpen && (
+                <div className="absolute top-full left-0 w-72 bg-white text-[#0F172A] rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150 space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">
+                    Sectors Served
+                  </div>
+                  {COMPANY_INDUSTRIES.map((ind) => (
+                    <Link
+                      key={ind.id}
+                      href={`/industries#${ind.id}`}
+                      onClick={() => setIsIndustriesDropdownOpen(false)}
+                      className="flex items-center space-x-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] flex items-center justify-center shrink-0 group-hover:bg-[#C5221F] group-hover:text-white group-hover:border-[#C5221F] transition-colors">
+                        {getIndustryIcon(ind.iconName)}
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-[#0F172A] group-hover:text-[#C5221F] transition-colors">
+                          {ind.title}
+                        </div>
+                        <div className="text-[10px] text-slate-500 line-clamp-1">
+                          {ind.subtext}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                  <div className="pt-2 border-t border-slate-100 mt-1">
+                    <Link
+                      href="/industries"
+                      onClick={() => setIsIndustriesDropdownOpen(false)}
+                      className="flex items-center justify-between text-xs font-bold text-[#C5221F] hover:text-[#A31B19] px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
+                    >
+                      <span>Explore All Industries</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -413,6 +494,31 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     className="block text-xs text-slate-600 hover:text-[#C5221F] py-0.5"
                   >
                     • {srv.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Industries List in Mobile Drawer */}
+            <div className="space-y-2 py-1 border-b border-slate-100">
+              <Link
+                href="/industries"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-bold text-xs uppercase tracking-wider block ${
+                  isActive('/industries') ? 'text-[#C5221F]' : 'text-[#0F172A] hover:text-[#C5221F]'
+                }`}
+              >
+                Industries Served ({COMPANY_INDUSTRIES.length})
+              </Link>
+              <div className="pl-2 space-y-1">
+                {COMPANY_INDUSTRIES.map((ind) => (
+                  <Link
+                    key={ind.id}
+                    href={`/industries#${ind.id}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs text-slate-600 hover:text-[#C5221F] py-0.5"
+                  >
+                    • {ind.title}
                   </Link>
                 ))}
               </div>
