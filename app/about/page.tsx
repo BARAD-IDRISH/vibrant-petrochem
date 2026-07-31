@@ -178,21 +178,69 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Custom Formulations & Specification Blending Callout Box */}
-            <div className="mt-8 p-8 bg-white rounded-2xl border border-[#E2E8F0] shadow-sm text-center space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold font-display text-[#0F172A]">
-                Custom Formulations & Specification Blending
-              </h3>
-              <p className="text-xs text-[#475569] max-w-2xl mx-auto leading-relaxed">
-                Our technical team works directly with industrial clients to deliver customized viscosity index, pour points, and flash point parameters tailored for extreme climate operations.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center space-x-2 bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold px-8 py-4 rounded-xl shadow-sm transition-colors"
-              >
-                <span>Inquire Custom Blends</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            {/* Our Strategic Strengths Section */}
+            <div className="mt-12 pt-10 border-t border-[#E2E8F0] space-y-6">
+              <div className="text-center max-w-2xl mx-auto space-y-2">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#2563EB]">
+                  Core Competencies
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-[#0F172A]">
+                  Our Strategic Strengths & Market Advantages
+                </h3>
+                <p className="text-xs text-[#475569] leading-relaxed">
+                  Key structural differentiators that power our international trade execution and long-term counterparty trust.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                <div className="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-bold font-display text-[#0F172A]">
+                    UAE Free Zone Hub & Logistics Infrastructure
+                  </h4>
+                  <p className="text-xs text-[#475569] leading-relaxed">
+                    Strategically located in UAE trade corridors with direct access to deepwater ports, bulk storage facilities, and efficient customs clearance for rapid international dispatch.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-bold font-display text-[#0F172A]">
+                    100% Quality Governance & COA Compliance
+                  </h4>
+                  <p className="text-xs text-[#475569] leading-relaxed">
+                    Every batch undergoes independent laboratory testing verifying ASTM and DEF STAN quality metrics, backed by complete Certificates of Analysis prior to loading.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center">
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-bold font-display text-[#0F172A]">
+                    Flexible FOB, CIF & CFR Shipping Terms
+                  </h4>
+                  <p className="text-xs text-[#475569] leading-relaxed">
+                    Customized freight arrangements covering major shipping routes across Europe, Asia, Africa, and the Americas with full insurance and cargo protection.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-bold font-display text-[#0F172A]">
+                    Tier-1 Refinery Partnerships & Security of Supply
+                  </h4>
+                  <p className="text-xs text-[#475569] leading-relaxed">
+                    Long-standing direct relationships with primary producers ensure consistent product availability, stable pricing structures, and reliable volume allocations year-round.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
