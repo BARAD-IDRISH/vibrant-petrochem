@@ -145,7 +145,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                 >
                   {PRODUCTS.map((p) => (
                     <option key={p.id} value={p.name}>
-                      {p.name} ({p.category})
+                      {p.name}
                     </option>
                   ))}
                 </select>

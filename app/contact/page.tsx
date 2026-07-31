@@ -200,7 +200,7 @@ function ContactFormContent() {
                     <option value="">General Product Inquiry</option>
                     {PRODUCTS.map((p) => (
                       <option key={p.id} value={p.name}>
-                        {p.name} ({p.category})
+                        {p.name}
                       </option>
                     ))}
                   </select>
