@@ -122,13 +122,14 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative h-12 w-48 group-hover:scale-105 transition-transform duration-300">
+          <Link href="/" className="flex items-center space-x-3 group shrink-0 py-1">
+            <div className="relative h-11 w-44 sm:h-12 sm:w-48 group-hover:opacity-95 transition-opacity duration-200">
               <Image
                 src="/logo.jpg"
                 alt="Vibrant Petrochem Logo"
-                fill
-                className="object-contain object-left"
+                width={200}
+                height={50}
+                className="h-full w-auto object-contain object-left"
                 priority
               />
             </div>
