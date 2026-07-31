@@ -144,7 +144,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">
+                    <div className="p-2.5 rounded-xl bg-red-50 text-[#C5221F] border border-red-100">
                       <FileText className="w-5 h-5" />
                     </div>
                     <div>
@@ -154,8 +154,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       <p className="text-xs text-slate-500 font-medium">Lab-verified typical parameters & ASTM methods</p>
                     </div>
                   </div>
-                  <div className="inline-flex items-center space-x-1.5 px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold rounded-full">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <div className="inline-flex items-center space-x-1.5 px-3 py-1 bg-red-50 text-[#C5221F] border border-red-200 text-xs font-bold rounded-full">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C5221F]" />
                     <span>TYPICAL TEST VALUES</span>
                   </div>
                 </div>
