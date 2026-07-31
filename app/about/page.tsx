@@ -244,6 +244,25 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* Page-Specific Commercial Inquiry Callout Banner */}
+        <div className="mt-16 bg-[#F8FAFC] text-[#0F172A] p-10 rounded-2xl text-center space-y-6 border border-[#E2E8F0] shadow-sm">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#2563EB]">
+            Strategic Partnerships
+          </span>
+          <h3 className="text-2xl font-bold font-display text-[#0F172A]">
+            Ready to Partner with Vibrant Petrochem?
+          </h3>
+          <p className="text-xs text-[#475569] max-w-xl mx-auto font-normal leading-relaxed">
+            Contact our commercial trading desk today for custom product formulations, vessel chartering, or specification quotes.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold px-8 py-4 rounded-xl shadow-sm transition-colors"
+          >
+            Contact Commercial Trading Desk
+          </Link>
+        </div>
       </div>
     </main>
   );
