@@ -18,6 +18,9 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isIndustriesDropdownOpen, setIsIndustriesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -462,94 +465,144 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-4 pb-6 space-y-4 shadow-xl">
-          <div className="flex flex-col space-y-3 font-medium text-sm text-[#0F172A]">
+        <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-4 pb-6 space-y-3 shadow-xl max-h-[85vh] overflow-y-auto">
+          <div className="flex flex-col space-y-2 font-medium text-sm text-[#0F172A]">
 
-            {/* Services List in Mobile Drawer */}
-            <div className="space-y-2 py-1 border-b border-slate-100">
-              <Link
-                href="/services"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`font-bold text-xs uppercase tracking-wider block ${
-                  isActive('/services') ? 'text-[#C5221F]' : 'text-[#0F172A] hover:text-[#C5221F]'
-                }`}
+            {/* Services Collapsible Dropdown */}
+            <div className="border-b border-slate-100 pb-2">
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="w-full flex items-center justify-between py-2 text-left focus:outline-none"
               >
-                Services & Desks ({COMPANY_SERVICES.length})
-              </Link>
-              <div className="pl-2 space-y-1">
-                {COMPANY_SERVICES.map((srv) => (
+                <span className={`font-bold text-xs uppercase tracking-wider ${
+                  isActive('/services') ? 'text-[#C5221F]' : 'text-[#0F172A]'
+                }`}>
+                  Services & Desks ({COMPANY_SERVICES.length})
+                </span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                  mobileServicesOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
+                }`} />
+              </button>
+              {mobileServicesOpen && (
+                <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100">
+                  {COMPANY_SERVICES.map((srv) => (
+                    <Link
+                      key={srv.id}
+                      href={`/services#${srv.id}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-xs font-semibold text-slate-700 hover:text-[#C5221F] py-1.5 border-b border-slate-200/50 last:border-0 flex items-center space-x-2"
+                    >
+                      <span className="text-[#C5221F]">•</span>
+                      <span>{srv.title}</span>
+                    </Link>
+                  ))}
                   <Link
-                    key={srv.id}
-                    href={`/services#${srv.id}`}
+                    href="/services"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs text-slate-600 hover:text-[#C5221F] py-0.5"
+                    className="block text-xs font-bold text-[#C5221F] pt-2"
                   >
-                    • {srv.title}
+                    View All Services →
                   </Link>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
 
-            {/* Industries List in Mobile Drawer */}
-            <div className="space-y-2 py-1 border-b border-slate-100">
-              <Link
-                href="/industries"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`font-bold text-xs uppercase tracking-wider block ${
-                  isActive('/industries') ? 'text-[#C5221F]' : 'text-[#0F172A] hover:text-[#C5221F]'
-                }`}
+            {/* Industries Collapsible Dropdown */}
+            <div className="border-b border-slate-100 pb-2">
+              <button
+                onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
+                className="w-full flex items-center justify-between py-2 text-left focus:outline-none"
               >
-                Industries Served ({COMPANY_INDUSTRIES.length})
-              </Link>
-              <div className="pl-2 space-y-1">
-                {COMPANY_INDUSTRIES.map((ind) => (
+                <span className={`font-bold text-xs uppercase tracking-wider ${
+                  isActive('/industries') ? 'text-[#C5221F]' : 'text-[#0F172A]'
+                }`}>
+                  Industries Served ({COMPANY_INDUSTRIES.length})
+                </span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                  mobileIndustriesOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
+                }`} />
+              </button>
+              {mobileIndustriesOpen && (
+                <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100">
+                  {COMPANY_INDUSTRIES.map((ind) => (
+                    <Link
+                      key={ind.id}
+                      href={`/industries#${ind.id}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-xs font-semibold text-slate-700 hover:text-[#C5221F] py-1.5 border-b border-slate-200/50 last:border-0 flex items-center space-x-2"
+                    >
+                      <span className="text-[#C5221F]">•</span>
+                      <span>{ind.title}</span>
+                    </Link>
+                  ))}
                   <Link
-                    key={ind.id}
-                    href={`/industries#${ind.id}`}
+                    href="/industries"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs text-slate-600 hover:text-[#C5221F] py-0.5"
+                    className="block text-xs font-bold text-[#C5221F] pt-2"
                   >
-                    • {ind.title}
+                    View All Industries →
                   </Link>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
 
-            <div className="space-y-2 py-1 border-b border-slate-100">
-              <div className="font-bold text-xs uppercase tracking-wider text-[#C5221F]">
-                Products Catalog ({PRODUCTS.length})
-              </div>
-              <div className="pl-2 space-y-1">
-                {PRODUCTS.map((prod) => (
+            {/* Products Catalog Collapsible Dropdown */}
+            <div className="border-b border-slate-100 pb-2">
+              <button
+                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                className="w-full flex items-center justify-between py-2 text-left focus:outline-none"
+              >
+                <span className={`font-bold text-xs uppercase tracking-wider ${
+                  isActive('/products') ? 'text-[#C5221F]' : 'text-[#0F172A]'
+                }`}>
+                  Products Catalog ({PRODUCTS.length})
+                </span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                  mobileProductsOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
+                }`} />
+              </button>
+              {mobileProductsOpen && (
+                <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100 max-h-64 overflow-y-auto">
+                  {PRODUCTS.map((prod) => (
+                    <Link
+                      key={prod.id}
+                      href={`/products/${prod.id}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-xs font-semibold text-slate-700 hover:text-[#C5221F] py-1.5 border-b border-slate-200/50 last:border-0 flex items-center space-x-2"
+                    >
+                      <span className="text-[#C5221F]">•</span>
+                      <span>{prod.name}</span>
+                    </Link>
+                  ))}
                   <Link
-                    key={prod.id}
-                    href={`/products/${prod.id}`}
+                    href="/products"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs text-slate-600 hover:text-[#C5221F] py-1"
+                    className="block text-xs font-bold text-[#C5221F] pt-2"
                   >
-                    • {prod.name}
+                    View Full Products Catalog →
                   </Link>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
 
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className={`py-1 border-b border-slate-100 ${
-                isActive('/about') ? 'text-[#C5221F] font-bold' : 'hover:text-[#C5221F] text-slate-600'
+              className={`py-2 border-b border-slate-100 flex items-center justify-between font-bold text-xs uppercase tracking-wider ${
+                isActive('/about') ? 'text-[#C5221F]' : 'hover:text-[#C5221F] text-[#0F172A]'
               }`}
             >
               About Us
             </Link>
+
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={`py-1 border-b border-slate-100 ${
-                isActive('/contact') ? 'text-[#C5221F] font-bold' : 'hover:text-[#C5221F] text-slate-600'
+              className={`py-2 border-b border-slate-100 flex items-center justify-between font-bold text-xs uppercase tracking-wider ${
+                isActive('/contact') ? 'text-[#C5221F]' : 'hover:text-[#C5221F] text-[#0F172A]'
               }`}
             >
-              Contact Us
+              Contact Desk
             </Link>
           </div>
 
@@ -557,7 +610,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white font-semibold text-xs py-3 rounded-lg flex items-center justify-center space-x-2 shadow-sm block text-center"
+              className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-2 shadow-sm block text-center"
             >
               <span>Request Quote</span>
               <ArrowRight className="w-4 h-4 inline" />
