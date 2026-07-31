@@ -188,37 +188,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </p>
               </div>
             )}
-
-            {/* Big Commercial Inquiry Callout Section */}
-            <div className="bg-[#F8FAFC] text-[#0F172A] p-8 sm:p-10 rounded-3xl text-center space-y-5 border border-[#E2E8F0] shadow-sm">
-              <div className="inline-flex items-center space-x-2 bg-[#EFF6FF] px-3.5 py-1.5 rounded-full border border-[#BFDBFE]">
-                <Award className="w-4 h-4 text-[#1E40AF]" />
-                <span className="text-xs font-bold text-[#1E40AF]">Product Specification & Commercial Quote</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold font-display text-[#0F172A]">
-                Require Technical Specification Sheet or Quote for {product.name}?
-              </h3>
-              <p className="text-xs text-[#475569] max-w-lg mx-auto font-normal leading-relaxed">
-                Direct loading from UAE ports (FOB / CIF). Contact our commercial desk for batch-specific Certificates of Analysis (COA) and volume pricing.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                <Link
-                  href={`/contact?product=${encodeURIComponent(product.name)}`}
-                  className="w-full sm:w-auto bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 text-center shadow-md flex items-center justify-center space-x-2"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>Request Custom Quote & COA</span>
-                </Link>
-                <a
-                  href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`}
-                  className="w-full sm:w-auto bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 shadow-sm"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span>Call Trading Desk</span>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -256,10 +225,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <p className="text-xs text-slate-500">Every shipment batch tested prior to laycan loading</p>
               </div>
             </div>
-            <ul className="space-y-3 text-xs text-slate-600">
+            <ul className="space-y-3 text-xs text-slate-700 font-medium">
               <li className="flex items-center space-x-2">
-                <ShieldAlert className="w-4 h-4 text-brand-red-vibrant shrink-0" />
-                <span>Certificate of Analysis (COA) issued by SGS / Intertek for every batch.</span>
+                <PackageCheck className="w-4 h-4 text-brand-red-vibrant shrink-0" />
+                <span>Independent SGS / Saybolt lab testing report provided with shipping documents.</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Truck className="w-4 h-4 text-brand-red-vibrant shrink-0" />
@@ -270,6 +239,43 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <span>Strict temperature & moisture control during storage and vessel loading.</span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Full-Width 2-Column Commercial Inquiry Banner */}
+        <div className="bg-[#F8FAFC] text-[#0F172A] p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] shadow-sm mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Column 1: Title, Tag, and Subtext */}
+            <div className="lg:col-span-8 space-y-3 text-left">
+              <div className="inline-flex items-center space-x-2 bg-[#EFF6FF] px-3.5 py-1.5 rounded-full border border-[#BFDBFE]">
+                <Award className="w-4 h-4 text-[#1E40AF]" />
+                <span className="text-xs font-bold text-[#1E40AF]">Product Specification & Commercial Quote</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#0F172A]">
+                Require Technical Specification Sheet or Quote for {product.name}?
+              </h3>
+              <p className="text-xs sm:text-sm text-[#475569] max-w-2xl font-normal leading-relaxed">
+                Direct loading from UAE ports (FOB / CIF). Contact our commercial desk for batch-specific Certificates of Analysis (COA) and volume pricing.
+              </p>
+            </div>
+
+            {/* Column 2: Action Buttons */}
+            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+              <Link
+                href={`/contact?product=${encodeURIComponent(product.name)}`}
+                className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold py-4 px-6 rounded-xl transition-all duration-300 text-center shadow-md flex items-center justify-center space-x-2"
+              >
+                <FileText className="w-4 h-4" />
+                <span>Request Custom Quote & COA</span>
+              </Link>
+              <a
+                href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`}
+                className="w-full bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold py-4 px-6 rounded-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 shadow-sm"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Call Trading Desk</span>
+              </a>
+            </div>
           </div>
         </div>
 
