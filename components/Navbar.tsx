@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO } from '@/lib/data';
-import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO, COMPANY_SERVICES } from '@/lib/data';
+import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, Database, Truck, Wrench } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuoteModal?: (productName?: string) => void;
@@ -16,6 +16,22 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+
+  const getServiceIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Database':
+        return <Database className="w-4 h-4" />;
+      case 'ShieldCheck':
+        return <ShieldCheck className="w-4 h-4" />;
+      case 'Truck':
+        return <Truck className="w-4 h-4" />;
+      case 'Wrench':
+        return <Wrench className="w-4 h-4" />;
+      default:
+        return <Database className="w-4 h-4" />;
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,12 +129,67 @@ export const Navbar: React.FC<NavbarProps> = () => {
               About Us
             </Link>
 
-            <Link
-              href="/about#services"
-              className="text-xs transition-colors py-1 text-slate-600 hover:text-slate-900 font-semibold"
+            {/* Services Dropdown Container Trigger */}
+            <div
+              className="relative"
+              onMouseEnter={() => {
+                setIsServicesDropdownOpen(true);
+                setIsProductsDropdownOpen(false);
+              }}
+              onMouseLeave={() => setIsServicesDropdownOpen(false)}
             >
-              Services
-            </Link>
+              <Link
+                href="/services"
+                onClick={() => setIsServicesDropdownOpen(false)}
+                className={`text-xs flex items-center space-x-1 py-1 transition-colors ${
+                  isActive('/services') || isServicesDropdownOpen
+                    ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                    : 'text-slate-600 hover:text-slate-900 font-semibold'
+                }`}
+              >
+                <span>Services</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-500'}`} />
+              </Link>
+
+              {/* Services Dropdown Panel */}
+              {isServicesDropdownOpen && (
+                <div className="absolute top-full left-0 w-72 bg-white text-[#0F172A] rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150 space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">
+                    Commercial Desks
+                  </div>
+                  {COMPANY_SERVICES.map((srv) => (
+                    <Link
+                      key={srv.id}
+                      href={`/services#${srv.id}`}
+                      onClick={() => setIsServicesDropdownOpen(false)}
+                      className="flex items-center space-x-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] flex items-center justify-center shrink-0 group-hover:bg-[#C5221F] group-hover:text-white group-hover:border-[#C5221F] transition-colors">
+                        {getServiceIcon(srv.iconName)}
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-[#0F172A] group-hover:text-[#C5221F] transition-colors">
+                          {srv.title}
+                        </div>
+                        <div className="text-[10px] text-slate-500 line-clamp-1">
+                          {srv.subtext}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                  <div className="pt-2 border-t border-slate-100 mt-1">
+                    <Link
+                      href="/services"
+                      onClick={() => setIsServicesDropdownOpen(false)}
+                      className="flex items-center justify-between text-xs font-bold text-[#C5221F] hover:text-[#A31B19] px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
+                    >
+                      <span>Explore All Services</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Products Mega Dropdown Container Trigger */}
             <div
@@ -322,13 +393,30 @@ export const Navbar: React.FC<NavbarProps> = () => {
               About Us
             </Link>
 
-            <Link
-              href="/about#services"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 border-b border-slate-100 hover:text-[#C5221F] text-slate-600"
-            >
-              Services
-            </Link>
+            {/* Services List in Mobile Drawer */}
+            <div className="space-y-2 py-1 border-b border-slate-100">
+              <Link
+                href="/services"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-bold text-xs uppercase tracking-wider block ${
+                  isActive('/services') ? 'text-[#C5221F]' : 'text-[#0F172A] hover:text-[#C5221F]'
+                }`}
+              >
+                Services & Desks ({COMPANY_SERVICES.length})
+              </Link>
+              <div className="pl-2 space-y-1">
+                {COMPANY_SERVICES.map((srv) => (
+                  <Link
+                    key={srv.id}
+                    href={`/services#${srv.id}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs text-slate-600 hover:text-[#C5221F] py-0.5"
+                  >
+                    • {srv.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             <div className="space-y-2 py-1 border-b border-slate-100">
               <div className="font-bold text-xs uppercase tracking-wider text-[#C5221F]">
