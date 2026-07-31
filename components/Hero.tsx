@@ -62,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               className="bg-white hover:bg-[#F8FAFC] text-[#0F172A] font-bold text-sm px-8 py-4 rounded-xl border border-[#E2E8F0] shadow-sm transition-colors duration-200 flex items-center space-x-2"
             >
               <Fuel className="w-4 h-4 text-[#2563EB]" />
-              <span>Explore 12+ Product Lines</span>
+              <span>Explore 17+ Product Lines</span>
             </a>
           </div>
 
