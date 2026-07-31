@@ -34,8 +34,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const relatedProducts = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 3);
-
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
       {/* Top Breadcrumb Header */}
@@ -294,34 +292,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </div>
           </div>
         </div>
-
-        {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <div className="space-y-6 pt-8 border-t border-slate-200">
-            <h3 className="text-xl font-bold font-display text-slate-900">Related Products in {product.category}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {relatedProducts.map((rel) => (
-                <Link
-                  key={rel.id}
-                  href={`/products/${rel.id}`}
-                  className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="text-[10px] font-bold uppercase text-brand-red-vibrant mb-1">{rel.category}</div>
-                    <div className="text-sm font-bold text-slate-900 group-hover:text-brand-red-vibrant transition-colors">
-                      {rel.name}
-                    </div>
-                    <p className="text-xs text-slate-500 mt-2 line-clamp-2">{rel.shortDesc}</p>
-                  </div>
-                  <div className="text-xs font-bold text-brand-red-vibrant mt-4 flex items-center space-x-1">
-                    <span>View Specifications</span>
-                    <ArrowLeft className="w-3 h-3 rotate-180" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </main>
   );
