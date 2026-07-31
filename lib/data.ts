@@ -485,3 +485,42 @@ export const COMPANY_VALUES: ValueItem[] = [
     iconName: 'Users',
   },
 ];
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  subtext: string;
+  description: string;
+  iconName: 'Database' | 'ShieldCheck' | 'Truck' | 'Wrench';
+}
+
+export const COMPANY_SERVICES: ServiceItem[] = [
+  {
+    id: 'sourcing',
+    title: 'Sourcing & Procurement',
+    subtext: 'Reliable commodity sourcing desk',
+    description: 'Direct procurement channel with tier-1 refiners and global chemical producers ensuring raw material integrity and competitive pricing.',
+    iconName: 'Database',
+  },
+  {
+    id: 'trading',
+    title: 'Energy Trading',
+    subtext: 'Global energy commodities desk',
+    description: 'Specialized trading desk for refined petroleum products, base oils, specialty solvents, and industrial petrochemicals.',
+    iconName: 'ShieldCheck',
+  },
+  {
+    id: 'logistics',
+    title: 'Logistics & Distribution',
+    subtext: 'Safe land, sea & multimodal transport',
+    description: 'End-to-end maritime vessel chartering, ISO tank logistics, and bulk overland freight under FOB, CIF, and CFR commercial terms.',
+    iconName: 'Truck',
+  },
+  {
+    id: 'storage',
+    title: 'Storage Solutions',
+    subtext: 'Integrated distribution network',
+    description: 'Strategic bulk tank storage capacity in key UAE free zone ports enabling flexible inventory management and rapid dispatch.',
+    iconName: 'Wrench',
+  },
+];

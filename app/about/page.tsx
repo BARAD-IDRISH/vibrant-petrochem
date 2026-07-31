@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { COMPANY_INFO, COMPANY_VALUES } from '@/lib/data';
-import { ShieldCheck, Award, Truck, CheckCircle2, Globe, Building2, Star, Cpu, Users, Sliders, Globe2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Award, Truck, CheckCircle2, Globe, Building2, Star, Cpu, Users, Sliders, Globe2, ArrowRight, Database, Wrench } from 'lucide-react';
 
 export const metadata = {
   title: 'About Us, Core Strengths & Values | Vibrant Petrochem FZE',
@@ -99,6 +99,82 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+
+        {/* CORE SERVICES SECTION (Exact from client photo) */}
+        <section id="services" className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E2E8F0] shadow-sm space-y-6">
+          <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#2563EB]">
+                Core Operations
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold font-display text-[#0F172A] mt-1">
+                Commercial Services & Operational Desks
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* 1. Sourcing & Procurement */}
+            <div className="flex items-start space-x-4 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                <Database className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#0F172A] leading-snug">
+                  Sourcing & Procurement
+                </h3>
+                <p className="text-xs text-[#475569] font-medium mt-1">
+                  Reliable commodity sourcing desk
+                </p>
+              </div>
+            </div>
+
+            {/* 2. Energy Trading */}
+            <div className="flex items-start space-x-4 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#0F172A] leading-snug">
+                  Energy Trading
+                </h3>
+                <p className="text-xs text-[#475569] font-medium mt-1">
+                  Global energy commodities desk
+                </p>
+              </div>
+            </div>
+
+            {/* 3. Logistics & Distribution */}
+            <div className="flex items-start space-x-4 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                <Truck className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#0F172A] leading-snug">
+                  Logistics & Distribution
+                </h3>
+                <p className="text-xs text-[#475569] font-medium mt-1">
+                  Safe land, sea & multimodal transport
+                </p>
+              </div>
+            </div>
+
+            {/* 4. Storage Solutions */}
+            <div className="flex items-start space-x-4 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                <Wrench className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#0F172A] leading-snug">
+                  Storage Solutions
+                </h3>
+                <p className="text-xs text-[#475569] font-medium mt-1">
+                  Integrated distribution network
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* OUR VALUES SECTION (Exact Content from Official Website) */}
         <section id="our-values" className="bg-[#F8FAFC] rounded-3xl p-8 sm:p-12 border border-[#E2E8F0] shadow-sm">

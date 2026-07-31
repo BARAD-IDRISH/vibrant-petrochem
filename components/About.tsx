@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { COMPANY_INFO } from '@/lib/data';
-import { ShieldCheck, Award, Truck, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Award, Truck, CheckCircle2, Database, Wrench } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
@@ -65,52 +65,52 @@ export const About: React.FC = () => {
               base oils, and specialty solvents.
             </p>
 
-            {/* Feature Cards Grid */}
+            {/* Feature Cards Grid (4 Services from client) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
               <div className="bg-white p-4 rounded-xl shadow-sm border border-[#E2E8F0] flex items-start space-x-3">
-                <div className="p-2 rounded-lg bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] shrink-0">
+                <div className="p-2.5 rounded-xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] shrink-0">
+                  <Database className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-[#0F172A]">Sourcing & Procurement</div>
+                  <div className="text-xs text-[#475569] mt-0.5 font-medium">
+                    Reliable commodity sourcing desk
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-[#E2E8F0] flex items-start space-x-3">
+                <div className="p-2.5 rounded-xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] shrink-0">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[#0F172A]">Unwavering Safety</div>
-                  <div className="text-xs text-[#475569] mt-0.5">
-                    Strict adherence to chemical handling & environmental protocols.
+                  <div className="text-sm font-bold text-[#0F172A]">Energy Trading</div>
+                  <div className="text-xs text-[#475569] mt-0.5 font-medium">
+                    Global energy commodities desk
                   </div>
                 </div>
               </div>
 
               <div className="bg-white p-4 rounded-xl shadow-sm border border-[#E2E8F0] flex items-start space-x-3">
-                <div className="p-2 rounded-lg bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] shrink-0">
-                  <Award className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-[#0F172A]">Quality Assured</div>
-                  <div className="text-xs text-[#475569] mt-0.5">
-                    Batch-tested ASTM certification for every export volume.
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white p-4 rounded-xl shadow-sm border border-[#E2E8F0] flex items-start space-x-3">
-                <div className="p-2 rounded-lg bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] shrink-0">
+                <div className="p-2.5 rounded-xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] shrink-0">
                   <Truck className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[#0F172A]">Flexible Logistics</div>
-                  <div className="text-xs text-[#475569] mt-0.5">
-                    FOB, CIF, and CFR terms with guaranteed laycan schedules.
+                  <div className="text-sm font-bold text-[#0F172A]">Logistics & Distribution</div>
+                  <div className="text-xs text-[#475569] mt-0.5 font-medium">
+                    Safe land, sea & multimodal transport
                   </div>
                 </div>
               </div>
 
               <div className="bg-white p-4 rounded-xl shadow-sm border border-[#E2E8F0] flex items-start space-x-3">
-                <div className="p-2 rounded-lg bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] shrink-0">
-                  <CheckCircle2 className="w-5 h-5" />
+                <div className="p-2.5 rounded-xl bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE] shrink-0">
+                  <Wrench className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[#0F172A]">Client Centric</div>
-                  <div className="text-xs text-[#475569] mt-0.5">
-                    Tailor-made formulation and custom packaging options.
+                  <div className="text-sm font-bold text-[#0F172A]">Storage Solutions</div>
+                  <div className="text-xs text-[#475569] mt-0.5 font-medium">
+                    Integrated distribution network
                   </div>
                 </div>
               </div>
