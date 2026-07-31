@@ -65,8 +65,8 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white text-[#0F172A] p-6 rounded-2xl shadow-md hidden sm:block border border-[#E2E8F0]">
-              <div className="text-3xl font-extrabold font-display text-[#2563EB]">55,000 MT</div>
-              <div className="text-xs font-semibold text-[#475569] mt-1">Monthly Supply Capacity</div>
+              <div className="text-3xl font-extrabold font-display text-[#2563EB]">FOB / CIF</div>
+              <div className="text-xs font-semibold text-[#475569] mt-1">Global Shipping Terms</div>
             </div>
           </div>
 

@@ -344,10 +344,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
               <div className="flex items-center space-x-3 text-xs font-medium text-slate-700">
                 <span className="flex items-center space-x-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span className="font-bold text-[#0F172A]">55,000 MT Monthly Capacity</span>
+                  <span className="font-bold text-[#0F172A]">FOB / CIF Global Terms</span>
                 </span>
-                <span>•</span>
-                <span className="text-slate-500">FOB / CIF Global Terms</span>
               </div>
 
               <Link
@@ -355,7 +353,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 onClick={() => setIsProductsDropdownOpen(false)}
                 className="text-[#C5221F] hover:text-[#A31B19] font-bold text-xs flex items-center space-x-1.5 group/quote transition-colors"
               >
-                <span>Request Custom Freight Quote</span>
+                <span>Request Quote</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover/quote:translate-x-1 transition-transform" />
               </Link>
             </div>

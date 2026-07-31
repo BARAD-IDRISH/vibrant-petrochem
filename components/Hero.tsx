@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               onClick={() => onOpenQuoteModal()}
               className="bg-[#C5221F] hover:bg-[#A31B19] text-white font-bold text-sm px-8 py-4 rounded-xl shadow-sm transition-colors duration-200 flex items-center space-x-3 group"
             >
-              <span>Request Custom Quote</span>
+              <span>Request Quote</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <a
@@ -84,7 +84,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               </div>
               <div>
                 <div className="text-sm font-bold text-[#0F172A]">Global Distribution</div>
-                <div className="text-xs text-[#475569] font-medium">55,000 MT / Month</div>
+                <div className="text-xs text-[#475569] font-medium">FOB / CIF Global Terms</div>
               </div>
             </div>
 
