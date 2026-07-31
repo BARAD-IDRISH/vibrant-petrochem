@@ -5,11 +5,10 @@ import Image from 'next/image';
 import { COMPANY_INFO } from '@/lib/data';
 import { ShieldCheck, ArrowRight, Layers, Globe, Fuel } from 'lucide-react';
 
-interface HeroProps {
-  onOpenQuoteModal: (productName?: string) => void;
-}
+import { useQuoteModal } from '@/lib/QuoteModalContext';
 
-export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
+export const Hero: React.FC = () => {
+  const { openQuoteModal } = useQuoteModal();
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-white text-[#0F172A] border-b border-[#E2E8F0]">
       {/* High-Visibility Refinery Background Image */}
@@ -51,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
           {/* Double CTAs */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
-              onClick={() => onOpenQuoteModal()}
+              onClick={() => openQuoteModal()}
               className="bg-[#C5221F] hover:bg-[#A31B19] text-white font-bold text-sm px-8 py-4 rounded-xl shadow-sm transition-colors duration-200 flex items-center space-x-3 group"
             >
               <span>Request Quote</span>

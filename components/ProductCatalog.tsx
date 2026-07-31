@@ -6,11 +6,10 @@ import Link from 'next/link';
 import { PRODUCTS, ProductItem } from '@/lib/data';
 import { ArrowRight, CheckCircle, Info, Sparkles, ExternalLink, ChevronDown } from 'lucide-react';
 
-interface ProductCatalogProps {
-  onOpenQuoteModal: (productName?: string) => void;
-}
+import { useQuoteModal } from '@/lib/QuoteModalContext';
 
-export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal }) => {
+export const ProductCatalog: React.FC = () => {
+  const { openQuoteModal } = useQuoteModal();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedProductDetails, setSelectedProductDetails] = useState<ProductItem | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
@@ -136,7 +135,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
                   </Link>
                 </div>
                 <button
-                  onClick={() => onOpenQuoteModal(product.name)}
+                  onClick={() => openQuoteModal(product.name)}
                   className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold py-2.5 rounded-lg transition-colors shadow-sm flex items-center justify-center space-x-1.5"
                 >
                   <span>Request RFQ</span>
@@ -236,7 +235,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
                 onClick={() => {
                   const pName = selectedProductDetails.name;
                   setSelectedProductDetails(null);
-                  onOpenQuoteModal(pName);
+                  openQuoteModal(pName);
                 }}
                 className="flex-1 w-full bg-[#C5221F] hover:bg-[#A31B19] text-white text-xs font-bold py-3 rounded-xl transition-colors text-center shadow-sm"
               >

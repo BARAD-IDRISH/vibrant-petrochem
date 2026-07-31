@@ -7,11 +7,10 @@ import { usePathname } from 'next/navigation';
 import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO, COMPANY_SERVICES, COMPANY_INDUSTRIES } from '@/lib/data';
 import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, Database, Truck, Wrench, Ship, Plane, Car, Zap, Building2 } from 'lucide-react';
 
-interface NavbarProps {
-  onOpenQuoteModal?: (productName?: string) => void;
-}
+import { useQuoteModal } from '@/lib/QuoteModalContext';
 
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC = () => {
+  const { openQuoteModal } = useQuoteModal();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -309,13 +308,13 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="/contact"
+            <button
+              onClick={() => openQuoteModal()}
               className="bg-[#C5221F] hover:bg-[#A31B19] text-white font-semibold text-xs px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex items-center space-x-1.5 group"
             >
               <span>Request Quote</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -450,14 +449,16 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 </span>
               </div>
 
-              <Link
-                href="/contact"
-                onClick={() => setIsProductsDropdownOpen(false)}
+              <button
+                onClick={() => {
+                  setIsProductsDropdownOpen(false);
+                  openQuoteModal();
+                }}
                 className="text-[#C5221F] hover:text-[#A31B19] font-bold text-xs flex items-center space-x-1.5 group/quote transition-colors"
               >
                 <span>Request Quote</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover/quote:translate-x-1 transition-transform" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -607,14 +608,16 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </div>
 
           <div className="pt-2">
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openQuoteModal();
+              }}
               className="w-full bg-[#C5221F] hover:bg-[#A31B19] text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center space-x-2 shadow-sm block text-center"
             >
               <span>Request Quote</span>
               <ArrowRight className="w-4 h-4 inline" />
-            </Link>
+            </button>
           </div>
         </div>
       )}

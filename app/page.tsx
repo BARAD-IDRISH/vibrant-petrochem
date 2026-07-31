@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 relative">
       {/* Hero Section */}
-      <Hero onOpenQuoteModal={() => {}} />
+      <Hero />
 
       {/* Key Metrics Bento Grid */}
       <Metrics />
@@ -21,7 +21,7 @@ export default function HomePage() {
       <About />
 
       {/* Interactive 4-Column Product Catalog */}
-      <ProductCatalog onOpenQuoteModal={() => {}} />
+      <ProductCatalog />
 
       {/* Direct Inquiry Form Section (Home Page Only) */}
       <HomeDirectInquiry />
