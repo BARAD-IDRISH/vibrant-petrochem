@@ -12,7 +12,7 @@
   PassengerStartupFile server.js
 </IfModule>
 
-# HTTPS Enforcement & Clean URL Rewriting
+# HTTPS Enforcement & Legacy .php 301 Redirect Rules
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -21,12 +21,29 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # 2. Serve static files directly if exist
+  # 2. Legacy Live .php URLs 301 Redirects (Preserving SEO & Google Rankings)
+  RewriteRule ^index\.php$ / [R=301,L]
+  RewriteRule ^contact\.php$ /contact [R=301,L]
+  RewriteRule ^base_oil\.php$ /products/base-oil [R=301,L]
+  RewriteRule ^gtl_fuel\.php$ /products/gtl-fuel [R=301,L]
+  RewriteRule ^n_parafin\.php$ /products/n-paraffins [R=301,L]
+  RewriteRule ^fuel_oil\.php$ /products/fuel-oil [R=301,L]
+  RewriteRule ^glycols\.php$ /products/glycols [R=301,L]
+  RewriteRule ^mineral_oil\.php$ /products/mineral-oil [R=301,L]
+  RewriteRule ^jet_a1\.php$ /products/jet-a1 [R=301,L]
+  RewriteRule ^gpso\.php$ /products/spindle-oil [R=301,L]
+  RewriteRule ^distillate_oil\.php$ /products/distillate-oil [R=301,L]
+  RewriteRule ^recidual_oil\.php$ /products/process-oil [R=301,L]
+  RewriteRule ^thinner\.php$ /products/thinners-diluents [R=301,L]
+  RewriteRule ^degreasing_solvent\.php$ /products/degreasing-solvents [R=301,L]
+  RewriteRule ^naphtha_oil\.php$ /products/naphtha-oil [R=301,L]
+
+  # 3. Serve static files directly if present
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 3. Route all other requests to Node.js Phusion Passenger runner
+  # 4. Route all remaining requests to Node.js Phusion Passenger runner
   RewriteRule ^(.*)$ server.js [L]
 </IfModule>
 
