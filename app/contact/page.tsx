@@ -114,7 +114,7 @@ function ContactFormContent() {
         <div className="bg-white p-8 sm:p-10 rounded-3xl border border-[#E2E8F0] shadow-xl">
           <h2 className="text-2xl font-bold font-display text-[#0F172A] mb-2">Submit Formal Trade Inquiry</h2>
           <p className="text-xs text-[#475569] mb-6">
-            Complete the specification request form below and our trading team will respond within 2 business hours.
+            Complete the specification request form below and our trading team will respond within 4 business hours.
           </p>
 
           {submitSuccess ? (
