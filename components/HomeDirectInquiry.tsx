@@ -22,7 +22,7 @@ export const HomeDirectInquiry: React.FC = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormErrors({});
@@ -40,10 +40,18 @@ export const HomeDirectInquiry: React.FC = () => {
       return;
     }
 
-    setTimeout(() => {
+    try {
+      await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.error('Inquiry dispatch error:', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitSuccess(true);
-    }, 800);
+    }
   };
 
   return (

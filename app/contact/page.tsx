@@ -27,7 +27,7 @@ function ContactFormContent() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormErrors({});
@@ -45,10 +45,18 @@ function ContactFormContent() {
       return;
     }
 
-    setTimeout(() => {
+    try {
+      await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.error('Contact inquiry dispatch error:', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitSuccess(true);
-    }, 800);
+    }
   };
 
   return (

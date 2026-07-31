@@ -49,7 +49,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
 
@@ -68,10 +68,18 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.error('Quote modal dispatch error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1200);
+    }
   };
 
   const handleReset = () => {

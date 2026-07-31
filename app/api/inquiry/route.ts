@@ -1,0 +1,142 @@
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const {
+      fullName,
+      email,
+      phone,
+      companyName,
+      product,
+      volumeMT,
+      destinationPort,
+      additionalNotes,
+    } = body;
+
+    // Validate minimum required fields
+    if (!fullName || !email || !phone) {
+      return NextResponse.json(
+        { error: 'Missing required contact information.' },
+        { status: 400 }
+      );
+    }
+
+    const host = process.env.SMTP_HOST || 'mail.vibrantpetro.com';
+    const port = Number(process.env.SMTP_PORT) || 465;
+    const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : port === 465;
+    const user = process.env.SMTP_USER || 'ashish@vibrantpetro.com';
+    const pass = process.env.SMTP_PASS;
+    const recipient = process.env.SMTP_TO || 'ashish@vibrantpetro.com';
+
+    console.log(`[INQUIRY RECEIVED] From: ${fullName} (${email}), Company: ${companyName || 'N/A'}, Product: ${product || 'General'}`);
+
+    // If SMTP password is configured, attempt sending email via Nodemailer
+    if (pass) {
+      const transporter = nodemailer.createTransport({
+        host,
+        port,
+        secure, // true for port 465, false for 587
+        auth: {
+          user,
+          pass,
+        },
+        tls: {
+          rejectUnauthorized: false, // Prevents self-signed cert issues on cPanel/A2 Hosting
+        },
+      });
+
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 20px; }
+            .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+            .header { background: #0f172a; color: #ffffff; padding: 24px; text-align: left; border-bottom: 3px solid #c5221f; }
+            .header h1 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+            .header p { margin: 4px 0 0 0; font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+            .content { padding: 24px; }
+            .field-group { margin-bottom: 16px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
+            .field-group:last-child { border-bottom: none; }
+            .label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 4px; }
+            .value { font-size: 14px; font-weight: 600; color: #0f172a; }
+            .notes-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 4px; font-size: 13px; color: #334155; white-space: pre-wrap; }
+            .footer { background: #f8fafc; padding: 16px 24px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #64748b; text-align: center; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>Vibrant Petrochem FZE</h1>
+              <p>New Commercial Trade Inquiry</p>
+            </div>
+            <div class="content">
+              <div class="field-group">
+                <div class="label">Full Name</div>
+                <div class="value">${fullName}</div>
+              </div>
+              <div class="field-group">
+                <div class="label">Business Email</div>
+                <div class="value"><a href="mailto:${email}" style="color: #c5221f; text-decoration: none;">${email}</a></div>
+              </div>
+              <div class="field-group">
+                <div class="label">Company Name</div>
+                <div class="value">${companyName || 'Not Provided'}</div>
+              </div>
+              <div class="field-group">
+                <div class="label">Telephone / WhatsApp</div>
+                <div class="value">${phone}</div>
+              </div>
+              <div class="field-group">
+                <div class="label">Product Line / Requested Item</div>
+                <div class="value" style="color: #c5221f;">${product || 'General Product Inquiry'}</div>
+              </div>
+              <div class="field-group">
+                <div class="label">Requested Quantity / Volume</div>
+                <div class="value">${volumeMT || 'Not Specified'}</div>
+              </div>
+              <div class="field-group">
+                <div class="label">Destination Discharge Port</div>
+                <div class="value">${destinationPort || 'Not Specified'}</div>
+              </div>
+              <div class="field-group">
+                <div class="label">Specification Notes / Message</div>
+                <div class="notes-box">${additionalNotes || 'No additional specifications provided.'}</div>
+              </div>
+            </div>
+            <div class="footer">
+              Sent via Vibrant Petrochem Web Portal • Commercial Desk Email Notification
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      await transporter.sendMail({
+        from: `"Vibrant Petrochem Web Inquiry" <${user}>`,
+        to: recipient,
+        replyTo: email, // Directly reply to the client's email address
+        subject: `[Trade Inquiry] ${product || 'General'} - ${companyName || fullName}`,
+        html: htmlContent,
+      });
+
+      console.log(`[EMAIL DISPATCHED] Successfully sent inquiry from ${email} to ${recipient}`);
+    } else {
+      console.log('[SMTP NOTICE] SMTP_PASS env variable is not set. Inquiry saved to console logs. Configure SMTP_PASS in .env.local to enable live email delivery.');
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Inquiry received and processed successfully.',
+    });
+  } catch (error: any) {
+    console.error('[INQUIRY API ERROR]', error);
+    return NextResponse.json(
+      { error: error?.message || 'Internal server error processing inquiry.' },
+      { status: 500 }
+    );
+  }
+}
