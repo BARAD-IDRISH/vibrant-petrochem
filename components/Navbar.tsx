@@ -113,6 +113,13 @@ export const Navbar: React.FC<NavbarProps> = () => {
               About Us
             </Link>
 
+            <Link
+              href="/about#services"
+              className="text-xs transition-colors py-1 text-slate-600 hover:text-slate-900 font-semibold"
+            >
+              Services
+            </Link>
+
             {/* Products Mega Dropdown Container Trigger */}
             <div
               className="static"
@@ -313,6 +320,14 @@ export const Navbar: React.FC<NavbarProps> = () => {
               }`}
             >
               About Us
+            </Link>
+
+            <Link
+              href="/about#services"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 border-b border-slate-100 hover:text-[#C5221F] text-slate-600"
+            >
+              Services
             </Link>
 
             <div className="space-y-2 py-1 border-b border-slate-100">
