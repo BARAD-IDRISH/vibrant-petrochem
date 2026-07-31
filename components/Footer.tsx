@@ -31,10 +31,10 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2: Key Products */}
+          {/* Col 2: Products */}
           <div className="space-y-3">
             <div className="text-xs font-bold uppercase tracking-wider text-slate-900">
-              Key Products
+              Products
             </div>
             <ul className="space-y-2 text-xs text-slate-600">
               {PRODUCTS.slice(0, 5).map((p) => (
@@ -44,6 +44,12 @@ export const Footer: React.FC = () => {
                   </Link>
                 </li>
               ))}
+              <li className="pt-1">
+                <Link href="/products" className="text-brand-red-vibrant font-semibold hover:underline flex items-center space-x-1">
+                  <span>All Products</span>
+                  <span>→</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
