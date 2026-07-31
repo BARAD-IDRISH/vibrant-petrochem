@@ -136,17 +136,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-7">
-            <Link
-              href="/about"
-              className={`text-xs transition-colors py-1 ${
-                isActive('/about')
-                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                  : 'text-slate-600 hover:text-slate-900 font-semibold'
-              }`}
-            >
-              About Us
-            </Link>
-
             {/* Services Dropdown Container Trigger */}
             <div
               className="relative"
@@ -291,6 +280,17 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180 text-white' : 'text-slate-500'}`} />
               </Link>
             </div>
+
+            <Link
+              href="/about"
+              className={`text-xs transition-colors py-1 ${
+                isActive('/about')
+                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                  : 'text-slate-600 hover:text-slate-900 font-semibold'
+              }`}
+            >
+              About Us
+            </Link>
 
             <Link
               href="/contact"
@@ -464,15 +464,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-4 pb-6 space-y-4 shadow-xl">
           <div className="flex flex-col space-y-3 font-medium text-sm text-[#0F172A]">
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`py-1 border-b border-slate-100 ${
-                isActive('/about') ? 'text-[#C5221F] font-bold' : 'hover:text-[#C5221F] text-slate-600'
-              }`}
-            >
-              About Us
-            </Link>
 
             {/* Services List in Mobile Drawer */}
             <div className="space-y-2 py-1 border-b border-slate-100">
@@ -541,6 +532,16 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 ))}
               </div>
             </div>
+
+            <Link
+              href="/about"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`py-1 border-b border-slate-100 ${
+                isActive('/about') ? 'text-[#C5221F] font-bold' : 'hover:text-[#C5221F] text-slate-600'
+              }`}
+            >
+              About Us
+            </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
