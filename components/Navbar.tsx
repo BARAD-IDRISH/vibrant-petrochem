@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { COMPANY_INFO, PRODUCTS, CATEGORY_INFO, COMPANY_SERVICES, COMPANY_INDUSTRIES } from '@/lib/data';
-import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, Database, Truck, Wrench, Ship, Plane, Car, Zap, Building2 } from 'lucide-react';
+import { Menu, X, ArrowRight, Shield, PhoneCall, ChevronDown, Sparkles, Flame, Droplets, FlaskConical, Boxes, ArrowUpRight, ShieldCheck, Database, Truck, Wrench, Ship, Plane, Car, Zap, Building2, Globe } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuoteModal?: (productName?: string) => void;
@@ -89,13 +89,23 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <div className="bg-slate-50 border-b border-slate-100 py-1.5 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between text-[11px] text-slate-500">
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-5">
               <span className="flex items-center space-x-1.5 text-emerald-700 font-semibold">
                 <Shield className="w-3.5 h-3.5" />
                 <span>ISO & Security Compliant Commodity Trading</span>
               </span>
               <span className="text-slate-300">|</span>
               <span className="text-slate-600">HQ: {COMPANY_INFO.headquarters}</span>
+              <span className="text-slate-300">|</span>
+              <a
+                href="https://vibrantpetro.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#C5221F] transition-colors flex items-center space-x-1 font-semibold text-[#0F172A]"
+              >
+                <Globe className="w-3 h-3 text-[#2563EB]" />
+                <span>vibrantpetro.com</span>
+              </a>
             </div>
 
             <div className="flex items-center space-x-5 text-slate-600 font-medium">
