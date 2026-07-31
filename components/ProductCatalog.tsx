@@ -17,10 +17,9 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onOpenQuoteModal
 
   const categories = [
     'All',
-    'Base Oils',
-    'Fuels & Solvents',
-    'Specialty Hydrocarbons',
-    'Industrial Solvents',
+    'Energy & Petroleum',
+    'Base Oils & Lubricant Stocks',
+    'Chemicals & Solvents',
   ];
 
   const filteredProducts =
