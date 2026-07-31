@@ -69,10 +69,19 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
     setIsSubmitting(true);
 
     try {
-      await fetch('/api/inquiry', {
+      await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          companyName: formData.companyName,
+          email: formData.email,
+          phone: formData.phone,
+          productInterest: formData.product,
+          estimatedVolume: formData.volumeMT,
+          destinationPort: formData.destinationPort,
+          message: formData.additionalNotes,
+        }),
       });
     } catch (err) {
       console.error('Quote modal dispatch error:', err);
