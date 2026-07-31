@@ -151,17 +151,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
               About Us
             </Link>
 
-            <Link
-              href="/stats"
-              className={`text-xs transition-colors py-1 ${
-                isActive('/stats')
-                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                  : 'text-slate-600 hover:text-slate-900 font-semibold'
-              }`}
-            >
-              Stats
-            </Link>
-
             {/* Products Mega Dropdown Container Trigger */}
             <div
               className="static"
@@ -373,15 +362,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
               }`}
             >
               About Us
-            </Link>
-            <Link
-              href="/stats"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`py-1 border-b border-slate-100 ${
-                isActive('/stats') ? 'text-[#C5221F] font-bold' : 'hover:text-[#C5221F] text-slate-600'
-              }`}
-            >
-              Key Metrics
             </Link>
 
             <div className="space-y-2 py-1 border-b border-slate-100">
