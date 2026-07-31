@@ -109,32 +109,25 @@ export const Navbar: React.FC<NavbarProps> = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group" onClick={() => setIsNavigating(true)}>
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C5221F] to-red-700 p-0.5 shadow-md group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-              <div className="w-full h-full bg-white rounded-[9px] flex items-center justify-center">
-                <span className="text-lg font-bold font-display text-[#C5221F]">V</span>
-              </div>
+            <div className="relative h-12 w-48 group-hover:scale-105 transition-transform duration-300">
+              <Image
+                src="/logo.jpg"
+                alt="Vibrant Petrochem Logo"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center space-x-2">
-                <span className="text-base font-bold font-display tracking-tight text-[#0F172A] group-hover:text-[#C5221F] transition-colors">
-                  VIBRANT <span className="text-[#C5221F]">PETROCHEM</span>
-                </span>
-                
-                {/* Browser-style spinning refresh loading icon */}
-                <div
-                  title={isNavigating ? 'Navigating...' : 'System Ready'}
-                  className={`p-1 rounded-full transition-all duration-300 ${
-                    isNavigating
-                      ? 'bg-red-500/10 opacity-100 scale-100'
-                      : 'opacity-0 scale-90 pointer-events-none'
-                  }`}
-                >
-                  <RotateCw className={`w-3.5 h-3.5 text-[#C5221F] ${isNavigating ? 'animate-spin' : ''}`} />
-                </div>
-              </div>
-              <span className="text-[9px] uppercase tracking-widest text-[#475569] font-semibold">
-                FZE • UAE EST. 2018
-              </span>
+            {/* Browser-style spinning refresh loading icon */}
+            <div
+              title={isNavigating ? 'Navigating...' : 'System Ready'}
+              className={`p-1 rounded-full transition-all duration-300 ${
+                isNavigating
+                  ? 'bg-red-500/10 opacity-100 scale-100'
+                  : 'opacity-0 scale-90 pointer-events-none'
+              }`}
+            >
+              <RotateCw className={`w-3.5 h-3.5 text-[#C5221F] ${isNavigating ? 'animate-spin' : ''}`} />
             </div>
           </Link>
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { COMPANY_INFO, PRODUCTS } from '@/lib/data';
 import { ContactFormSchema, ContactFormData } from '@/lib/schemas';
@@ -320,13 +321,15 @@ export const Footer: React.FC = () => {
         <div className={`pt-12 ${!isContactPage ? 'border-t border-slate-200' : ''} grid grid-cols-1 md:grid-cols-4 gap-8`}>
           {/* Col 1: Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-lg bg-brand-red-vibrant flex items-center justify-center font-bold font-display text-white shadow-sm">
-                V
+            <Link href="/" className="flex items-center">
+              <div className="relative h-10 w-44">
+                <Image
+                  src="/logo.jpg"
+                  alt="Vibrant Petrochem Logo"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
-              <span className="text-base font-bold font-display text-slate-900">
-                VIBRANT <span className="text-brand-red-vibrant">PETROCHEM</span>
-              </span>
             </Link>
             <p className="text-xs text-slate-600 leading-relaxed">
               Leading commodity trader in the Gulf region with expansive product range and unwavering commitment to safety.
