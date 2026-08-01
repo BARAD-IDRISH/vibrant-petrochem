@@ -548,23 +548,43 @@ export const Navbar: React.FC = () => {
               >
                 <span className={`font-bold text-xs uppercase tracking-wider ${isActive('/products') ? 'text-[#C5221F]' : 'text-[#0F172A]'
                   }`}>
-                  Products Catalog ({PRODUCTS.length})
+                  Products Catalog (17)
                 </span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileProductsOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
                   }`} />
               </button>
               {mobileProductsOpen && (
-                <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100 max-h-64 overflow-y-auto">
-                  {PRODUCTS.map((prod) => (
-                    <Link
-                      key={prod.id}
-                      href={`/products/${prod.id}`}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block text-xs font-semibold text-slate-700 hover:text-[#C5221F] py-1.5 border-b border-slate-200/50 last:border-0 flex items-center space-x-2"
-                    >
-                      <span className="text-[#C5221F]">•</span>
-                      <span>{prod.name}</span>
-                    </Link>
+                <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100 max-h-72 overflow-y-auto">
+                  {PRODUCTS.filter(
+                    (p) => p.id !== 'viscosity-index-improver' && p.id !== 'polyolefin-resins'
+                  ).map((prod) => (
+                    <div key={prod.id} className="border-b border-slate-200/50 last:border-0">
+                      <Link
+                        href={`/products/${prod.id}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="text-xs font-semibold text-slate-700 hover:text-[#C5221F] py-1.5 flex items-center space-x-2"
+                      >
+                        <span className="text-[#C5221F]">•</span>
+                        <span>{prod.name}</span>
+                      </Link>
+
+                      {/* Sub-items hierarchy for mobile menu */}
+                      {prod.subItems && prod.subItems.length > 0 && (
+                        <div className="ml-4 pl-2 border-l-2 border-slate-200 space-y-1 my-1 pb-1">
+                          {prod.subItems.map((sub, sIdx) => (
+                            <Link
+                              key={sIdx}
+                              href={`/products/${sub.id}`}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="flex items-center space-x-2 text-[11px] text-slate-500 hover:text-[#C5221F] font-medium py-0.5"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-500/70 shrink-0"></span>
+                              <span>{sub.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                   <Link
                     href="/products"
