@@ -111,6 +111,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <div className="text-[10px] text-slate-500 mt-0.5">208 Liter Drums</div>
                 </div>
               </div>
+              <div className="flex items-start space-x-2 pt-1 text-[11px] text-slate-500 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5221F] shrink-0 mt-1" />
+                <span>
+                  Custom or alternative shipping and packaging configurations are available upon request to meet specific project requirements.
+                </span>
+              </div>
             </div>
           </div>
 
