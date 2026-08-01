@@ -113,16 +113,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+        <div className="mt-12 pt-8 border-t border-slate-200 text-center sm:text-left text-xs text-slate-500">
           <div>
-            © {new Date().getFullYear()} {COMPANY_INFO.name}. All Rights Reserved.
-          </div>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <span className="hover:text-slate-800">Privacy Policy</span>
-            <span>•</span>
-            <span className="hover:text-slate-800">Security Specs</span>
-            <span>•</span>
-            <span className="hover:text-slate-800">Terms of Trading</span>
+            © {COMPANY_INFO.name}. All Rights Reserved.
           </div>
         </div>
       </div>
