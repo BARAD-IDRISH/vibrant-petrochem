@@ -150,11 +150,10 @@ export const Navbar: React.FC = () => {
               <Link
                 href="/services"
                 onClick={() => setIsServicesDropdownOpen(false)}
-                className={`text-xs flex items-center space-x-1 py-1 transition-colors ${
-                  isActive('/services') || isServicesDropdownOpen
-                    ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                    : 'text-slate-600 hover:text-slate-900 font-semibold'
-                }`}
+                className={`text-xs flex items-center space-x-1 py-1 transition-colors ${isActive('/services') || isServicesDropdownOpen
+                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                  : 'text-slate-600 hover:text-slate-900 font-semibold'
+                  }`}
               >
                 <span>Services</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-500'}`} />
@@ -213,11 +212,10 @@ export const Navbar: React.FC = () => {
               <Link
                 href="/industries"
                 onClick={() => setIsIndustriesDropdownOpen(false)}
-                className={`text-xs flex items-center space-x-1 py-1 transition-colors ${
-                  isActive('/industries') || isIndustriesDropdownOpen
-                    ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                    : 'text-slate-600 hover:text-slate-900 font-semibold'
-                }`}
+                className={`text-xs flex items-center space-x-1 py-1 transition-colors ${isActive('/industries') || isIndustriesDropdownOpen
+                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                  : 'text-slate-600 hover:text-slate-900 font-semibold'
+                  }`}
               >
                 <span>Industries</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isIndustriesDropdownOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-500'}`} />
@@ -271,11 +269,10 @@ export const Navbar: React.FC = () => {
               <Link
                 href="/products"
                 onClick={() => setIsProductsDropdownOpen(false)}
-                className={`text-xs flex items-center space-x-1.5 py-1 px-3 rounded-full transition-all duration-200 ${
-                  isActive('/products') || isProductsDropdownOpen
-                    ? 'bg-[#C5221F] text-white font-bold shadow-sm'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold'
-                }`}
+                className={`text-xs flex items-center space-x-1.5 py-1 px-3 rounded-full transition-all duration-200 ${isActive('/products') || isProductsDropdownOpen
+                  ? 'bg-[#C5221F] text-white font-bold shadow-sm'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold'
+                  }`}
               >
                 <Sparkles className={`w-3.5 h-3.5 ${isProductsDropdownOpen || isActive('/products') ? 'text-white' : 'text-[#C5221F]'}`} />
                 <span>Products Catalog</span>
@@ -285,22 +282,20 @@ export const Navbar: React.FC = () => {
 
             <Link
               href="/about"
-              className={`text-xs transition-colors py-1 ${
-                isActive('/about')
-                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                  : 'text-slate-600 hover:text-slate-900 font-semibold'
-              }`}
+              className={`text-xs transition-colors py-1 ${isActive('/about')
+                ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                : 'text-slate-600 hover:text-slate-900 font-semibold'
+                }`}
             >
               About Us
             </Link>
 
             <Link
               href="/contact"
-              className={`text-xs transition-colors py-1 ${
-                isActive('/contact')
-                  ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
-                  : 'text-slate-600 hover:text-slate-900 font-semibold'
-              }`}
+              className={`text-xs transition-colors py-1 ${isActive('/contact')
+                ? 'text-[#C5221F] font-bold border-b-2 border-[#C5221F]'
+                : 'text-slate-600 hover:text-slate-900 font-semibold'
+                }`}
             >
               Contact
             </Link>
@@ -340,7 +335,7 @@ export const Navbar: React.FC = () => {
           {/* Main Mega Content Container */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid grid-cols-12 gap-8 items-stretch">
-              
+
               {/* Left Section (~25-30% Width - Featured Visual Banner) */}
               <div className="col-span-12 md:col-span-4 lg:col-span-3 relative rounded-2xl overflow-hidden shadow-md border border-slate-200 flex flex-col justify-between p-6 min-h-[380px] group/banner">
                 <Image
@@ -381,7 +376,9 @@ export const Navbar: React.FC = () => {
               {/* Right Section (~70-75% Width - Structured Categories Grid) */}
               <div className="col-span-12 md:col-span-8 lg:col-span-9 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {categories.map((category) => {
-                  const categoryProducts = PRODUCTS.filter((p) => p.category === category);
+                  const categoryProducts = PRODUCTS.filter(
+                    (p) => p.category === category && p.id !== 'viscosity-index-improver' && p.id !== 'polyolefin-resins'
+                  );
                   const categorySubtitle = CATEGORY_INFO[category] || '';
                   return (
                     <div key={category} className="space-y-4">
@@ -475,14 +472,12 @@ export const Navbar: React.FC = () => {
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 className="w-full flex items-center justify-between py-2 text-left focus:outline-none"
               >
-                <span className={`font-bold text-xs uppercase tracking-wider ${
-                  isActive('/services') ? 'text-[#C5221F]' : 'text-[#0F172A]'
-                }`}>
+                <span className={`font-bold text-xs uppercase tracking-wider ${isActive('/services') ? 'text-[#C5221F]' : 'text-[#0F172A]'
+                  }`}>
                   Services & Desks ({COMPANY_SERVICES.length})
                 </span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                  mobileServicesOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
-                }`} />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
+                  }`} />
               </button>
               {mobileServicesOpen && (
                 <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100">
@@ -514,14 +509,12 @@ export const Navbar: React.FC = () => {
                 onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
                 className="w-full flex items-center justify-between py-2 text-left focus:outline-none"
               >
-                <span className={`font-bold text-xs uppercase tracking-wider ${
-                  isActive('/industries') ? 'text-[#C5221F]' : 'text-[#0F172A]'
-                }`}>
+                <span className={`font-bold text-xs uppercase tracking-wider ${isActive('/industries') ? 'text-[#C5221F]' : 'text-[#0F172A]'
+                  }`}>
                   Industries Served ({COMPANY_INDUSTRIES.length})
                 </span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                  mobileIndustriesOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
-                }`} />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileIndustriesOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
+                  }`} />
               </button>
               {mobileIndustriesOpen && (
                 <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100">
@@ -553,14 +546,12 @@ export const Navbar: React.FC = () => {
                 onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
                 className="w-full flex items-center justify-between py-2 text-left focus:outline-none"
               >
-                <span className={`font-bold text-xs uppercase tracking-wider ${
-                  isActive('/products') ? 'text-[#C5221F]' : 'text-[#0F172A]'
-                }`}>
+                <span className={`font-bold text-xs uppercase tracking-wider ${isActive('/products') ? 'text-[#C5221F]' : 'text-[#0F172A]'
+                  }`}>
                   Products Catalog ({PRODUCTS.length})
                 </span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                  mobileProductsOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
-                }`} />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileProductsOpen ? 'rotate-180 text-[#C5221F]' : 'text-slate-400'
+                  }`} />
               </button>
               {mobileProductsOpen && (
                 <div className="pl-3 pr-1 pt-1 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1 border border-slate-100 max-h-64 overflow-y-auto">
@@ -589,9 +580,8 @@ export const Navbar: React.FC = () => {
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className={`py-2 border-b border-slate-100 flex items-center justify-between font-bold text-xs uppercase tracking-wider ${
-                isActive('/about') ? 'text-[#C5221F]' : 'hover:text-[#C5221F] text-[#0F172A]'
-              }`}
+              className={`py-2 border-b border-slate-100 flex items-center justify-between font-bold text-xs uppercase tracking-wider ${isActive('/about') ? 'text-[#C5221F]' : 'hover:text-[#C5221F] text-[#0F172A]'
+                }`}
             >
               About Us
             </Link>
@@ -599,9 +589,8 @@ export const Navbar: React.FC = () => {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={`py-2 border-b border-slate-100 flex items-center justify-between font-bold text-xs uppercase tracking-wider ${
-                isActive('/contact') ? 'text-[#C5221F]' : 'hover:text-[#C5221F] text-[#0F172A]'
-              }`}
+              className={`py-2 border-b border-slate-100 flex items-center justify-between font-bold text-xs uppercase tracking-wider ${isActive('/contact') ? 'text-[#C5221F]' : 'hover:text-[#C5221F] text-[#0F172A]'
+                }`}
             >
               Contact Desk
             </Link>

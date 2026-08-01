@@ -54,7 +54,9 @@ export default function ProductsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {categories.map((category) => {
-              const categoryProducts = PRODUCTS.filter((p) => p.category === category);
+              const categoryProducts = PRODUCTS.filter(
+                (p) => p.category === category && p.id !== 'viscosity-index-improver' && p.id !== 'polyolefin-resins'
+              );
               const subtitle = CATEGORY_INFO[category] || '';
               return (
                 <div key={category} className="space-y-4">
