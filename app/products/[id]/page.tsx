@@ -63,10 +63,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Product Hero Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-12">
           {/* Product Media Column */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="relative h-[400px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group">
+          <div className="lg:col-span-6 space-y-4">
+            <div className="relative h-[340px] sm:h-[380px] w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 group">
               <Image
                 src={product.imageUrl}
                 alt={product.name}
@@ -76,62 +76,61 @@ export default async function ProductDetailPage({ params }: PageProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
 
-
-              <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 backdrop-blur-md rounded-xl text-slate-900 border border-slate-200 shadow-xl flex justify-between items-center">
+              <div className="absolute bottom-4 left-4 right-4 p-3.5 bg-white/95 backdrop-blur-md rounded-xl text-slate-900 border border-slate-200 shadow-lg flex justify-between items-center">
                 <div>
-                  <div className="text-[11px] font-bold uppercase text-brand-red-vibrant tracking-wider">Category</div>
-                  <div className="text-sm font-bold text-slate-900">{product.category}</div>
+                  <div className="text-[10px] font-bold uppercase text-brand-red-vibrant tracking-wider">Category</div>
+                  <div className="text-xs font-bold text-slate-900">{product.category}</div>
                 </div>
-                <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md border border-emerald-200">
+                <span className="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-[11px] font-bold rounded-md border border-emerald-200">
                   In Stock & Ready for Export
                 </span>
               </div>
             </div>
 
             {/* Packaging Options */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <h3 className="text-xs font-bold text-slate-900 flex items-center space-x-2">
                 <PackageCheck className="w-4 h-4 text-brand-red-vibrant" />
                 <span>Available Shipping & Packaging Modes</span>
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                  <div className="font-bold text-slate-900">ISO Tank Containers</div>
-                  <div className="text-[10px] text-slate-500 mt-1">24,000 Liters</div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center text-xs">
+                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                  <div className="font-bold text-slate-900 text-xs">ISO Tank Containers</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5">24,000 Liters</div>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                  <div className="font-bold text-slate-900">Flexitanks</div>
-                  <div className="text-[10px] text-slate-500 mt-1">Bulk Liquid 24 MT</div>
+                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                  <div className="font-bold text-slate-900 text-xs">Flexitanks</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5">Bulk Liquid 24 MT</div>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                  <div className="font-bold text-slate-900">IBC Totes</div>
-                  <div className="text-[10px] text-slate-500 mt-1">1,000 Liter Cages</div>
+                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                  <div className="font-bold text-slate-900 text-xs">IBC Totes</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5">1,000 Liter Cages</div>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                  <div className="font-bold text-slate-900">Steel Drums</div>
-                  <div className="text-[10px] text-slate-500 mt-1">208 Liter Drums</div>
+                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                  <div className="font-bold text-slate-900 text-xs">Steel Drums</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5">208 Liter Drums</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Product Overview & Action Column */}
-          <div className="lg:col-span-6 space-y-8">
-            <div className="space-y-3">
-              <div className="inline-block px-3 py-1 rounded-md bg-red-50 text-brand-red-vibrant text-xs font-bold border border-red-100">
+          <div className="lg:col-span-6 space-y-4">
+            <div className="space-y-2">
+              <div className="inline-block px-2.5 py-0.5 rounded-md bg-red-50 text-brand-red-vibrant text-xs font-bold border border-red-100">
                 {product.category}
               </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-slate-900 leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 leading-tight">
                 {product.name}
               </h1>
-              <p className="text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 {product.shortDesc}
               </p>
             </div>
 
             {/* Comprehensive Description */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-              <h2 className="text-sm font-bold text-slate-900 font-display">Full Product Overview</h2>
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+              <h2 className="text-xs font-bold text-slate-900 font-display">Full Product Overview</h2>
               <p className="text-xs text-slate-600 leading-relaxed">
                 {product.fullDesc}
               </p>
@@ -139,29 +138,29 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             {/* Technical Specifications Table Component */}
             {product.techSpecs && product.techSpecs.length > 0 && (
-              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-5">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2.5 rounded-xl bg-red-50 text-[#C5221F] border border-red-100">
-                      <FileText className="w-5 h-5" />
+              <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                  <div className="flex items-center space-x-2.5">
+                    <div className="p-2 rounded-xl bg-red-50 text-[#C5221F] border border-red-100">
+                      <FileText className="w-4 h-4" />
                     </div>
                     <div>
-                      <h2 className="text-xl sm:text-2xl font-extrabold font-display text-[#0F172A] tracking-tight">
+                      <h2 className="text-base sm:text-lg font-extrabold font-display text-[#0F172A] tracking-tight">
                         Technical Specifications
                       </h2>
-                      <p className="text-xs text-slate-500 font-medium">Lab-verified typical parameters & ASTM methods</p>
+                      <p className="text-[11px] text-slate-500 font-medium">Lab-verified typical parameters & ASTM methods</p>
                     </div>
                   </div>
-                  <div className="inline-flex items-center space-x-1.5 px-3 py-1 bg-red-50 text-[#C5221F] border border-red-200 text-xs font-bold rounded-full">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C5221F]" />
+                  <div className="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-red-50 text-[#C5221F] border border-red-200 text-[10px] font-bold rounded-full">
+                    <CheckCircle2 className="w-3 h-3 text-[#C5221F]" />
                     <span>TYPICAL TEST VALUES</span>
                   </div>
                 </div>
 
                 {/* Spec Table Container */}
-                <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <div className="rounded-xl border border-slate-200 overflow-hidden shadow-sm">
                   {/* Table Header */}
-                  <div className="bg-[#0F172A] text-white px-5 py-4 grid grid-cols-12 gap-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                  <div className="bg-[#0F172A] text-white px-4 py-2.5 grid grid-cols-12 gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
                     <div className="col-span-4">PROPERTY</div>
                     <div className="col-span-3">METHOD</div>
                     <div className="col-span-2">UNIT</div>
@@ -173,20 +172,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {product.techSpecs.map((row, idx) => (
                       <div
                         key={idx}
-                        className={`px-5 py-3.5 grid grid-cols-12 gap-3 items-center transition-colors ${
+                        className={`px-4 py-2 sm:py-2.5 grid grid-cols-12 gap-2 items-center transition-colors ${
                           idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'
                         } hover:bg-slate-100/50`}
                       >
-                        <div className="col-span-4 text-xs sm:text-sm font-bold text-[#0F172A]">
+                        <div className="col-span-4 text-xs font-bold text-[#0F172A]">
                           {row.property}
                         </div>
-                        <div className="col-span-3 text-[11px] sm:text-xs font-semibold text-slate-500 font-mono">
+                        <div className="col-span-3 text-[10px] sm:text-[11px] font-semibold text-slate-500 font-mono">
                           {row.method}
                         </div>
-                        <div className="col-span-2 text-[11px] sm:text-xs font-semibold text-slate-500">
+                        <div className="col-span-2 text-[10px] sm:text-[11px] font-semibold text-slate-500">
                           {row.unit}
                         </div>
-                        <div className="col-span-3 text-xs sm:text-sm font-extrabold text-emerald-500 text-right sm:text-left">
+                        <div className="col-span-3 text-xs font-extrabold text-emerald-500 text-right sm:text-left">
                           {row.typical}
                         </div>
                       </div>
@@ -194,7 +193,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-2 pt-1 text-[11px] text-slate-500 font-medium">
+                <div className="flex items-center space-x-2 pt-0.5 text-[10px] sm:text-[11px] text-slate-500 font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
                   <span>
                     * Properties listed are typical values. Certificates of Analysis (COA) issued by SGS / Saybolt upon loading.
