@@ -46,22 +46,49 @@ function ContactFormContent() {
     }
 
     try {
-      await fetch('/api/send-email', {
+      const payload = {
+        fullName: formData.fullName,
+        companyName: formData.companyName,
+        email: formData.email,
+        phone: formData.phone,
+        productInterest: formData.product,
+        estimatedVolume: formData.volumeMT,
+        destinationPort: formData.destinationPort,
+        message: formData.additionalNotes,
+      };
+
+      const res = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          companyName: formData.companyName,
-          email: formData.email,
-          phone: formData.phone,
-          productInterest: formData.product,
-          estimatedVolume: formData.volumeMT,
-          destinationPort: formData.destinationPort,
-          message: formData.additionalNotes,
-        }),
+        body: JSON.stringify(payload),
       });
+
+      if (!res.ok) {
+        await fetch('/send-email.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      }
     } catch (err) {
-      console.error('Contact inquiry dispatch error:', err);
+      try {
+        await fetch('/send-email.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            companyName: formData.companyName,
+            email: formData.email,
+            phone: formData.phone,
+            productInterest: formData.product,
+            estimatedVolume: formData.volumeMT,
+            destinationPort: formData.destinationPort,
+            message: formData.additionalNotes,
+          }),
+        });
+      } catch (e) {
+        console.error('Contact inquiry dispatch error:', e);
+      }
     } finally {
       setIsSubmitting(false);
       setSubmitSuccess(true);
