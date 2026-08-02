@@ -48,4 +48,19 @@ Compress the project files into a `.zip` archive. You can exclude `node_modules`
 
 ---
 
-✅ **Your Vibrant Petrochem portal is live on A2 Hosting with automated email delivery!**
+## 🔒 Multi-Domain Isolation Safety (Preventing Impact on Other Live Websites):
+
+If you host multiple domains or addon domains on your A2 Hosting account:
+
+1. **Dedicated Directory**:
+   Ensure Vibrant Petrochem is placed in its own dedicated document root folder (e.g. `/home/USERNAME/vibrantpetro.com` or `/public_html/vibrantpetro.com`). Do NOT extract files directly into the root `/public_html` if another domain is hosted there.
+
+2. **Domain-Scoped `.htaccess`**:
+   All `.htaccess` rewrite rules included in this repository use `RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]`. This guarantees that Apache only applies the redirects when a request is made specifically for `vibrantpetro.com`, leaving all other domains hosted on your account untouched.
+
+3. **Passenger App Root**:
+   In cPanel **Setup Node.js App**, set the **Application Root** to the exact folder where Vibrant Petrochem is uploaded (e.g. `vibrantpetro.com`). This ensures Phusion Passenger runs Node.js exclusively for this app.
+
+---
+
+✅ **Your Vibrant Petrochem portal is live on A2 Hosting with automated email delivery and multi-site isolation!**
