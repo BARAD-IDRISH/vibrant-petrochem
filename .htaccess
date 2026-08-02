@@ -3,12 +3,11 @@
 # Project: Vibrant Petrochem FZE (Static HTML Export)
 # ====================================================================
 
+Options -Indexes +FollowSymLinks
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-
-  # Direct rule: Do not rewrite any requests for _next static assets
-  RewriteRule ^_next/ - [L]
 
   # 1. Force HTTPS
   RewriteCond %{HTTPS} off
@@ -18,49 +17,32 @@
   RewriteCond %{HTTP_HOST} ^www\.vibrantpetro\.com$ [NC]
   RewriteRule ^(.*)$ https://vibrantpetro.com/$1 [R=301,L]
 
-  # 3. Serve existing static files & directories directly
+  # 3. DIRECT EXEMPTION: Never rewrite _next assets or media files
+  RewriteRule ^_next/ - [L]
+  RewriteRule ^.+\.(css|js|jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|eot)$ - [L]
+
+  # 4. Serve existing static files & directories directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 4. Clean URL routing for static HTML pages (e.g. /contact -> contact.html)
+  # 5. Clean URL routing for static HTML pages (e.g. /contact -> contact.html)
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
-  # 5. Legacy 301 Redirects for 2018 pages (.php to clean URLs)
+  # 6. Legacy 301 Redirects for 2018 pages (.php to clean URLs)
   RewriteRule ^index\.php$ / [R=301,L]
   RewriteRule ^about\.php$ /about [R=301,L]
   RewriteRule ^services\.php$ /services [R=301,L]
   RewriteRule ^industries\.php$ /industries [R=301,L]
   RewriteRule ^products\.php$ /products [R=301,L]
   RewriteRule ^contact\.php$ /contact [R=301,L]
-
-  RewriteRule ^base_oil\.php$ /products/base-oil [R=301,L]
-  RewriteRule ^gtl_fuel\.php$ /products/gtl-fuel [R=301,L]
-  RewriteRule ^n_parafin\.php$ /products/n-paraffin [R=301,L]
-  RewriteRule ^n_paraffins\.php$ /products/n-paraffin [R=301,L]
-  RewriteRule ^fuel_oil\.php$ /products/fuel-oil [R=301,L]
-  RewriteRule ^glycols\.php$ /products/glycols [R=301,L]
-  RewriteRule ^mineral_oil\.php$ /products/mineral-oil [R=301,L]
-  RewriteRule ^jet_a1\.php$ /products/jet-a1 [R=301,L]
-  RewriteRule ^gpso\.php$ /products/spindle-oil [R=301,L]
-  RewriteRule ^distillate_oil\.php$ /products/distillate-oil [R=301,L]
-  RewriteRule ^recidual_oil\.php$ /products/process-oil [R=301,L]
-  RewriteRule ^thinner\.php$ /products/thinner [R=301,L]
-  RewriteRule ^thinners\.php$ /products/thinner [R=301,L]
-  RewriteRule ^degreasing_solvent\.php$ /products/degreasing-solvent [R=301,L]
-  RewriteRule ^degreasing_solvents\.php$ /products/degreasing-solvent [R=301,L]
-  RewriteRule ^naphtha_oil\.php$ /products/naphtha-oil [R=301,L]
-  RewriteRule ^naphtha\.php$ /products/naphtha-oil [R=301,L]
-  RewriteRule ^lubricants\.php$ /products/lubricant-raw-materials [R=301,L]
-  RewriteRule ^lubricant_raw_materials\.php$ /products/lubricant-raw-materials [R=301,L]
-  RewriteRule ^polymers\.php$ /products/liquid-solid-polymers [R=301,L]
 </IfModule>
 
-# 6. Fallback for non-existent routes (Serve Home Page)
+# Fallback for non-existent routes (Serve Home Page)
 ErrorDocument 404 /index.html
 
-# 7. MIME Types for Static Assets (CSS, JS, WebP, WOFF2)
+# MIME Types for Static Assets (CSS, JS, WebP, WOFF2)
 <IfModule mod_mime.c>
   AddType text/css .css
   AddType application/javascript .js
@@ -68,12 +50,12 @@ ErrorDocument 404 /index.html
   AddType font/woff2 .woff2
 </IfModule>
 
-# 8. Gzip Compression for Optimal Performance
+# Gzip Compression for Optimal Performance
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
 
-# 9. Security Headers
+# Security Headers
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "DENY"
