@@ -11,11 +11,10 @@ Options -Indexes +FollowSymLinks
   RewriteBase /
 
   # 0. Asset Exemption & Next.js Mapping (CRITICAL FOR CSS/JS STYLING)
-  RewriteRule ^_next/static/(.*)$ assets/$1 [L]
+  RewriteRule ^_next/static/(.*)$ assets/static/$1 [L]
   RewriteRule ^_next/(.*)$ assets/$1 [L]
   RewriteRule ^assets/ - [L]
   RewriteRule ^_next/ - [L]
-  RewriteRule ^.+\.(css|js|jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|eot)$ - [L]
 
   # 1. Force HTTPS Security (Only for vibrantpetro.com domain requests)
   RewriteCond %{HTTPS} off
@@ -148,10 +147,14 @@ Options -Indexes +FollowSymLinks
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 7. Pretty URLs: Map clean routes to .html files
+  # 7. Pretty URLs: Map clean routes to .html files (EXCLUDING ASSETS AND FILE EXTENSIONS)
+  RewriteCond %{REQUEST_URI} !^/(assets|_next)/ [NC]
+  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$ [NC]
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
   RewriteRule ^([^/]+)/?$ $1.html [L]
 
+  RewriteCond %{REQUEST_URI} !^/(assets|_next)/ [NC]
+  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$ [NC]
   RewriteCond %{DOCUMENT_ROOT}/$1/$2.html -f
   RewriteRule ^([^/]+)/([^/]+)/?$ $1/$2.html [L]
 
