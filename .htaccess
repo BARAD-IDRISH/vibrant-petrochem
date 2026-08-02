@@ -1,7 +1,6 @@
 # ====================================================================
-# A2 Hosting Apache Static Export .htaccess Configuration
-# Project: Vibrant Petrochem FZE (Static HTML/CSS/JS Bundle)
-# Multi-Domain Isolation: Rules scoped strictly to vibrantpetro.com
+# A2 Hosting Apache / LiteSpeed Addon Domain .htaccess Configuration
+# Project: Vibrant Petrochem FZE
 # ====================================================================
 
 Options -Indexes +FollowSymLinks
@@ -10,13 +9,7 @@ Options -Indexes +FollowSymLinks
   RewriteEngine On
   RewriteBase /
 
-  # 0. Asset Exemption & Next.js Mapping (CRITICAL FOR CSS/JS STYLING)
-  RewriteRule ^_next/static/(.*)$ assets/static/$1 [L]
-  RewriteRule ^_next/(.*)$ assets/$1 [L]
-  RewriteRule ^assets/ - [L]
-  RewriteRule ^_next/ - [L]
-
-  # 1. Force HTTPS Security (Only for vibrantpetro.com domain requests)
+  # 1. Force HTTPS Security (Domain-Scoped)
   RewriteCond %{HTTPS} off
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -25,7 +18,7 @@ Options -Indexes +FollowSymLinks
   RewriteCond %{HTTP_HOST} ^www\.vibrantpetro\.com$ [NC]
   RewriteRule ^(.*)$ https://vibrantpetro.com/$1 [R=301,L]
 
-  # 3. Core pages legacy .php 301 Redirects (Domain-Scoped)
+  # 3. Core pages legacy .php 301 Redirects
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^index\.php$ / [R=301,L]
 
@@ -44,7 +37,7 @@ Options -Indexes +FollowSymLinks
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^contact\.php$ /contact [R=301,L]
 
-  # 4. Legacy Product .php 301 Redirects (Domain-Scoped)
+  # 4. Product .php 301 Redirects
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^base_oil\.php$ /products/base-oil [R=301,L]
 
@@ -53,9 +46,6 @@ Options -Indexes +FollowSymLinks
 
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^n_parafin\.php$ /products/n-paraffin [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^n_paraffins\.php$ /products/n-paraffin [R=301,L]
 
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^fuel_oil\.php$ /products/fuel-oil [R=301,L]
@@ -82,83 +72,29 @@ Options -Indexes +FollowSymLinks
   RewriteRule ^thinner\.php$ /products/thinner [R=301,L]
 
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^thinners\.php$ /products/thinner [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^degreasing_solvent\.php$ /products/degreasing-solvent [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^degreasing_solvents\.php$ /products/degreasing-solvent [R=301,L]
 
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^naphtha_oil\.php$ /products/naphtha-oil [R=301,L]
 
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^naphtha\.php$ /products/naphtha-oil [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^lubricants\.php$ /products/lubricant-raw-materials [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^lubricant_raw_materials\.php$ /products/lubricant-raw-materials [R=301,L]
 
   RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
   RewriteRule ^polymers\.php$ /products/liquid-solid-polymers [R=301,L]
 
-  # 5. Alternative URL Slug Aliases (Domain-Scoped)
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/n-paraffins/?$ /products/n-paraffin [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/degreasing-solvents/?$ /products/degreasing-solvent [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/thinners-diluents/?$ /products/thinner [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/thinners/?$ /products/thinner [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/gtl-fuels/?$ /products/gtl-fuel [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/base-oils/?$ /products/base-oil [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/mineral-oils/?$ /products/mineral-oil [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/process-oils/?$ /products/process-oil [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/spindle-oils/?$ /products/spindle-oil [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/naphtha/?$ /products/naphtha-oil [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/lubricants/?$ /products/lubricant-raw-materials [R=301,L]
-
-  RewriteCond %{HTTP_HOST} (www\.)?vibrantpetro\.com [NC]
-  RewriteRule ^products/polymers/?$ /products/liquid-solid-polymers [R=301,L]
-
-  # 6. Serve static file or directory directly if present
+  # 5. Serve existing files/directories directly WITHOUT rewriting
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 7. Pretty URLs: Map clean routes to .html files (EXCLUDING ASSETS AND FILE EXTENSIONS)
-  RewriteCond %{REQUEST_URI} !^/(assets|_next)/ [NC]
-  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$ [NC]
-  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^([^/]+)/?$ $1.html [L]
+  # 6. Pretty URLs: Map clean routes to .html files (Addon Domain Compatible)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
 
-  RewriteCond %{REQUEST_URI} !^/(assets|_next)/ [NC]
-  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$ [NC]
-  RewriteCond %{DOCUMENT_ROOT}/$1/$2.html -f
-  RewriteRule ^([^/]+)/([^/]+)/?$ $1/$2.html [L]
-
-  # 8. Fallback 404 page
+  # 7. Fallback 404 page
   ErrorDocument 404 /404.html
 </IfModule>
 

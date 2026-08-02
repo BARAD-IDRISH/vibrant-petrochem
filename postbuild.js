@@ -1,14 +1,49 @@
 const fs = require('fs');
 const path = require('path');
 
-function replaceInDir(dirPath) {
+const outDir = path.join(__dirname, 'out');
+const nextDir = path.join(outDir, '_next');
+const assetsDir = path.join(outDir, 'assets');
+
+// 1. Rename _next to assets for folder structure
+if (fs.existsSync(nextDir)) {
+  if (fs.existsSync(assetsDir)) {
+    fs.rmSync(assetsDir, { recursive: true, force: true });
+  }
+  fs.renameSync(nextDir, assetsDir);
+  console.log('Renamed out/_next to out/assets successfully.');
+}
+
+// 2. Find all generated CSS files and merge into root main.css
+let combinedCSS = '';
+const cssDir = path.join(assetsDir, 'static', 'css');
+if (fs.existsSync(cssDir)) {
+  const cssFiles = fs.readdirSync(cssDir).filter(f => f.endsWith('.css'));
+  for (const file of cssFiles) {
+    combinedCSS += fs.readFileSync(path.join(cssDir, file), 'utf8') + '\n';
+  }
+}
+
+const rootCSSPath = path.join(outDir, 'main.css');
+fs.writeFileSync(rootCSSPath, combinedCSS, 'utf8');
+console.log('Created root main.css successfully (Size:', combinedCSS.length, 'bytes).');
+
+// 3. Process all HTML & JS files: replace /_next/ and inject /main.css
+function processDir(dirPath) {
   const files = fs.readdirSync(dirPath);
   for (const file of files) {
     const fullPath = path.join(dirPath, file);
     const stat = fs.statSync(fullPath);
     if (stat.isDirectory()) {
-      replaceInDir(fullPath);
-    } else if (file.endsWith('.html') || file.endsWith('.js') || file.endsWith('.txt')) {
+      processDir(fullPath);
+    } else if (file.endsWith('.html')) {
+      let content = fs.readFileSync(fullPath, 'utf8');
+      content = content.replace(/\/_next\//g, '/assets/');
+      if (!content.includes('href="/main.css"')) {
+        content = content.replace('</head>', '<link rel="stylesheet" href="/main.css" /></head>');
+      }
+      fs.writeFileSync(fullPath, content, 'utf8');
+    } else if (file.endsWith('.js')) {
       let content = fs.readFileSync(fullPath, 'utf8');
       if (content.includes('/_next/')) {
         content = content.replace(/\/_next\//g, '/assets/');
@@ -18,17 +53,5 @@ function replaceInDir(dirPath) {
   }
 }
 
-const outDir = path.join(__dirname, 'out');
-const nextDir = path.join(outDir, '_next');
-const assetsDir = path.join(outDir, 'assets');
-
-if (fs.existsSync(nextDir)) {
-  if (fs.existsSync(assetsDir)) {
-    fs.rmSync(assetsDir, { recursive: true, force: true });
-  }
-  fs.renameSync(nextDir, assetsDir);
-  console.log('Renamed out/_next to out/assets successfully.');
-}
-
-replaceInDir(outDir);
-console.log('Replaced all /_next/ links with /assets/ across exported HTML and JS files.');
+processDir(outDir);
+console.log('Injected /main.css stylesheet link into all exported HTML files.');
