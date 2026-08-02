@@ -142,14 +142,29 @@ function ContactFormContent() {
           </div>
         </div>
 
-        <div className="bg-[#F8FAFC] text-[#0F172A] p-6 rounded-2xl shadow-sm space-y-3 border border-[#E2E8F0]">
-          <div className="flex items-center space-x-2 text-xs font-bold text-[#2563EB] uppercase">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Security Assurance</span>
+        <div className="bg-white p-4 rounded-2xl shadow-md border border-slate-200 space-y-3">
+          <div className="flex items-center justify-between px-2 pt-1">
+            <div className="flex items-center space-x-2 text-xs font-bold text-slate-900">
+              <MapPin className="w-4 h-4 text-brand-red-vibrant" />
+              <span>Headquarters Location (UAE)</span>
+            </div>
+            <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+              Free Zone Estate
+            </span>
           </div>
-          <p className="text-xs text-[#475569] leading-relaxed">
-            All commercial transactions and trade documents are protected by strict corporate data security and ISO 9001 compliance standards.
-          </p>
+          <div className="w-full h-56 rounded-xl overflow-hidden border border-slate-200 shadow-inner">
+            <iframe
+              title="Vibrant Petrochem FZE Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.2834024328515!2d55.3855!3d25.2769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xb12b4e7b15802263!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full grayscale contrast-125 opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            />
+          </div>
         </div>
       </div>
 
