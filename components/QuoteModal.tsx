@@ -189,7 +189,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
               {/* Company Name */}
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700">Company Name *</label>
+                <label className="text-xs font-semibold text-slate-700">Company Name</label>
                 <input
                   type="text"
                   name="companyName"
@@ -246,7 +246,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
               {/* Volume MT */}
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700">Volume (MT or Barrels) *</label>
+                <label className="text-xs font-semibold text-slate-700">Volume (MT or Barrels)</label>
                 <input
                   type="text"
                   name="volumeMT"
@@ -265,7 +265,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
               {/* Destination Port */}
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700">Destination Port / Country *</label>
+                <label className="text-xs font-semibold text-slate-700">Destination Port / Country</label>
                 <input
                   type="text"
                   name="destinationPort"

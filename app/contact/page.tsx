@@ -200,10 +200,9 @@ function ContactFormContent() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#0F172A] mb-1">Company Name *</label>
+                  <label className="block text-xs font-bold text-[#0F172A] mb-1">Company Name</label>
                   <input
                     type="text"
-                    required
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                     placeholder="e.g. Global Energy Ltd"
@@ -245,10 +244,9 @@ function ContactFormContent() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#0F172A] mb-1">Volume (MT or Barrels) *</label>
+                  <label className="block text-xs font-bold text-[#0F172A] mb-1">Volume (MT or Barrels)</label>
                   <input
                     type="text"
-                    required
                     value={formData.volumeMT}
                     onChange={(e) => setFormData({ ...formData, volumeMT: e.target.value })}
                     placeholder="e.g. 500 MT"
@@ -259,10 +257,9 @@ function ContactFormContent() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#0F172A] mb-1">Destination Discharge Port *</label>
+                <label className="block text-xs font-bold text-[#0F172A] mb-1">Destination Discharge Port</label>
                 <input
                   type="text"
-                  required
                   value={formData.destinationPort}
                   onChange={(e) => setFormData({ ...formData, destinationPort: e.target.value })}
                   placeholder="e.g. Jebel Ali / Rotterdam / Singapore / Mumbai Port"

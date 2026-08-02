@@ -28,9 +28,9 @@ export const ContactFormSchema = z.object({
     .transform(sanitizeInput),
   companyName: z
     .string()
-    .min(2, { message: 'Company name is required.' })
     .max(120)
-    .transform(sanitizeInput),
+    .optional()
+    .transform((val) => (val ? sanitizeInput(val) : '')),
   subject: z
     .string()
     .min(3, { message: 'Subject must be at least 3 characters.' })
@@ -57,19 +57,22 @@ export const QuoteRequestSchema = z.object({
     .transform(sanitizeInput),
   companyName: z
     .string()
-    .min(2, { message: 'Company name is required.' })
-    .transform(sanitizeInput),
+    .max(120)
+    .optional()
+    .transform((val) => (val ? sanitizeInput(val) : '')),
   product: z
     .string()
     .min(1, { message: 'Please select a product line.' }),
   volumeMT: z
     .string()
-    .min(1, { message: 'Estimated volume in MT or Barrels is required.' })
-    .transform(sanitizeInput),
+    .max(100)
+    .optional()
+    .transform((val) => (val ? sanitizeInput(val) : '')),
   destinationPort: z
     .string()
-    .min(2, { message: 'Destination Port / Country is required.' })
-    .transform(sanitizeInput),
+    .max(150)
+    .optional()
+    .transform((val) => (val ? sanitizeInput(val) : '')),
   additionalNotes: z
     .string()
     .max(1000)
