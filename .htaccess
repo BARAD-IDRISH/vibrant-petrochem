@@ -9,28 +9,33 @@ Options -Indexes +FollowSymLinks
   RewriteEngine On
   RewriteBase /
 
-  # 1. Force HTTPS
+  # 1. Map _next/static URL requests to the assets folder on disk
+  RewriteRule ^_next/static/(.*)$ assets/$1 [L]
+  RewriteRule ^_next/(.*)$ assets/$1 [L]
+
+  # 2. Force HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # 2. Redirect www to non-www
+  # 3. Redirect www to non-www
   RewriteCond %{HTTP_HOST} ^www\.vibrantpetro\.com$ [NC]
   RewriteRule ^(.*)$ https://vibrantpetro.com/$1 [R=301,L]
 
-  # 3. DIRECT EXEMPTION: Never rewrite _next assets or media files
+  # 4. Direct exemption for assets and static files
+  RewriteRule ^assets/ - [L]
   RewriteRule ^_next/ - [L]
   RewriteRule ^.+\.(css|js|jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|eot)$ - [L]
 
-  # 4. Serve existing static files & directories directly
+  # 5. Serve existing static files & directories directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 5. Clean URL routing for static HTML pages (e.g. /contact -> contact.html)
+  # 6. Clean URL routing for static HTML pages (e.g. /contact -> contact.html)
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
-  # 6. Legacy 301 Redirects for 2018 pages (.php to clean URLs)
+  # 7. Legacy 301 Redirects
   RewriteRule ^index\.php$ / [R=301,L]
   RewriteRule ^about\.php$ /about [R=301,L]
   RewriteRule ^services\.php$ /services [R=301,L]
@@ -42,7 +47,7 @@ Options -Indexes +FollowSymLinks
 # Fallback for non-existent routes (Serve Home Page)
 ErrorDocument 404 /index.html
 
-# MIME Types for Static Assets (CSS, JS, WebP, WOFF2)
+# MIME Types for Static Assets
 <IfModule mod_mime.c>
   AddType text/css .css
   AddType application/javascript .js
@@ -50,7 +55,7 @@ ErrorDocument 404 /index.html
   AddType font/woff2 .woff2
 </IfModule>
 
-# Gzip Compression for Optimal Performance
+# Gzip Compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
