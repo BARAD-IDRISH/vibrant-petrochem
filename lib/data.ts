@@ -55,7 +55,7 @@ export const COMPANY_INFO = {
   phone: '+971 55 927 1528',
   email: 'ashish@vibrantpetro.com',
   website: 'https://vibrantpetro.com/',
-  address: 'United Arab Emirates (UAE) Free Zone Estate',
+  address: 'Al Shmookh Business Center, One UAQ, UAQ Free Trade Zone, Umm Al Quwain, U.A.E.',
   hours: {
     weekdays: 'Mon - Fri: 10:00 - 18:00',
     saturday: 'Sat & Sun: Closed',

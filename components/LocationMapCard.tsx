@@ -22,7 +22,7 @@ export default function LocationMapCard({
           <span>Headquarters Location (UAE)</span>
         </div>
         <a
-          href="https://maps.google.com/?q=25.2048,55.2708"
+          href="https://maps.google.com/?q=Al+Shmookh+Business+Center,+One+UAQ,+UAQ+Free+Trade+Zone,+Umm+Al+Quwain,+U.A.E."
           target="_blank"
           rel="noopener noreferrer"
           className="text-[11px] font-semibold text-brand-red-vibrant bg-red-50 hover:bg-red-100 px-2.5 py-0.5 rounded-full transition-colors flex items-center space-x-1"
@@ -36,7 +36,7 @@ export default function LocationMapCard({
         {!iframeError ? (
           <iframe
             title="Vibrant Petrochem FZE Location Map"
-            src="https://maps.google.com/maps?q=25.2048,55.2708+(Vibrant+Petrochem+FZE)&hl=en&z=11&output=embed"
+            src="https://maps.google.com/maps?q=Al+Shmookh+Business+Center,+One+UAQ,+UAQ+Free+Trade+Zone,+Umm+Al+Quwain,+U.A.E.&hl=en&z=12&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -57,7 +57,7 @@ export default function LocationMapCard({
                 </span>
               </div>
               <span className="text-[10px] bg-brand-red-vibrant/20 text-brand-red-vibrant border border-brand-red-vibrant/30 px-2 py-0.5 rounded-full font-bold">
-                UAE Free Zone
+                UAQ Free Trade Zone
               </span>
             </div>
 
@@ -70,13 +70,13 @@ export default function LocationMapCard({
                 Vibrant Petrochem FZE
               </h4>
               <p className="text-[11px] text-slate-400 max-w-xs mx-auto">
-                Commercial Headquarters & Regional Energy Trading Operations
+                Al Shmookh Business Center, One UAQ, UAQ Free Trade Zone, Umm Al Quwain, U.A.E.
               </p>
             </div>
 
             <div className="text-center pt-2">
               <a
-                href="https://maps.google.com/?q=25.2048,55.2708"
+                href="https://maps.google.com/?q=Al+Shmookh+Business+Center,+One+UAQ,+UAQ+Free+Trade+Zone,+Umm+Al+Quwain,+U.A.E."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 text-xs font-semibold bg-brand-red-vibrant hover:bg-red-700 text-white px-4 py-2 rounded-xl transition-all shadow-md"

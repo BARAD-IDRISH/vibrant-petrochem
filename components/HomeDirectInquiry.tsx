@@ -97,7 +97,7 @@ export const HomeDirectInquiry: React.FC = () => {
         {/* Left Column: Headquarters & Desk Contact Info */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
           <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4 flex-1 flex flex-col justify-between">
-            <h2 className="text-lg font-bold font-display text-slate-900">Headquarters & Desk Contact</h2>
+            <h2 className="text-lg font-bold font-display text-slate-900">Headquarters Contact</h2>
 
             <div className="space-y-2.5 text-xs text-slate-600">
               <div className="flex items-start space-x-3 p-2.5 bg-slate-50 rounded-2xl border border-slate-100">
