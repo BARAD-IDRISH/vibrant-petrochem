@@ -46,14 +46,15 @@ export const ContactFormSchema = z.object({
 export const QuoteRequestSchema = z.object({
   fullName: z
     .string()
-    .min(2, { message: 'Full name is required.' })
+    .min(2, { message: 'Please enter your full name.' })
     .transform(sanitizeInput),
   email: z
     .string()
-    .email({ message: 'Valid business email address is required.' }),
+    .min(1, { message: 'Business email is required.' })
+    .email({ message: 'Please enter a valid business email address.' }),
   phone: z
     .string()
-    .min(7, { message: 'Contact phone number is required.' })
+    .min(7, { message: 'Please enter a valid phone number.' })
     .transform(sanitizeInput),
   companyName: z
     .string()

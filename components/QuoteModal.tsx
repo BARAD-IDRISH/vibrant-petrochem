@@ -132,7 +132,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} noValidate className="space-y-4">
             <div className="space-y-1">
               <div className="flex items-center space-x-2">
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-red-vibrant">

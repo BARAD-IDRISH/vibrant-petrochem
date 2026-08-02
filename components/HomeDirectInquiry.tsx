@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { COMPANY_INFO, PRODUCTS } from '@/lib/data';
-import { PhoneCall, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { PhoneCall, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck, AlertCircle } from 'lucide-react';
 import LocationMapCard from '@/components/LocationMapCard';
 import { QuoteRequestSchema } from '@/lib/schemas';
 import { z } from 'zod';
@@ -165,32 +165,57 @@ export const HomeDirectInquiry: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                {Object.keys(formErrors).length > 0 && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-2 text-xs text-[#C5221F] font-semibold">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-[#C5221F]" />
+                    <span>Please complete all required fields marked with an asterisk (*).</span>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-[#0F172A] mb-1">Full Name *</label>
                     <input
                       type="text"
-                      required
                       value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, fullName: e.target.value });
+                        if (formErrors.fullName) setFormErrors({ ...formErrors, fullName: '' });
+                      }}
                       placeholder="e.g. John Doe"
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none focus:border-[#C5221F]"
+                      className={`w-full rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none transition-colors ${
+                        formErrors.fullName ? 'bg-red-50/30 border border-[#C5221F]' : 'bg-[#F8FAFC] border border-[#E2E8F0] focus:border-[#C5221F]'
+                      }`}
                     />
-                    {formErrors.fullName && <p className="text-[10px] text-red-600 mt-1">{formErrors.fullName}</p>}
+                    {formErrors.fullName && (
+                      <p className="text-[11px] font-semibold text-[#C5221F] mt-1 flex items-center space-x-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{formErrors.fullName}</span>
+                      </p>
+                    )}
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-[#0F172A] mb-1">Business Email *</label>
                     <input
                       type="email"
-                      required
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, email: e.target.value });
+                        if (formErrors.email) setFormErrors({ ...formErrors, email: '' });
+                      }}
                       placeholder="e.g. j.doe@company.com"
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none focus:border-[#C5221F]"
+                      className={`w-full rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none transition-colors ${
+                        formErrors.email ? 'bg-red-50/30 border border-[#C5221F]' : 'bg-[#F8FAFC] border border-[#E2E8F0] focus:border-[#C5221F]'
+                      }`}
                     />
-                    {formErrors.email && <p className="text-[10px] text-red-600 mt-1">{formErrors.email}</p>}
+                    {formErrors.email && (
+                      <p className="text-[11px] font-semibold text-[#C5221F] mt-1 flex items-center space-x-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{formErrors.email}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -204,20 +229,28 @@ export const HomeDirectInquiry: React.FC = () => {
                       placeholder="e.g. Global Energy Ltd"
                       className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none focus:border-[#C5221F]"
                     />
-                    {formErrors.companyName && <p className="text-[10px] text-red-600 mt-1">{formErrors.companyName}</p>}
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-[#0F172A] mb-1">Telephone / WhatsApp *</label>
                     <input
                       type="text"
-                      required
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, phone: e.target.value });
+                        if (formErrors.phone) setFormErrors({ ...formErrors, phone: '' });
+                      }}
                       placeholder="e.g. +971 50 123 4567"
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none focus:border-[#C5221F]"
+                      className={`w-full rounded-xl px-4 py-2.5 text-xs text-[#0F172A] focus:outline-none transition-colors ${
+                        formErrors.phone ? 'bg-red-50/30 border border-[#C5221F]' : 'bg-[#F8FAFC] border border-[#E2E8F0] focus:border-[#C5221F]'
+                      }`}
                     />
-                    {formErrors.phone && <p className="text-[10px] text-red-600 mt-1">{formErrors.phone}</p>}
+                    {formErrors.phone && (
+                      <p className="text-[11px] font-semibold text-[#C5221F] mt-1 flex items-center space-x-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{formErrors.phone}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
