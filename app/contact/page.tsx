@@ -19,7 +19,7 @@ function ContactFormContent() {
     phone: '',
     companyName: '',
     product: initialProduct,
-    volumeMT: '25 MT',
+    volumeMT: '',
     destinationPort: '',
     additionalNotes: '',
   });

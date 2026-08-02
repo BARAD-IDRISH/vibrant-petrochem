@@ -14,7 +14,7 @@ export const HomeDirectInquiry: React.FC = () => {
     phone: '',
     companyName: '',
     product: '',
-    volumeMT: '25 MT',
+    volumeMT: '',
     destinationPort: '',
     additionalNotes: '',
   });

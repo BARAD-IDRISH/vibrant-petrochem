@@ -22,7 +22,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
     phone: '',
     companyName: '',
     product: initialProduct || PRODUCTS[0].name,
-    volumeMT: '500 MT',
+    volumeMT: '',
     destinationPort: '',
     additionalNotes: '',
   });
