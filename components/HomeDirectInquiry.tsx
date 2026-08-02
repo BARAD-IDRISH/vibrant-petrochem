@@ -144,21 +144,24 @@ export const HomeDirectInquiry: React.FC = () => {
                 <MapPin className="w-4 h-4 text-[#C5221F]" />
                 <span>Headquarters Location (UAE)</span>
               </div>
-              <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">
-                Free Zone Estate
-              </span>
+              <a
+                href="https://maps.google.com/?q=United+Arab+Emirates"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] font-semibold text-[#C5221F] bg-red-50 hover:bg-red-100 px-2.5 py-0.5 rounded-full transition-colors flex items-center space-x-1"
+              >
+                <span>Open in Google Maps ↗</span>
+              </a>
             </div>
-            <div className="w-full h-56 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
+            <div className="w-full h-56 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100 relative">
               <iframe
                 title="Vibrant Petrochem FZE Location Map"
-                src="https://maps.google.com/maps?q=United%20Arab%20Emirates&t=&z=9&ie=UTF8&iwloc=&output=embed"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=54.8000%2C24.8000%2C55.7000%2C25.5000&amp;layer=mapnik&amp;marker=25.2048%2C55.2708"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                allowFullScreen={false}
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full grayscale contrast-125 opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className="w-full h-full grayscale contrast-125 opacity-95 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
             </div>
           </div>
