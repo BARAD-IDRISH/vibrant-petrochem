@@ -1,19 +1,20 @@
-import Link from 'next/link';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function NotFound() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Automatically redirect invalid/unknown URLs to the Home Page
+    router.replace('/');
+  }, [router]);
+
   return (
-    <div className="min-h-screen bg-[#0B1528] text-white flex flex-col items-center justify-center p-6 text-center space-y-6">
-      <div className="text-6xl font-extrabold text-brand-red-vibrant font-display">404</div>
-      <h1 className="text-2xl font-bold font-display">Page Not Found</h1>
-      <p className="text-sm text-slate-300 max-w-md">
-        The requested page does not exist or has been relocated.
-      </p>
-      <Link
-        href="/"
-        className="bg-brand-red-vibrant hover:bg-brand-red-hover text-white text-xs font-bold px-6 py-3 rounded-xl transition-colors shadow-lg"
-      >
-        Return to Home Page
-      </Link>
+    <div className="min-h-screen bg-[#0B1528] text-white flex flex-col items-center justify-center p-6 text-center space-y-4">
+      <div className="w-8 h-8 border-2 border-[#C5221F] border-t-transparent rounded-full animate-spin" />
+      <p className="text-xs text-slate-300 font-medium">Redirecting to Vibrant Petrochem Home...</p>
     </div>
   );
 }

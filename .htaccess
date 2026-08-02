@@ -5,6 +5,7 @@
 # ====================================================================
 
 # DO NOT REMOVE: CloudLinux / cPanel Passenger Configuration
+ErrorDocument 404 /index.html
 <IfModule mod_passenger.c>
   PassengerAppRoot "/home/USERNAME/public_html"
   PassengerBaseURI "/"
