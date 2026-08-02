@@ -44,6 +44,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: 'export',
+  assetPrefix: '/assets',
   poweredByHeader: false,
   reactStrictMode: true,
   images: {

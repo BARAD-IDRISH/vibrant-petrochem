@@ -8,9 +8,17 @@ const assetsDir = path.join(outDir, 'assets');
 // 1. Rename _next to assets for folder structure
 if (fs.existsSync(nextDir)) {
   if (fs.existsSync(assetsDir)) {
-    fs.rmSync(assetsDir, { recursive: true, force: true });
+    // If out/assets exists, move out/_next contents inside out/assets
+    const nextSub = fs.readdirSync(nextDir);
+    for (const item of nextSub) {
+      const src = path.join(nextDir, item);
+      const dest = path.join(assetsDir, item);
+      fs.cpSync(src, dest, { recursive: true });
+    }
+    fs.rmSync(nextDir, { recursive: true, force: true });
+  } else {
+    fs.renameSync(nextDir, assetsDir);
   }
-  fs.renameSync(nextDir, assetsDir);
   console.log('Renamed out/_next to out/assets successfully.');
 }
 
@@ -28,7 +36,7 @@ const rootCSSPath = path.join(outDir, 'main.css');
 fs.writeFileSync(rootCSSPath, combinedCSS, 'utf8');
 console.log('Created root main.css successfully (Size:', combinedCSS.length, 'bytes).');
 
-// 3. Process all HTML & JS files: replace /_next/ and inject /main.css
+// 3. Process all HTML, JS, JSON files: replace /assets/_next/ and /_next/ with /assets/
 function processDir(dirPath) {
   const files = fs.readdirSync(dirPath);
   for (const file of files) {
@@ -38,15 +46,15 @@ function processDir(dirPath) {
       processDir(fullPath);
     } else if (file.endsWith('.html')) {
       let content = fs.readFileSync(fullPath, 'utf8');
-      content = content.replace(/\/_next\//g, '/assets/');
+      content = content.replace(/\/assets\/_next\//g, '/assets/').replace(/\/_next\//g, '/assets/');
       if (!content.includes('href="/main.css"')) {
         content = content.replace('</head>', '<link rel="stylesheet" href="/main.css" /></head>');
       }
       fs.writeFileSync(fullPath, content, 'utf8');
-    } else if (file.endsWith('.js')) {
+    } else if (file.endsWith('.js') || file.endsWith('.json')) {
       let content = fs.readFileSync(fullPath, 'utf8');
-      if (content.includes('/_next/')) {
-        content = content.replace(/\/_next\//g, '/assets/');
+      if (content.includes('/_next/') || content.includes('/assets/_next/')) {
+        content = content.replace(/\/assets\/_next\//g, '/assets/').replace(/\/_next\//g, '/assets/');
         fs.writeFileSync(fullPath, content, 'utf8');
       }
     }
@@ -54,7 +62,7 @@ function processDir(dirPath) {
 }
 
 processDir(outDir);
-console.log('Injected /main.css stylesheet link into all exported HTML files.');
+console.log('Processed all HTML, JS, and JSON files to fix asset chunk links.');
 
 // 4. Ensure dual folder index.html for all routes so /products/ never throws 403
 function createIndexFiles(dirPath) {
@@ -75,4 +83,4 @@ function createIndexFiles(dirPath) {
 }
 
 createIndexFiles(outDir);
-console.log('Dual index.html generation completed for 100% 403-free route access.');
+console.log('Dual index.html generation completed.');
