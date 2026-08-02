@@ -7,15 +7,18 @@
   RewriteEngine On
   RewriteBase /
 
+  # Direct rule: Do not rewrite any requests for _next static assets
+  RewriteRule ^_next/ - [L]
+
   # 1. Force HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # 2. Redirect www to non-www (Domain-Scoped)
+  # 2. Redirect www to non-www
   RewriteCond %{HTTP_HOST} ^www\.vibrantpetro\.com$ [NC]
   RewriteRule ^(.*)$ https://vibrantpetro.com/$1 [R=301,L]
 
-  # 3. Serve existing static files & directories directly (CSS, JS, Images, Fonts)
+  # 3. Serve existing static files & directories directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
