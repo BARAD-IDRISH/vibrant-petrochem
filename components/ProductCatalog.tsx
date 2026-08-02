@@ -153,7 +153,7 @@ export const ProductCatalog: React.FC = () => {
               onClick={() => setShowAll(!showAll)}
               className="inline-flex items-center space-x-2 bg-white hover:bg-[#F8FAFC] text-[#0F172A] text-xs font-bold px-8 py-3.5 rounded-full border border-[#E2E8F0] shadow-sm transition-all hover:border-[#C5221F]"
             >
-              <span>{showAll ? 'Show Fewer Products (2 Rows)' : `View All ${filteredProducts.length} Products`}</span>
+              <span>{showAll ? 'Show Fewer Products' : `View All ${filteredProducts.length} Products`}</span>
               <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showAll ? 'rotate-180 text-[#C5221F]' : ''}`} />
             </button>
           </div>
