@@ -34,16 +34,28 @@ export default function LocationMapCard({
 
       <div className={`w-full ${mapHeight} rounded-xl overflow-hidden border border-slate-200 shadow-inner bg-slate-900 relative group`}>
         {!iframeError ? (
-          <iframe
-            title="Vibrant Petrochem FZE Location Map"
-            src="https://maps.google.com/maps?q=Al+Shmookh+Business+Center,+One+UAQ,+UAQ+Free+Trade+Zone,+Umm+Al+Quwain,+U.A.E.&hl=en&z=12&output=embed"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-            onError={() => setIframeError(true)}
-            className="w-full h-full grayscale contrast-125 opacity-95 hover:grayscale-0 hover:opacity-100 transition-all duration-300 pointer-events-auto"
-          />
+          <>
+            <iframe
+              title="Vibrant Petrochem FZE Location Map"
+              src="https://maps.google.com/maps?q=25.5647,55.5532+(Vibrant+Petrochem+FZE+-+Al+Shmookh+Business+Center)&hl=en&z=13&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              onError={() => setIframeError(true)}
+              className="w-full h-full grayscale contrast-125 opacity-95 hover:grayscale-0 hover:opacity-100 transition-all duration-300 pointer-events-auto"
+            />
+            {/* Centered Location Pin Marker Overlay */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full pointer-events-none z-10 flex flex-col items-center">
+              <div className="bg-slate-900/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-xl border border-slate-700 whitespace-nowrap mb-1 flex items-center space-x-1.5 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-brand-red-vibrant animate-ping inline-block" />
+                <span>Vibrant Petrochem FZE</span>
+              </div>
+              <div className="relative">
+                <MapPin className="w-8 h-8 text-brand-red-vibrant filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] fill-brand-red-vibrant/20" />
+              </div>
+            </div>
+          </>
         ) : null}
 
         {/* Fallback Vector Map Card (Shows automatically if iframe is blocked by browser) */}
