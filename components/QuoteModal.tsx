@@ -160,11 +160,13 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                   onChange={handleChange}
                   className="w-full bg-slate-50 text-slate-900 text-xs rounded-xl px-3 py-2.5 border border-slate-200 focus:outline-none focus:border-brand-red-vibrant font-medium"
                 >
+                  <option value="">Select</option>
                   {PRODUCTS.map((p) => (
                     <option key={p.id} value={p.name}>
                       {p.name}
                     </option>
                   ))}
+                  <option value="Other">Other</option>
                 </select>
               </div>
 

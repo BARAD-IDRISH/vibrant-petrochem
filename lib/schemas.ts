@@ -62,7 +62,8 @@ export const QuoteRequestSchema = z.object({
     .transform((val) => (val ? sanitizeInput(val) : '')),
   product: z
     .string()
-    .min(1, { message: 'Please select a product line.' }),
+    .optional()
+    .transform((val) => (val ? sanitizeInput(val) : 'General Inquiry')),
   volumeMT: z
     .string()
     .max(100)
