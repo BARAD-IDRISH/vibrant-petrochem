@@ -131,7 +131,7 @@ export const HomeDirectInquiry: React.FC = () => {
               <div className="flex items-start space-x-3 p-2.5 bg-slate-50 rounded-2xl border border-slate-100">
                 <Clock className="w-4 h-4 text-[#C5221F] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-slate-900 text-xs">Desk Operating Hours</div>
+                  <div className="font-bold text-slate-900 text-xs">Working Hours</div>
                   <div className="mt-0.5 text-[11px] text-slate-600">{COMPANY_INFO.hours.weekdays}</div>
                   <div className="text-[11px] text-slate-600">{COMPANY_INFO.hours.saturday}</div>
                 </div>
