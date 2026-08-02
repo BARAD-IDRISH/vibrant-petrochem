@@ -55,3 +55,24 @@ function processDir(dirPath) {
 
 processDir(outDir);
 console.log('Injected /main.css stylesheet link into all exported HTML files.');
+
+// 4. Ensure dual folder index.html for all routes so /products/ never throws 403
+function createIndexFiles(dirPath) {
+  const files = fs.readdirSync(dirPath);
+  for (const file of files) {
+    const fullPath = path.join(dirPath, file);
+    const stat = fs.statSync(fullPath);
+    if (stat.isDirectory() && file !== 'assets' && file !== '_next') {
+      const htmlSibling = path.join(dirPath, `${file}.html`);
+      const targetIndex = path.join(fullPath, 'index.html');
+      if (fs.existsSync(htmlSibling) && !fs.existsSync(targetIndex)) {
+        fs.copyFileSync(htmlSibling, targetIndex);
+        console.log(`Created dual fallback: ${targetIndex}`);
+      }
+      createIndexFiles(fullPath);
+    }
+  }
+}
+
+createIndexFiles(outDir);
+console.log('Dual index.html generation completed for 100% 403-free route access.');
