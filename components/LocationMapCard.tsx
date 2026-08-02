@@ -28,7 +28,7 @@ export default function LocationMapCard() {
         {!iframeError ? (
           <iframe
             title="Vibrant Petrochem FZE Location Map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=54.8000%2C24.8000%2C55.7000%2C25.5000&amp;layer=mapnik&amp;marker=25.2048%2C55.2708"
+            src="https://maps.google.com/maps?q=United%20Arab%20Emirates&hl=en&z=9&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
