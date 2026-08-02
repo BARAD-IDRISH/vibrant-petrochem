@@ -3,12 +3,20 @@
 import React, { useState } from 'react';
 import { MapPin, ExternalLink, Globe2 } from 'lucide-react';
 
-export default function LocationMapCard() {
+interface LocationMapCardProps {
+  className?: string;
+  mapHeight?: string;
+}
+
+export default function LocationMapCard({
+  className = '',
+  mapHeight = 'h-44 sm:h-48',
+}: LocationMapCardProps) {
   const [iframeError, setIframeError] = useState(false);
 
   return (
-    <div className="bg-white p-4 rounded-2xl shadow-md border border-slate-200 space-y-3">
-      <div className="flex items-center justify-between px-1 pt-1">
+    <div className={`bg-white p-4 rounded-2xl shadow-sm border border-slate-200 space-y-2.5 flex flex-col justify-between ${className}`}>
+      <div className="flex items-center justify-between px-1 pt-0.5">
         <div className="flex items-center space-x-2 text-xs font-bold text-slate-900">
           <MapPin className="w-4 h-4 text-brand-red-vibrant shrink-0" />
           <span>Headquarters Location (UAE)</span>
@@ -17,14 +25,14 @@ export default function LocationMapCard() {
           href="https://maps.google.com/?q=25.2048,55.2708"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[11px] font-semibold text-brand-red-vibrant bg-red-50 hover:bg-red-100 px-3 py-1 rounded-full transition-colors flex items-center space-x-1"
+          className="text-[11px] font-semibold text-brand-red-vibrant bg-red-50 hover:bg-red-100 px-2.5 py-0.5 rounded-full transition-colors flex items-center space-x-1"
         >
           <span>Open in Google Maps</span>
           <ExternalLink className="w-3 h-3 ml-0.5 inline" />
         </a>
       </div>
 
-      <div className="w-full h-56 rounded-xl overflow-hidden border border-slate-200 shadow-inner bg-slate-900 relative group">
+      <div className={`w-full ${mapHeight} rounded-xl overflow-hidden border border-slate-200 shadow-inner bg-slate-900 relative group`}>
         {!iframeError ? (
           <iframe
             title="Vibrant Petrochem FZE Location Map"

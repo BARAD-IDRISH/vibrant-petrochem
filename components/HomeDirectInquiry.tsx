@@ -93,58 +93,58 @@ export const HomeDirectInquiry: React.FC = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-8">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
         {/* Left Column: Headquarters & Desk Contact Info */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-            <h2 className="text-xl font-bold font-display text-slate-900">Headquarters & Desk Contact</h2>
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4 flex-1 flex flex-col justify-between">
+            <h2 className="text-lg font-bold font-display text-slate-900">Headquarters & Desk Contact</h2>
 
-            <div className="space-y-4 text-xs text-slate-600">
-              <div className="flex items-start space-x-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <MapPin className="w-5 h-5 text-[#C5221F] shrink-0 mt-0.5" />
+            <div className="space-y-2.5 text-xs text-slate-600">
+              <div className="flex items-start space-x-3 p-2.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <MapPin className="w-4 h-4 text-[#C5221F] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">Commercial Headquarters</div>
-                  <div className="mt-1 text-slate-600">{COMPANY_INFO.address}</div>
+                  <div className="font-bold text-slate-900 text-xs">Commercial Headquarters</div>
+                  <div className="mt-0.5 text-[11px] text-slate-600">{COMPANY_INFO.address}</div>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <PhoneCall className="w-5 h-5 text-[#C5221F] shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3 p-2.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <PhoneCall className="w-4 h-4 text-[#C5221F] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">Telephone</div>
-                  <a href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`} className="mt-1 block hover:text-[#C5221F] font-semibold text-slate-700 transition-colors">
+                  <div className="font-bold text-slate-900 text-xs">Telephone</div>
+                  <a href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`} className="mt-0.5 block hover:text-[#C5221F] font-semibold text-slate-700 transition-colors text-[11px]">
                     {COMPANY_INFO.phone}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <Mail className="w-5 h-5 text-[#C5221F] shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3 p-2.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <Mail className="w-4 h-4 text-[#C5221F] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">Email Inquiries</div>
-                  <a href={`mailto:${COMPANY_INFO.email}`} className="mt-1 block hover:text-[#C5221F] font-semibold text-slate-700 transition-colors">
+                  <div className="font-bold text-slate-900 text-xs">Email Inquiries</div>
+                  <a href={`mailto:${COMPANY_INFO.email}`} className="mt-0.5 block hover:text-[#C5221F] font-semibold text-slate-700 transition-colors text-[11px]">
                     {COMPANY_INFO.email}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <Clock className="w-5 h-5 text-[#C5221F] shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3 p-2.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <Clock className="w-4 h-4 text-[#C5221F] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">Desk Operating Hours</div>
-                  <div className="mt-1 text-slate-600">{COMPANY_INFO.hours.weekdays}</div>
-                  <div className="text-slate-600">{COMPANY_INFO.hours.saturday}</div>
+                  <div className="font-bold text-slate-900 text-xs">Desk Operating Hours</div>
+                  <div className="mt-0.5 text-[11px] text-slate-600">{COMPANY_INFO.hours.weekdays}</div>
+                  <div className="text-[11px] text-slate-600">{COMPANY_INFO.hours.saturday}</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <LocationMapCard />
+          <LocationMapCard className="rounded-3xl shadow-sm border-slate-200" mapHeight="h-44 sm:h-48" />
         </div>
 
         {/* Right Column: Direct Trade Inquiry Form */}
-        <div className="lg:col-span-7">
-          <div className="bg-white p-8 sm:p-10 rounded-3xl border border-[#E2E8F0] shadow-md">
+        <div className="lg:col-span-7 flex flex-col">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] shadow-md flex-1 flex flex-col justify-between">
             <h2 className="text-2xl font-bold font-display text-[#0F172A] mb-1">Submit Formal Trade Inquiry</h2>
             <p className="text-xs text-[#475569] mb-6">
               Complete the specification request form below and our trading team will respond within 4 business hours.
