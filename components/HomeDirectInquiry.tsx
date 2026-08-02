@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { COMPANY_INFO, PRODUCTS } from '@/lib/data';
 import { PhoneCall, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import LocationMapCard from '@/components/LocationMapCard';
 import { QuoteRequestSchema } from '@/lib/schemas';
 import { z } from 'zod';
 
@@ -138,33 +139,7 @@ export const HomeDirectInquiry: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white p-4 rounded-3xl shadow-sm space-y-3 border border-slate-200">
-            <div className="flex items-center justify-between px-2 pt-1">
-              <div className="flex items-center space-x-2 text-xs font-bold text-slate-900">
-                <MapPin className="w-4 h-4 text-[#C5221F]" />
-                <span>Headquarters Location (UAE)</span>
-              </div>
-              <a
-                href="https://maps.google.com/?q=United+Arab+Emirates"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] font-semibold text-[#C5221F] bg-red-50 hover:bg-red-100 px-2.5 py-0.5 rounded-full transition-colors flex items-center space-x-1"
-              >
-                <span>Open in Google Maps ↗</span>
-              </a>
-            </div>
-            <div className="w-full h-56 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100 relative">
-              <iframe
-                title="Vibrant Petrochem FZE Location Map"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=54.8000%2C24.8000%2C55.7000%2C25.5000&amp;layer=mapnik&amp;marker=25.2048%2C55.2708"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                className="w-full h-full grayscale contrast-125 opacity-95 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              />
-            </div>
-          </div>
+          <LocationMapCard />
         </div>
 
         {/* Right Column: Direct Trade Inquiry Form */}
