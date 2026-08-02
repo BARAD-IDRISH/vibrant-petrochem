@@ -152,10 +152,10 @@ function ContactFormContent() {
               Free Zone Estate
             </span>
           </div>
-          <div className="w-full h-56 rounded-xl overflow-hidden border border-slate-200 shadow-inner">
+          <div className="w-full h-56 rounded-xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
             <iframe
               title="Vibrant Petrochem FZE Location Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.2834024328515!2d55.3855!3d25.2769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xb12b4e7b15802263!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
+              src="https://maps.google.com/maps?q=United%20Arab%20Emirates&t=&z=9&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
